@@ -1,0 +1,44 @@
+html{
+    height: 100%;
+}
+body{
+    height: 100%;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    background-color: #eceff1;
+}
+#navbar{
+    background-color: #e0e5da;
+    height: 6%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    z-index: 100;
+}
+#logo{
+    font-family: 'Krona One', sans-serif;
+    font-size: 30px;
+    color: #72bb53;
+    text-shadow: 0 4px 5px rgba(0, 0, 0, 0.08);
+    margin-left: 4%;
+}
+#container{
+    /* reszta wysokosci, niestety potrzebne */
+    height: calc(100% - 6%);
+    display: flex;
+}
+#leftPanel{
+    background-color: rgb(228,231,233);
+    width: 17%;
+    box-shadow: 4px 0 4px rgba(0, 0, 0, 0.08);
+}
+#middleScreen{
+    /*reszta szerokosci, potrzebne*/
+    width: calc(100% - 17% - 27%);
+}
+#rightPanel{
+    background-color: rgb(228,231,233);
+    box-shadow: -4px 0 4px rgba(0, 0, 0, 0.08);
+    width: 27%;
+}
