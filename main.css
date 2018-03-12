@@ -15,12 +15,13 @@ body{
     display: flex;
     align-items: center;
     z-index: 100;
+    user-select: none;
 }
 #logo{
     font-family: 'Krona One', sans-serif;
-    font-size: 30px;
+    font-size: 3.3vh;
     color: #72bb53;
-    text-shadow: 0 4px 5px rgba(0, 0, 0, 0.08);
+    text-shadow: 0 0.25vw 0.3vw rgba(0, 0, 0, 0.08);
     margin-left: 4%;
 }
 #container{
@@ -31,7 +32,8 @@ body{
 #leftPanel{
     background-color: rgb(228,231,233);
     width: 17%;
-    box-shadow: 4px 0 4px rgba(0, 0, 0, 0.08);
+    box-shadow: 0.25vw 0 0.25vw rgba(0, 0, 0, 0.08); /*0.25vw = ~4px ale ignoruje zoom*/
+    user-select: none;
 }
 #middleScreen{
     /*reszta szerokosci, potrzebne*/
@@ -39,6 +41,7 @@ body{
 }
 #rightPanel{
     background-color: rgb(228,231,233);
-    box-shadow: -4px 0 4px rgba(0, 0, 0, 0.08);
+    box-shadow: -0.25vw 0 0.25vw rgba(0, 0, 0, 0.08);
     width: 27%;
+    user-select: none;
 }
