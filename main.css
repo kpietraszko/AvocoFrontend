@@ -7,6 +7,7 @@ body{
     display: flex;
     flex-direction: column;
     background-color: #eceff1;
+    font-family: 'Muli', sans-serif;
 }
 #navbar{
     background-color: #e0e5da;
@@ -17,37 +18,51 @@ body{
     z-index: 100;
     user-select: none;
 }
-#navbarButtonsFlex{
-    margin-left: 2.5vw;
-    display: flex;
-
-}
-.navbarButton{
-    color: rgba(40, 33, 50, 0.87);
-    background-color: transparent;
-    border: none;
-    outline: none;
-    font-size: 4.2vh;
-    text-shadow: -0.2vw -0.2vw 0.25vw rgba(0,0,0,0.1);
-    margin: 0 2vw;
-    text-align: center;
-    vertical-align: middle;
-    transition: all 0.03s ease-in-out 0.02s;
-}
-.navbarButton:hover{
-    /* text-shadow: -0.3vw -0.3vw 0.4vw rgba(0,0,0,0.1); */
-    transform: scale(1.2);
-}
-.navbarButton:active{
-    transform: scale(1);
-}
 #logo{
     font-family: 'Krona One', sans-serif;
-    font-size: 3.3vh;
+    font-size: 1.85vw;
     color: #72bb53;
     text-shadow: 0 0.25vw 0.3vw  rgba(0, 0, 0, 0.08);
     margin-left: 4%;
 }
+#navbarButtonsFlex{
+    margin-left: 2.5vw;
+    display: flex;
+    backface-visibility: hidden;
+}
+.navbarButton{
+    color: rgb(62, 56, 70);
+    background-color: transparent;
+    border: none;
+    outline: none;
+    font-size: 2.3vw;
+    text-shadow: -0.2vw -0.2vw 0.25vw rgba(0,0,0,0.1);
+    margin: 0 2vw;
+    /* text-align: center;
+    vertical-align: middle; */
+    transition: all 0.03s ease-in-out 0.02s;
+    backface-visibility: hidden;
+}
+.navbarButton:hover{
+    /* transform: scale(1.1); */
+    transform: scale(1.12) perspective(1px);
+    
+}
+.navbarButton:active{
+    transform: scale(1.05);
+}
+#loggedUser{
+    margin: 0 10px 0 auto;
+    display: flex;
+    align-items: center;
+}
+#profilePic{
+    color: rgb(68, 62, 77);
+    background-color: white;
+    border-radius: 100%;
+    margin-right: 5px;
+}
+
 #container{
     flex-grow: 1;
     display: flex;
@@ -66,4 +81,11 @@ body{
     box-shadow: -0.25vw 0 0.25vw rgba(0, 0, 0, 0.08);
     width: 27%;
     user-select: none;
+}
+input{
+    font-family: inherit;
+    padding: 2px;
+    border-radius: 5px;
+    border: 1px solid;
+    border-color: #898989;
 }
