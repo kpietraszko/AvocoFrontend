@@ -11,12 +11,12 @@ body{
 }
 #navbar{
     background-color: #e0e5da;
-    height: 6%;
     width: 100%;
     display: flex;
     align-items: center;
     z-index: 100;
     user-select: none;
+    padding: 8px 0;
 }
 #logo{
     font-family: 'Krona One', sans-serif;
@@ -32,29 +32,35 @@ body{
 }
 .navbarButton{
     color: rgb(62, 56, 70);
-    background-color: transparent;
-    border: none;
-    outline: none;
-    font-size: 2.3vw;
+    font-size: 36px;
     text-shadow: -0.2vw -0.2vw 0.25vw rgba(0,0,0,0.1);
     margin: 0 2vw;
-    /* text-align: center;
-    vertical-align: middle; */
     transition: all 0.03s ease-in-out 0.02s;
     backface-visibility: hidden;
+    cursor: pointer;
 }
 .navbarButton:hover{
-    /* transform: scale(1.1); */
-    transform: scale(1.12) perspective(1px);
-    
+    transform: scale(1.1) perspective(1px);
+    text-shadow: -0.15vw -0.15vw 0.25vw rgba(0,0,0,0.1);
 }
 .navbarButton:active{
-    transform: scale(1.05);
+    /* transform: scale(1.05); */
+    transform: translate(0, 1px);
+    color: rgb(30, 30, 30)
 }
 #loggedUser{
-    margin: 0 10px 0 auto;
+    margin: 0 20px 0 auto;
     display: flex;
     align-items: center;
+    transition: all 0.03s ease-in-out 0.02s;
+    cursor: pointer;
+}
+#loggedUser:hover>#profilePic{
+    box-shadow: -0.1vw -0.1vw 0.25vw rgba(0,0,0,0.1);
+    transform: scale(1.1) perspective(1px);
+}
+#loggedUser:active{
+    transform: translate(0, 1px);
 }
 #profilePic{
     color: rgb(68, 62, 77);
@@ -87,5 +93,38 @@ input{
     padding: 2px;
     border-radius: 5px;
     border: 1px solid;
-    border-color: #898989;
+    border-color: rgb(204,204,204);
+    padding: 6px 15px;
+}
+primaryColor{
+    color: #282132;
+}
+.searchBar{
+    display: flex;
+    align-items: center;
+    /* flex-direction: row-reverse; */
+    margin: 0 60px;
+    position: relative;
+}
+.searchBar>input{
+    padding-right: 25px;
+}
+.searchIcon{
+    position: absolute;
+    right: 5px;
+}
+button{
+    background-color: transparent;
+    border: none;
+    outline: none;
+}
+.logOutButton{
+    display:flex;
+    align-items: center;
+    margin-right: 10px;
+    font-size: inherit;
+    cursor: pointer;
+}
+#logOutIcon{
+    margin-right: 2px;
 }
