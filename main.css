@@ -9,66 +9,6 @@ body{
     background-color: #eceff1;
     font-family: 'Muli', sans-serif;
 }
-#navbar{
-    background-color: #e0e5da;
-    width: 100%;
-    display: flex;
-    align-items: center;
-    z-index: 100;
-    user-select: none;
-    padding: 8px 0;
-}
-#logo{
-    font-family: 'Krona One', sans-serif;
-    font-size: 1.85vw;
-    color: #72bb53;
-    text-shadow: 0 0.25vw 0.3vw  rgba(0, 0, 0, 0.08);
-    margin-left: 4%;
-}
-#navbarButtonsFlex{
-    margin-left: 2.5vw;
-    display: flex;
-    backface-visibility: hidden;
-}
-.navbarButton{
-    color: rgb(62, 56, 70);
-    font-size: 36px;
-    text-shadow: -0.2vw -0.2vw 0.25vw rgba(0,0,0,0.1);
-    margin: 0 2vw;
-    transition: all 0.03s ease-in-out 0.02s;
-    backface-visibility: hidden;
-    cursor: pointer;
-}
-.navbarButton:hover{
-    transform: scale(1.1) perspective(1px);
-    text-shadow: -0.15vw -0.15vw 0.25vw rgba(0,0,0,0.1);
-}
-.navbarButton:active{
-    /* transform: scale(1.05); */
-    transform: translate(0, 1px);
-    color: rgb(30, 30, 30)
-}
-#loggedUser{
-    margin: 0 20px 0 auto;
-    display: flex;
-    align-items: center;
-    transition: all 0.03s ease-in-out 0.02s;
-    cursor: pointer;
-}
-#loggedUser:hover>#profilePic{
-    box-shadow: -0.1vw -0.1vw 0.25vw rgba(0,0,0,0.1);
-    transform: scale(1.1) perspective(1px);
-}
-#loggedUser:active{
-    transform: translate(0, 1px);
-}
-#profilePic{
-    color: rgb(68, 62, 77);
-    background-color: white;
-    border-radius: 100%;
-    margin-right: 5px;
-}
-
 #container{
     flex-grow: 1;
     display: flex;
@@ -88,6 +28,12 @@ body{
     width: 27%;
     user-select: none;
 }
+.symbolCircle{
+    color: rgb(68, 62, 77);
+    background-color: white;
+    border-radius: 100%;
+    margin-right: 5px;
+}
 input{
     font-family: inherit;
     padding: 2px;
@@ -99,32 +45,43 @@ input{
 primaryColor{
     color: #282132;
 }
-.searchBar{
-    display: flex;
-    align-items: center;
-    /* flex-direction: row-reverse; */
-    margin: 0 60px;
-    position: relative;
-}
-.searchBar>input{
-    padding-right: 25px;
-}
-.searchIcon{
-    position: absolute;
-    right: 5px;
-}
+
 button{
     background-color: transparent;
     border: none;
     outline: none;
 }
-.logOutButton{
-    display:flex;
+#leftPanel{
+    display: flex;
+    flex-direction: column;
     align-items: center;
-    margin-right: 10px;
-    font-size: inherit;
-    cursor: pointer;
 }
-#logOutIcon{
-    margin-right: 2px;
+hr{
+    width: 200px;
+    border: none;
+    height: 1px;
+    background-color: #f1f3f4;
+}
+h2{
+    font-size: 18px;
+    margin: 15px 0 5px;
+}
+ul{
+    list-style-type: none;
+    margin: 4px 0;
+    padding: 0;
+}
+#leftPanel li{
+    margin: 6px 0;
+    display: flex;
+    align-items: center;
+}
+li>.symbolCircle{
+    font-size: 22px;
+    padding: 2px;
+}
+#leftPanel li>span{
+    background-color: #f8f8f8;
+    padding: 3px 15px;
+    border-radius: 15px;
 }

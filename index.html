@@ -7,7 +7,8 @@
     <link href="https://fonts.googleapis.com/css?family=Krona+One|Muli|Material+Icons" rel="stylesheet">
     <title>Avoco</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" type="text/css" href="main.css" />
+    <link rel="stylesheet" href="main.css">
+    <link rel="stylesheet" href="navbar.css">
 </head>
 
 <body>
@@ -19,7 +20,7 @@
             <button id="addButton" class="material-icons navbarButton">add_circle</button>
         </div>
         <div id="loggedUser">
-            <div id="profilePic" class="material-icons">person</div>
+            <div class="material-icons symbolCircle">person</div>
             Andrzej Zalogowany
         </div>
 
@@ -28,14 +29,66 @@
             <div class="material-icons searchIcon primaryColor">search</div>
         </div>
         <button class="logOutButton navbarButton">
-            <span id="logOutIcon"class="material-icons">exit_to_app</span>
+            <span id="logOutIcon" class="material-icons">exit_to_app</span>
             Wyloguj
         </button>
     </div>
     <div id="container">
-        <div id="leftPanel">&nbsp;</div>
-        <div id="middleScreen">&nbsp;</div>
-        <div id="rightPanel">&nbsp;</div>
+        <div id="leftPanel">
+            <h2>Twoi znajomi</h2>
+            <ul id="friendsList">
+                <li>
+                    <div class="material-icons symbolCircle">person</div>
+                    <span>Joanna Kowalska</span>
+                </li>
+                <li>
+                    <div class="material-icons symbolCircle">person</div>
+                    <span>Jadwiga Ćwir</span>
+                </li>
+                <li>
+                    <div class="material-icons symbolCircle">person</div>
+                    <span>Marek Kupczyk</span>
+                </li>
+                <li>
+                    <div class="material-icons symbolCircle">person</div>
+                    <span>Michał Bosy</span>
+                </li>
+            </ul>
+            <hr>
+            <h2>Twoje grupy</h2>
+            <ul id="groupsList">
+                <li>
+                    <!-- <div class="material-icons symbolCircle">local_movies</div> -->
+                    <span>Militaria</span>
+                </li>
+            </ul>
+            <!-- <h2>Zainteresowania</h2>
+            <ul id="hobbiesList">
+                <li>
+                    <div class="material-icons symbolCircle">local_movies</div>
+                    <span>Filmy</span>
+                </li>
+                <li>
+                    <div class="material-icons symbolCircle">photo_camera</div>
+                    <span>Fotografia</span>
+                </li>
+                <li>
+                    <div class="material-icons symbolCircle">airplanemode_active</div>
+                    <span>Podróże</span>
+                </li>
+                <li>
+                    <div class="material-icons symbolCircle">pets</div>
+                    <span>Zwierzęta</span>
+                </li>
+                <li>
+                    <div class="material-icons symbolCircle">restaurant_menu</div>
+                    <span>Gotowanie</span>
+                </li>
+            </ul> -->
+
+        </div>
+        <div id="middleScreen"></div>
+        <div id="rightPanel"></div>
     </div>
 </body>
 
