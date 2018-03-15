@@ -13,25 +13,27 @@
 
 <body>
     <div id="navbar">
-        <div id="logo">AVOCO</div>
-        <div id="navbarButtonsFlex">
+        <div id="leftAlignedItems">
+            <div id="logo">AVOCO</div>
             <button id="homeButton" class="material-icons navbarButton">home</button>
             <button id="messagesButton" class="material-icons navbarButton">message</button>
             <button id="addButton" class="material-icons navbarButton">add_circle</button>
         </div>
-        <div id="loggedUser">
-            <div class="material-icons symbolCircle">person</div>
-            Andrzej Zalogowany
-        </div>
+        <div id="rightAlignedItems">
+            <div id="loggedUser">
+                <div class="material-icons symbolCircle">person</div>
+                Andrzej Zalogowany
+            </div>
 
-        <div class="searchBar">
-            <input placeholder="Szukaj..."></input>
-            <div class="material-icons searchIcon primaryColor">search</div>
+            <div class="searchBar">
+                <input placeholder="Szukaj..."></input>
+                <div class="material-icons searchIcon primaryColor">search</div>
+            </div>
+            <button class="logOutButton navbarButton">
+                <span id="logOutIcon" class="material-icons">exit_to_app</span>
+                Wyloguj
+            </button>
         </div>
-        <button class="logOutButton navbarButton">
-            <span id="logOutIcon" class="material-icons">exit_to_app</span>
-            Wyloguj
-        </button>
     </div>
     <div id="container">
         <div id="leftPanel">
@@ -60,6 +62,14 @@
                 <li>
                     <!-- <div class="material-icons symbolCircle">local_movies</div> -->
                     <span>Militaria</span>
+                </li>
+                <li>
+                    <!-- <div class="material-icons symbolCircle">local_movies</div> -->
+                    <span>Gotowanie w lesie</span>
+                </li>
+                <li>
+                    <!-- <div class="material-icons symbolCircle">local_movies</div> -->
+                    <span>Leśnictwo w kuchni</span>
                 </li>
             </ul>
             <!-- przypadkiem napisalem liste zainteresowan, przyda sie do profilu
