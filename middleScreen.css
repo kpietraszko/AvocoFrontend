@@ -1,0 +1,25 @@
+#middleScreen{
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+    padding: 30px 0 0 0;
+}
+.postInfo{
+    margin: 4px 0;
+    width: 67%;
+    height: 140px;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 6px 6px 5px rgba(0,0,0,0.06);
+    font-size: 14px;
+}
+.postInfo>.main{
+    height: 80%;
+    background-color: #f0f3f5;
+}
+.postInfo>.title{
+    font-weight: normal;
+}
+.postInfo .person{
+    margin: 15px 15px;
+}

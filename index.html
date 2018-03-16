@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="main.css">
     <link rel="stylesheet" href="navbar.css">
     <link rel="stylesheet" href="event.css">
+    <link rel="stylesheet" href="middleScreen.css">
 </head>
 
 <body>
@@ -40,22 +41,22 @@
         <div id="leftPanel">
             <h2>Twoi znajomi</h2>
             <ul id="friendsList">
-                <li>
+                <li class="person">
                     <div class="material-icons symbolCircle">person</div>
                     <span>Joanna Kowalska</span>
                 </li>
-                <li>
+                <li class="person">
                     <div class="material-icons symbolCircle">person</div>
                     <span>Jadwiga Ćwir</span>
                 </li>
-                <li>
+                <li class="person">
                     <div class="material-icons symbolCircle">person</div>
                     <span>Marek Kupczyk</span>
                 </li>
-                <li>
+                <li class="person">
                     <div class="material-icons symbolCircle">person</div>
                     <span>Michał Bosy</span>
-                </li>
+                </li class="person">
             </ul>
             <hr>
             <h2>Twoje grupy</h2>
@@ -67,10 +68,6 @@
                 <li>
                     <!-- <div class="material-icons symbolCircle">local_movies</div> -->
                     <span>Gotowanie w lesie</span>
-                </li>
-                <li>
-                    <!-- <div class="material-icons symbolCircle">local_movies</div> -->
-                    <span>Leśnictwo w kuchni</span>
                 </li>
                 <li>
                     <!-- <div class="material-icons symbolCircle">local_movies</div> -->
@@ -103,7 +100,19 @@
             </ul> -->
 
         </div>
-        <div id="middleScreen"></div>
+        <div id="middleScreen">
+            <div class="postInfo">
+                <div class="main">
+                    <div class="person">
+                        <div class="material-icons symbolCircle">person</div>
+                        <span>Joanna Kowalska</span>
+                    </div>
+                </div>
+                <div class="title">
+                    <strong>Jadwiga Ćwir</strong>&nbsp;dodała wpis w hobby&nbsp;
+                    <strong>Szydełkowanie</strong>.</div>
+            </div>
+        </div>
         <div id="rightPanel">
             <h2>Twoje wydarzenia</h2>
             <ul class="eventList">
