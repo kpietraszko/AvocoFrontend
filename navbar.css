@@ -7,6 +7,8 @@
     user-select: none;
     padding: 8px 2%;
     max-width: 100vw;
+    min-height: 35px;
+    /* overflow: auto; */
 }
 #leftAlignedItems,#rightAlignedItems{
     display: flex;

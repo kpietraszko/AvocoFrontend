@@ -2,24 +2,32 @@
     display: flex;
     flex-flow: column;
     align-items: center;
-    padding: 30px 0 0 0;
+    padding: 20px 0 0 0;
+    overflow: auto;
+}
+#middleScreen>*{
+    min-width: 67%;
+    max-width: 90%;
+    flex-shrink: 1;
 }
 .postInfo{
-    margin: 4px 0;
-    width: 67%;
-    height: 140px;
+    margin: 20px 0;
     display: flex;
-    flex-direction: column;
+    flex-flow: column;
     box-shadow: 6px 6px 5px rgba(0,0,0,0.06);
     font-size: 14px;
 }
 .postInfo>.main{
+    box-sizing: border-box;
     height: 80%;
+    padding: 15px;
     background-color: #f0f3f5;
+}
+.postInfo .person{
+    width: fit-content;
 }
 .postInfo>.title{
     font-weight: normal;
+    height: 28px;
 }
-.postInfo .person{
-    margin: 15px 15px;
-}
+

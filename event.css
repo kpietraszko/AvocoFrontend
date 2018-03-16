@@ -26,12 +26,12 @@
 .title:active{
     transform: translate(0,0px);
 }
-.main{
+.event>.main{
     height: 80%;
     display: flex;
     flex-flow: column wrap;
 }
-.date,.interested,.groupName,.location{
+.event>.main>*{
     display: flex;
     background-color: #f0f3f5;
     width: 50%;
@@ -43,17 +43,20 @@
     border-top-right-radius: 4px;
 }
 .whiteRounded{
-    background-color: #f8f8f8;
+    background-color: #fafafa;
     border-radius: 15px;
     padding: 5px 10px;
     display: flex;
     align-items: center;
 }
 .date>.whiteRounded{
-    margin: 10px 50px auto 10px;
+    margin: auto;
+    margin-top: 10px;
+    box-sizing: border-box;
+    padding: 3px;
+    width: 85%;
     /* align-self: flex-start; */
     font-size: 2.7em;
-    margin-left: 20px;
 }
 .date>.whiteRounded>.material-icons{
     font-size: 24px;
@@ -109,4 +112,7 @@
 }
 .groupName>.whiteRounded{
     cursor: pointer;
+}
+.groupName>.whiteRounded:active{
+    transform: translate(0,1px);
 }
