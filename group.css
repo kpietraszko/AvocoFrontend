@@ -99,21 +99,35 @@
 .comment{
 	padding-top: 3px;
 	padding-bottom: 3px;
-	display: inline-block;
 	width: 100%;
 	box-sizing: border-box;
+	margin-bottom: 6px;
 }
-.comment>.person{
-	display: inline-block;
-	margin: 0;
+.comment *{
+	vertical-align: middle;
+}
+.commentingPerson{
+	font-weight: bold;
 	white-space: nowrap;
+	margin-bottom: auto;
 }
-.commentContent{
-	display: inline-block;
-	height: 26px;
+.commentingPerson>.name::after{
+	content: ":";
+	margin-right: 5px;
 }
+.comment>span{
+	/* font-style: italic; */
+	color: rgba(40,33,50,0.9)
+}
+
 .addCommentIcon{
 	position: absolute;
-	left: 5px;
+	left: 6px;
 	bottom: 5px;
+	cursor: pointer;
 }
+/* .commentingPerson>span{
+	vertical-align: middle;
+}
+.commentingPerson>.name{
+} */
