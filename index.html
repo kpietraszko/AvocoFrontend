@@ -17,9 +17,14 @@
     <div id="navbar">
         <div id="leftAlignedItems">
             <div id="logo">AVOCO</div>
-            <button id="homeButton" class="material-icons navbarButton">home</button>
-            <button id="messagesButton" class="material-icons navbarButton">message</button>
-            <button id="addButton" class="material-icons navbarButton">add_circle</button>
+            <button id="homeButton" class="material-icons navbarButton">
+                <a href="index.html">home</a>
+            </button>
+            <button id="messagesButton" class="material-icons navbarButton">
+                <a href="messages.html"></a> message</button>
+            <button id="addButton" class="material-icons navbarButton">
+                <a href="addGroup.html">add_circle</a>
+            </button>
         </div>
         <div id="rightAlignedItems">
             <div id="loggedUser">
@@ -32,8 +37,10 @@
                 <div class="material-icons searchIcon primaryColor">search</div>
             </div>
             <button class="logOutButton navbarButton">
-                <span id="logOutIcon" class="material-icons">exit_to_app</span>
-                Wyloguj
+                <a href="login.html">
+                    <span id="logOutIcon" class="material-icons">exit_to_app</span>
+                    Wyloguj
+                </a>
             </button>
         </div>
     </div>
@@ -42,36 +49,44 @@
             <h2>Twoi znajomi</h2>
             <ul id="friendsList">
                 <li class="person">
-                    <div class="material-icons symbolCircle">person</div>
-                    <span>Joanna Kowalska</span>
+                    <a href="profile.html">
+                        <div class="material-icons symbolCircle">person</div>
+                        <span>Joanna Kowalska</span>
+                    </a>
                 </li>
                 <li class="person">
-                    <div class="material-icons symbolCircle">person</div>
-                    <span>Jadwiga Ćwir</span>
+                    <a href="profile.html">
+                        <div class="material-icons symbolCircle">person</div>
+                        <span>Jadwiga Ćwir</span>
+                    </a>
                 </li>
                 <li class="person">
-                    <div class="material-icons symbolCircle">person</div>
-                    <span>Marek Kupczyk</span>
+                    <a href="profile.html">
+                        <div class="material-icons symbolCircle">person</div>
+                        <span>Marek Kupczyk</span>
+                    </a>
                 </li>
                 <li class="person">
-                    <div class="material-icons symbolCircle">person</div>
-                    <span>Michał Bosy</span>
+                    <a href="profile.html">
+                        <div class="material-icons symbolCircle">person</div>
+                        <span>Michał Bosy</span>
+                    </a>
                 </li class="person">
             </ul>
             <hr>
             <h2>Twoje grupy</h2>
             <ul id="groupsList">
-                <li>
+                <li class="group">
                     <!-- <div class="material-icons symbolCircle">local_movies</div> -->
-                    <span>Militaria</span>
+                    <a href="group.html">Militaria</a>
                 </li>
-                <li>
+                <li class="group">
                     <!-- <div class="material-icons symbolCircle">local_movies</div> -->
-                    <span>Gotowanie w lesie</span>
+                    <a href="group.html">Gotowanie w lesie</a>
                 </li>
-                <li>
+                <li class="group">
                     <!-- <div class="material-icons symbolCircle">local_movies</div> -->
-                    <span>Fotografowie z Olsztyna</span>
+                    <a href="group.html">Fotografowie z Olsztyna</a>
                 </li>
             </ul>
             <!-- przypadkiem napisalem liste zainteresowan xD, przyda sie do profilu
@@ -102,30 +117,34 @@
         </div>
         <div id="middleScreen">
             <div class="postsNews">
-                
+
                 <div class="postInfo">
                     <div class="main">
                         <div class="person">
                             <div class="material-icons symbolCircle">person</div>
                             <span>Jadwiga Ćwir</span>
                         </div>
-                        <div class="postContent whiteRounded"> Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
-                            Sed dictum tellus magna, sit amet fringilla sapien porttitor sed. Mauris ut purus venenatis, pharetra nunc vitae, porttitor tortor.</div>
+                        <div class="postContent whiteRounded"> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed dictum tellus magna, sit amet fringilla
+                            sapien porttitor sed. Mauris ut purus venenatis, pharetra nunc vitae, porttitor tortor.</div>
                     </div>
-                    <div class="title">
-                        <strong>Jadwiga Ćwir</strong>&nbsp;dodała wpis w grupie&nbsp;<strong>Szydełkowanie</strong>.</div>
+                    <a class="title" href="group.html">
+                        <strong>Jadwiga Ćwir</strong>&nbsp;dodała wpis w grupie&nbsp;
+                        <strong>Szydełkowanie</strong>.</a>
                 </div>
-                
+
                 <div class="postInfo">
                     <div class="main">
                         <div class="person">
                             <div class="material-icons symbolCircle">person</div>
                             <span>Bogdan Dzik</span>
                         </div>
-                        <div class="postContent whiteRounded"> Vivamus consequat a eros ut condimentum. Pellentesque in nulla sed justo rutrum sodales. Donec nec justo id massa tincidunt dictum sed nec libero. Vivamus id felis non tortor rhoncus tempus. Fusce velit est, varius dictum velit et, commodo lacinia turpis. </div>
+                        <div class="postContent whiteRounded"> Vivamus consequat a eros ut condimentum. Pellentesque in nulla sed justo rutrum sodales. Donec nec
+                            justo id massa tincidunt dictum sed nec libero. Vivamus id felis non tortor rhoncus tempus. Fusce
+                            velit est, varius dictum velit et, commodo lacinia turpis. </div>
                     </div>
-                    <div class="title">
-                        <strong>Bogdan Dzik</strong>&nbsp;dodał wpis w grupie&nbsp;<strong>Militaria</strong>.</div>
+                    <a class="title" href="group.html">
+                        <strong>Bogdan Dzik</strong>&nbsp;dodał wpis w grupie&nbsp;
+                        <strong>Militaria</strong>.</a>
                 </div>
                 <div class="postInfo">
                     <div class="main">
@@ -135,8 +154,9 @@
                         </div>
                         <div class="postContent whiteRounded"> Sed vitae eros vitae turpis dignissim mollis vitae a massa. Donec vel nibh diam. </div>
                     </div>
-                    <div class="title">
-                        <strong>Marek Kupczyk</strong>&nbsp;dodał wpis w grupie&nbsp;<strong>Gotowanie w lesie</strong>.</div>
+                    <a class="title" href="group.html">
+                        <strong>Marek Kupczyk</strong>&nbsp;dodał wpis w grupie&nbsp;
+                        <strong>Gotowanie w lesie</strong>.</a>
                 </div>
                 <div class="postInfo">
                     <div class="main">
@@ -144,10 +164,12 @@
                             <div class="material-icons symbolCircle">person</div>
                             <span>Jan Rudy</span>
                         </div>
-                        <div class="postContent whiteRounded"> Duis eu sagittis sapien, at ullamcorper ex. Morbi interdum est libero, in tristique tellus condimentum sed. Nam eu ante nisi. Aliquam vel ligula non sem lacinia auctor.</div>
+                        <div class="postContent whiteRounded"> Duis eu sagittis sapien, at ullamcorper ex. Morbi interdum est libero, in tristique tellus condimentum
+                            sed. Nam eu ante nisi. Aliquam vel ligula non sem lacinia auctor.</div>
                     </div>
-                    <div class="title">
-                        <strong>Jan Rudy</strong>&nbsp;dodał wpis w grupie&nbsp;<strong>Fotografowie z Olsztyna</strong>.</div>
+                    <a class="title" href="group.html">
+                        <strong>Jan Rudy</strong>&nbsp;dodał wpis w grupie&nbsp;
+                        <strong>Fotografowie z Olsztyna</strong>.</a>
                 </div>
                 <div class="postInfo">
                     <div class="main">
@@ -157,8 +179,9 @@
                         </div>
                         <div class="postContent whiteRounded"> Sed varius libero sit amet mattis volutpat.</div>
                     </div>
-                    <div class="title">
-                        <strong>Jadwiga Ćwir</strong>&nbsp;dodała wpis w grupie&nbsp;<strong>Szydełkowanie</strong>.</div>
+                    <a class="title" href="group.html">
+                        <strong>Jadwiga Ćwir</strong>&nbsp;dodała wpis w grupie&nbsp;
+                        <strong>Szydełkowanie</strong>.</a>
                 </div>
                 <div class="postInfo">
                     <div class="main">
@@ -166,10 +189,12 @@
                             <div class="material-icons symbolCircle">person</div>
                             <span>Jadwiga Ćwir</span>
                         </div>
-                        <div class="postContent whiteRounded"> Vivamus massa tellus, consequat nec dui eu, fringilla interdum erat. Sed vel consectetur magna, nec pellentesque odio.</div>
+                        <div class="postContent whiteRounded"> Vivamus massa tellus, consequat nec dui eu, fringilla interdum erat. Sed vel consectetur magna, nec
+                            pellentesque odio.</div>
                     </div>
-                    <div class="title">
-                        <strong>Jadwiga Ćwir</strong>&nbsp;dodała wpis w grupie&nbsp;<strong>Szydełkowanie</strong>.</div>
+                    <a class="title" href="group.html">
+                        <strong>Jadwiga Ćwir</strong>&nbsp;dodała wpis w grupie&nbsp;
+                        <strong>Szydełkowanie</strong>.</a>
                 </div>
 
             </div>
@@ -209,7 +234,7 @@
                                 <div class="material-icons">place</div>Olsztyn</div>
                         </div>
                     </div>
-                    <div class="title">Zlot miłośników krajobrazów</div>
+                    <a class="title" href="event.html">Zlot miłośników krajobrazów</a>
                 </li>
             </ul>
         </div>

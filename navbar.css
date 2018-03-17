@@ -77,9 +77,11 @@
     right: 5px;
 }
 .logOutButton{
-    display:flex;
-    align-items: center;
     margin-right: 0.5%;
     font-size: inherit;
     cursor: pointer;
+}
+.logOutButton>a{
+    display:flex;
+    align-items: center;
 }
