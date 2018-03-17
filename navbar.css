@@ -6,8 +6,9 @@
     z-index: 100;
     user-select: none;
     padding: 8px 2%;
+    box-sizing: border-box;
     max-width: 100vw;
-    min-height: 35px;
+    height: 50px;
     /* overflow: auto; */
 }
 #leftAlignedItems,#rightAlignedItems{
@@ -39,13 +40,16 @@
     font-size: 36px;
     text-shadow: -0.2vw -0.2vw 0.25vw rgba(0,0,0,0.1);
     /* margin: 0 2vw; */
+    user-select: none;
+}
+.navbar .navbarButton{
     cursor: pointer;
 }
-.navbarButton:hover{
+.navbar .navbarButton:hover{
     /* transform: scale(1.1) perspective(1px); */
     color: rgb(30, 30, 30)
 }
-.navbarButton:active{
+.navbar .navbarButton:active{
     /* transform: scale(1.05); */
     transform: translate(0, 1px);
 }

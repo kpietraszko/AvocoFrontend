@@ -10,13 +10,12 @@ html{
 body{
     height: 100%;
     margin: 0;
-    display: flex;
     flex-direction: column;
     background-color: #eceff1;
     font-family: 'Muli', sans-serif;
 }
 #container{
-    flex-grow: 1;
+    height: calc(100vh - 50px);
     display: flex;
 }
 #leftPanel{
@@ -101,4 +100,10 @@ li>.symbolCircle{
 #leftPanel li a,
 #leftPanel li span{
     width: 100%;
+}
+#middleScreen{
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+    overflow: auto;
 }
