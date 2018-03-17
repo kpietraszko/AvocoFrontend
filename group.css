@@ -11,7 +11,8 @@
 }
 #topGroupPanel > .title{
     height: 37px;
-    border-radius: 0;
+	border-radius: 0;
+	font-weight: normal;
 }
 #groupCover{
     height: 100%;
@@ -39,14 +40,15 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    box-shadow: -5px 0 5px rgba(0,0,0,0.1);
+	box-shadow: -5px 0 5px rgba(0,0,0,0.1);
 }
 #groupInterests>h2{
-    font-size: 1.1em;
+	font-size: 1.1em;
 }
 .interest{
     display: flex;
-    align-items: center;
+	align-items: center;
+	margin-bottom: 6px;
 }
 #middleScreen>.main{
     width: 100%;
@@ -55,15 +57,63 @@
 }
 #posts{
     flex-grow: 1;
-    padding-left: 22px;
+	padding-left: 22px;
 }
 #groupEvents{
-    width: 285px;
+    min-width: 300px;
 }
-#posts .navbarButton{
-	margin: 0 10px 10px 10px;
+#newPost .navbarButton{
+	/* margin: 0 10px 10px 10px; */
+	display: inline-block;
+	margin-right: 10px;
 }
-#posts>input{
+#newPost{
+	display: flex;
+	align-items: center;
+	margin: 0 10px 10px;
+}
+#newPost>input{
+	width: 90%;
+	border: none;
+}
+.post{
+	margin-bottom: 16px;
+	background-color: #eef1f3;
+	border: 0.5px solid rgba(0,0,0,0.1);
+	box-shadow: 5px 5px 5px rgba(0,0,0,0.07);
+	border-radius: 4px;
+	position: relative;
+}
+.post>.person{
+	margin-top: 10px;
+	margin-left: 10px;
 	display: inline-block;
 }
-
+.postContent{
+	margin: 0 15px 15px 39px;
+}
+.postContent>hr{
+	width: 95%;
+	background-color: #e0e0e0;	
+}
+.comment{
+	padding-top: 3px;
+	padding-bottom: 3px;
+	display: inline-block;
+	width: 100%;
+	box-sizing: border-box;
+}
+.comment>.person{
+	display: inline-block;
+	margin: 0;
+	white-space: nowrap;
+}
+.commentContent{
+	display: inline-block;
+	height: 26px;
+}
+.addCommentIcon{
+	position: absolute;
+	left: 5px;
+	bottom: 5px;
+}
