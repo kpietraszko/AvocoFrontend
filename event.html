@@ -11,6 +11,7 @@
 	<link rel="stylesheet" href="navbar.css">
 	<link rel="stylesheet" href="eventPanel.css">
 	<link rel="stylesheet" href="event.css">
+	<link rel="stylesheet" href="comments.css">
 </head>
 
 <body>
@@ -158,20 +159,42 @@
 			</div>
 			<div id="eventInfo">
 				<div id="dateAndDescription">
-						<div class="date">
-							<div class="whiteRounded">
-								<div class="material-icons">event</div>
-								16
-								<div class="dateDetails">
-									<div class="month">MAR</div>
-									<div class="time">12:00</div>
-								</div>
+					<div class="date">
+						<div class="whiteRounded">
+							<div class="material-icons">event</div>
+							16
+							<div class="dateDetails">
+								<div class="month">MAR</div>
+								<div class="time">12:00</div>
 							</div>
 						</div>
+					</div>
+					<div class="whiteRounded" id="description">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer sollicitudin id mauris at iaculis. Phasellus sit amet
+						dui tempor, egestas lectus mollis, fringilla sem. Duis rhoncus cursus auctor. Etiam ultricies nec tortor placerat pulvinar.
+						Pellentesque vitae ligula condimentum, auctor lacus ut, efficitur augue.</div>
 				</div>
 				<div id="map">
 					<iframe frameborder="0" style="border:0" src="https://www.google.com/maps/embed/v1/place?q=place_id:ChIJxxkUBy154kYRD8JUzyaBahA&key=AIzaSyAe_x-NCWFqmMdoudhr8pBb7QhJo8p0y9s"
 					 allowfullscreen></iframe>
+				</div>
+				<div id="comments">
+					<h2>Komentarze <div class="addCommentIcon material-icons">insert_comment</div></h2>
+					<div class="comment whiteRounded">
+						<a href="profile.html" class="commentingPerson">
+							<span class="material-icons">person</span>
+							<span class="name">Aleksander Kałasznikow</span>
+						</a>
+						<span>Duis in quam a augue viverra.</span>
+						<!-- <span class="commentContent">Duis in quam a augue viverra.</span>  -->
+					</div>
+					<div class="comment whiteRounded">
+						<a href="profile.html" class="commentingPerson">
+							<span class="material-icons">person</span>
+							<span class="name"> Krzysztof Komentator</span>
+						</a>
+						<span>Duis in quam a augue viverra.</span>
+						<!-- <span class="commentContent">Duis in quam a augue viverra.</span>  -->
+					</div>
 				</div>
 			</div>
 		</div>

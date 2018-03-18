@@ -33,7 +33,7 @@
 #eventInfo>*{
     flex-grow: 1;
     box-sizing: border-box;
-    flex-basis: 0;
+    flex-basis: 40%;
 }
 #map{
     position: relative;
@@ -51,12 +51,33 @@
     bottom: 0;
 }
 #dateAndDescription{
-    padding: 15px;
+    padding: 15px 5px 15px 15px;
 }
 #dateAndDescription .date{
     display: inline-block;
+    margin-bottom: 10px;
 }
-#dateAndDescription .whiteRounded{
+#dateAndDescription .date .whiteRounded{
     margin: 0;
     width: 100%;
+}
+#dateAndDescription .date .whiteRounded,
+#description
+{
+    box-shadow: 4px 4px 3px rgba(0,0,0,0.06);
+}
+#description{
+    margin-top: 10px;
+}
+#comments{
+    margin: 0 5%;
+    /* background-color: orange; */
+}
+#comments>h2{
+    position: relative;
+}
+.addCommentIcon{
+    position: absolute;
+	right: 6px;
+	cursor: pointer;
 }
