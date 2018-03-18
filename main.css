@@ -7,6 +7,9 @@ a{
 .material-icons{
     user-select: none;
 }
+button{
+    font-family: inherit;
+}
 html{
     height: 100%;
 }

@@ -9,7 +9,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="main.css">
 	<link rel="stylesheet" href="navbar.css">
-	<link rel="stylesheet" href="event.css">
+	<link rel="stylesheet" href="eventPanel.css">
 	<link rel="stylesheet" href="group.css">
 </head>
 
@@ -126,6 +126,7 @@
 								<span>Joanna Kowalska</span>
 							</a>
 						</div>
+						<div class="reportButton material-icons">report</div>
 						<div class="postContent">
 							<div class="whiteRounded">
 								Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi ut varius nisl, vitae tincidunt tellus. In finibus nulla non
@@ -133,11 +134,11 @@
 							</div>
 							<hr/>
 							<div class="comment whiteRounded">
-									<a href="profile.html" class="commentingPerson">
-										<span class="material-icons">person</span>
-										<span class="name"> Krzysztof Komentator</span>
-									</a>
-									<span>Duis in quam a augue viverra.</span>
+								<a href="profile.html" class="commentingPerson">
+									<span class="material-icons">person</span>
+									<span class="name"> Krzysztof Komentator</span>
+								</a>
+								<span>Duis in quam a augue viverra.</span>
 								<!-- <span class="commentContent">Duis in quam a augue viverra.</span>  -->
 							</div>
 						</div>
@@ -150,6 +151,7 @@
 								<span>Bogdan Bojowy</span>
 							</a>
 						</div>
+						<div class="reportButton material-icons">report</div>
 						<div class="postContent">
 							<div class="whiteRounded">
 								Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi ut varius nisl, vitae tincidunt tellus. In finibus nulla non
@@ -157,11 +159,11 @@
 							</div>
 							<hr/>
 							<div class="comment whiteRounded">
-									<a href="profile.html" class="commentingPerson">
-										<span class="material-icons">person</span>
-										<span class="name">Aleksander Kałasznikow</span>
-									</a>
-									<span>Duis in quam a augue viverra.</span>
+								<a href="profile.html" class="commentingPerson">
+									<span class="material-icons">person</span>
+									<span class="name">Aleksander Kałasznikow</span>
+								</a>
+								<span>Duis in quam a augue viverra.</span>
 								<!-- <span class="commentContent">Duis in quam a augue viverra.</span>  -->
 							</div>
 						</div>
@@ -174,6 +176,7 @@
 								<span>Aleksy Schodow</span>
 							</a>
 						</div>
+						<div class="reportButton material-icons">report</div>
 						<div class="postContent">
 							<div class="whiteRounded">
 								Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi ut varius nisl, vitae tincidunt tellus. In finibus nulla non
@@ -181,11 +184,11 @@
 							</div>
 							<hr/>
 							<div class="comment whiteRounded">
-									<a href="profile.html" class="commentingPerson">
-										<span class="material-icons">person</span>
-										<span class="name">Nikita Chruszczow</span>
-									</a>
-									<span>Duis in quam a augue viverra.</span>
+								<a href="profile.html" class="commentingPerson">
+									<span class="material-icons">person</span>
+									<span class="name">Nikita Chruszczow</span>
+								</a>
+								<span>Duis in quam a augue viverra.</span>
 								<!-- <span class="commentContent">Duis in quam a augue viverra.</span>  -->
 							</div>
 							<div class="comment whiteRounded">
@@ -194,13 +197,56 @@
 									<span class="name">Borys Jelcyn</span>
 								</a>
 								<span>Vestibulum quam dolor, condimentum eget faucibus vitae, ultricies nec massa.</span>
-							<!-- <span class="commentContent">Duis in quam a augue viverra.</span>  -->
-						</div>
+								<!-- <span class="commentContent">Duis in quam a augue viverra.</span>  -->
+							</div>
 						</div>
 						<div class="addCommentIcon material-icons">insert_comment</div>
 					</li>
 				</ul>
-				<div id="groupEvents">groupEvents</div>
+				<div id="groupEvents">
+					<button id="joinButton">Dołącz</button>
+					<h2>Wydarzenia</h2>
+					<div class="searchBar">
+						<input placeholder="Szukaj wydarzeń"></input>
+						<div class="material-icons searchIcon primaryColor">search</div>
+					</div>
+					<ul class="eventList">
+						<li class="event">
+							<div class="main">
+								<div class="date">
+									<div class="whiteRounded">
+										<div class="material-icons">event</div>
+										16
+										<div class="dateDetails">
+											<div class="month">MAR</div>
+											<div class="time">12:00</div>
+										</div>
+									</div>
+								</div>
+								<div class="location">
+									<div class="whiteRounded">
+										<div class="material-icons" style="left: -20px">place</div>Olsztyn</div>
+								</div>
+								<div class="interested">
+									<div>
+										<div>Zainteresowani:</div>
+										<ul class="interestedList">
+											<li title="Michał Bosy" class="material-icons symbolCircle">person</li>
+											<li title="Marek Kupczyk" class="material-icons symbolCircle">person</li>
+											<li title="Bogdan Bojowy" class="material-icons symbolCircle">person</li>
+											<span style="margin-left:0">+6</span>
+										</ul>
+									</div>
+								</div>
+							</div>
+							<a class="title" href="event.html">ASG w terenie</a>
+						</li>
+					</ul>
+					<a href="addEvent.html" id="newEventButton" class="whiteRounded">
+						<div class="material-icons">add_circle</div>
+						Dodaj wydarzenie
+					</a>
+				</div>
 			</div>
 		</div>
 		<div id="rightPanel">
@@ -225,7 +271,7 @@
 									<li title="Michał Bosy" class="material-icons symbolCircle">person</li>
 									<li title="Marek Kupczyk" class="material-icons symbolCircle">person</li>
 									<li title="Janusz Fotograf" class="material-icons symbolCircle">person</li>
-									<span>+ 4</span>
+									<span>+4</span>
 								</ul>
 							</div>
 						</div>

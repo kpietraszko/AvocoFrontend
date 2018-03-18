@@ -60,7 +60,11 @@
 	padding-left: 22px;
 }
 #groupEvents{
-    min-width: 300px;
+	min-width: 32%;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	margin-top: 4px;
 }
 #newPost .navbarButton{
 	/* margin: 0 10px 10px 10px; */
@@ -80,9 +84,15 @@
 	margin-bottom: 16px;
 	background-color: #eef1f3;
 	border: 0.5px solid rgba(0,0,0,0.1);
-	box-shadow: 5px 5px 5px rgba(0,0,0,0.07);
+	box-shadow: 5px 5px 5px rgba(0,0,0,0.05);
 	border-radius: 4px;
 	position: relative;
+}
+.reportButton{
+	position: absolute;
+	right: 5px;
+	top: 7px;
+	cursor: pointer;
 }
 .post>.person{
 	margin-top: 10px;
@@ -131,3 +141,58 @@
 }
 .commentingPerson>.name{
 } */
+#joinButton{
+	background-color: #fdfdfd;
+	border-radius: 8px;
+	font-size: 20px;
+	font-weight: bold;
+	padding: 5px 12px;
+	box-shadow: 3.5px 3.5px 5px rgba(0,0,0,0.08);
+}
+#joinButton:active{
+	transform: translate(0, 1px);
+}
+#groupEvents{
+	min-height: 370px;
+}
+#groupEvents .event{
+	height: auto;
+	font-size: 0.85em;
+}
+#groupEvents .event>.main{
+	flex-flow: row wrap;
+	justify-content: space-evenly;
+}
+#groupEvents .date{
+	flex-basis: 150px;
+	font-size: 0.9em;
+}
+#groupEvents .date .whiteRounded{
+	margin: 7px 0 0 7px;
+}
+#groupEvents .location{
+	flex-basis: 100px;
+}
+#groupEvents .interested{
+	margin-bottom: 6px;
+}
+#groupEvents .interested>div{
+	padding-left: 6%;
+}
+#groupEvents .title{
+	padding-top: 6px;
+	padding-bottom: 6px;
+}
+#newEventButton{
+	margin-top: 7px;
+	vertical-align: middle;
+	line-height: 100%;
+	box-shadow: 3.5px 3.5px 5px rgba(0,0,0,0.08);
+	cursor: pointer;
+}
+#newEventButton:active{
+	transform: translate(0, 1px);
+}
+#newEventButton>.material-icons{
+	margin-right: 5px;
+}
