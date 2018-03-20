@@ -1,0 +1,58 @@
+#newEventForm{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+#newEventForm input{
+    display: block;
+}
+#eventNameInput{
+    width: 60%;
+
+}
+#eventDetailsFlex{
+    width: 100%;
+    flex-grow: 1;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-around;
+}
+#eventDetailsFlex>div{
+    width: 40%;
+    min-width: 200px;
+    margin: 15px 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+}
+#eventDetailsFlex h3{
+    margin-top: 0;
+}
+h1{
+    font-size: 1.5em;
+}
+#dateTime{
+    align-self: flex-start;
+}
+#dateTime>input{
+    margin: 5px 0;
+}
+#descMap textarea{
+    width: 100%;
+    min-height: 20px;
+    height: auto;
+    box-sizing: border-box;
+    margin-bottom: 15px;;
+}
+#map{
+    position: relative;
+    /* min-height: 250px; */
+    width: 100%;
+    height: 100%;
+
+}
