@@ -7,6 +7,9 @@
     margin-top: 15px;
     margin-bottom: 15px;
 }
+#newEventForm .whiteRounded{
+    box-shadow: 3.5px 3.5px 3px rgba(0,0,0,0.06);
+}
 #newEventForm input{
     display: block;
 }
@@ -37,7 +40,7 @@ h1{
     font-size: 1.5em;
 }
 #dateTime{
-    align-self: flex-start;
+    align-self: flex-start
 }
 #dateTime>input{
     margin: 5px 0;

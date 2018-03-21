@@ -75,14 +75,14 @@
     text-transform: capitalize;
     font-weight: bold;
 }
-.groupName>.whiteRounded, .location>.whiteRounded{
+.groupName .whiteRounded, .location>.whiteRounded{
     height: 25px;
 }
 .groupName,.location{
     flex: 0 0 50%;
     justify-content: flex-end;
 }
-.groupName>.whiteRounded, .location>.whiteRounded{
+.groupName .whiteRounded, .location>.whiteRounded{
     margin: 10px 20px 10px 0;
     font-size: 0.9em;
     position: relative;
@@ -101,7 +101,7 @@
 .interestedList{
     display: flex;
     align-items: center;
-    margin: auto 0;
+    margin: 5px 0;
 }
 
 .interested span:last-child{
@@ -113,9 +113,9 @@
 .interested .symbolCircle{
     cursor: pointer;
 }
-.groupName>.whiteRounded{
+.groupName .whiteRounded{
     cursor: pointer;
 }
-.groupName>.whiteRounded:active{
+.groupName .whiteRounded:active{
     transform: translate(0,1px);
 }

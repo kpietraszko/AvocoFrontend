@@ -1,244 +1,59 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
-    <meta charset="utf-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <link href="https://fonts.googleapis.com/css?family=Krona+One|Muli|Material+Icons|Roboto" rel="stylesheet">
-    <title>Avoco</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="main.css">
-    <link rel="stylesheet" href="navbar.css">
-    <link rel="stylesheet" href="eventPanel.css">
-    <link rel="stylesheet" href="home.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Rejestracja</title>
+  <link href="https://fonts.googleapis.com/css?family=Krona+One|Muli|Material+Icons|Dosis" rel="stylesheet">
+  <link rel="stylesheet" href="signUp.css">
 </head>
 
 <body>
-    <div id="navbar">
-        <div id="leftAlignedItems">
-            <div id="logo">AVOCO</div>
-            <button id="homeButton" class="material-icons navbarButton">
-                <a href="index.html">home</a>
-            </button>
-            <button id="messagesButton" class="material-icons navbarButton">
-                <a href="messages.html"></a> message</button>
-            <button id="addButton" class="material-icons navbarButton">
-                <a href="addGroup.html">add_circle</a>
-            </button>
-        </div>
-        <div id="rightAlignedItems">
-            <div id="loggedUser">
-                <div class="material-icons symbolCircle">person</div>
-                Andrzej Zalogowany
-            </div>
-
-            <div class="searchBar">
-                <input placeholder="Szukaj..."></input>
-                <div class="material-icons searchIcon primaryColor">search</div>
-            </div>
-            <button class="logOutButton navbarButton">
-                <a href="login.html">
-                    <span id="logOutIcon" class="material-icons">exit_to_app</span>
-                    Wyloguj
-                </a>
-            </button>
-        </div>
+  <div id="Center">
+    <div id="ToLeft">
+      <div id="Logo">AVOCO</div>
+      <div id="Register">Załóż konto</div>
+      <p>
+        <div id="LoginDesc">i dołącz do setek ludzi<br>o wspólnych zainteresowaniach!</div>
+      </p>
     </div>
-    <div id="container">
-        <div id="leftPanel">
-            <h2>Twoi znajomi</h2>
-            <ul id="friendsList">
-                <li class="person">
-                    <a href="profile.html">
-                        <div class="material-icons symbolCircle">person</div>
-                        <span>Joanna Kowalska</span>
-                    </a>
-                </li>
-                <li class="person">
-                    <a href="profile.html">
-                        <div class="material-icons symbolCircle">person</div>
-                        <span>Jadwiga Ćwir</span>
-                    </a>
-                </li>
-                <li class="person">
-                    <a href="profile.html">
-                        <div class="material-icons symbolCircle">person</div>
-                        <span>Marek Kupczyk</span>
-                    </a>
-                </li>
-                <li class="person">
-                    <a href="profile.html">
-                        <div class="material-icons symbolCircle">person</div>
-                        <span>Michał Bosy</span>
-                    </a>
-                </li class="person">
-            </ul>
-            <hr>
-            <h2>Twoje grupy</h2>
-            <ul id="groupsList">
-                <li class="group">
-                    <!-- <div class="material-icons symbolCircle">local_movies</div> -->
-                    <a href="group.html">Militaria</a>
-                </li>
-                <li class="group">
-                    <!-- <div class="material-icons symbolCircle">local_movies</div> -->
-                    <a href="group.html">Gotowanie w lesie</a>
-                </li>
-                <li class="group">
-                    <!-- <div class="material-icons symbolCircle">local_movies</div> -->
-                    <a href="group.html">Fotografowie z Olsztyna</a>
-                </li>
-            </ul>
-            <!-- przypadkiem napisalem liste zainteresowan xD, przyda sie do profilu
-                 <h2>Zainteresowania</h2>
-            <ul id="hobbiesList">
-                <li>
-                    <div class="material-icons symbolCircle">local_movies</div>
-                    <span>Filmy</span>
-                </li>
-                <li>
-                    <div class="material-icons symbolCircle">photo_camera</div>
-                    <span>Fotografia</span>
-                </li>
-                <li>
-                    <div class="material-icons symbolCircle">airplanemode_active</div>
-                    <span>Podróże</span>
-                </li>
-                <li>
-                    <div class="material-icons symbolCircle">pets</div>
-                    <span>Zwierzęta</span>
-                </li>
-                <li>
-                    <div class="material-icons symbolCircle">restaurant_menu</div>
-                    <span>Gotowanie</span>
-                </li>
-            </ul> -->
-
-        </div>
-        <div id="middleScreen">
-            <div class="postsNews">
-
-                <div class="postInfo">
-                    <div class="main">
-                        <div class="person">
-                            <div class="material-icons symbolCircle">person</div>
-                            <span>Jadwiga Ćwir</span>
-                        </div>
-                        <div class="postContent whiteRounded"> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed dictum tellus magna, sit amet fringilla
-                            sapien porttitor sed. Mauris ut purus venenatis, pharetra nunc vitae, porttitor tortor.</div>
-                    </div>
-                    <a class="title" href="group.html">
-                        <strong>Jadwiga Ćwir</strong>&nbsp;dodała wpis w grupie&nbsp;
-                        <strong>Szydełkowanie</strong>.</a>
-                </div>
-
-                <div class="postInfo">
-                    <div class="main">
-                        <div class="person">
-                            <div class="material-icons symbolCircle">person</div>
-                            <span>Bogdan Dzik</span>
-                        </div>
-                        <div class="postContent whiteRounded"> Vivamus consequat a eros ut condimentum. Pellentesque in nulla sed justo rutrum sodales. Donec nec
-                            justo id massa tincidunt dictum sed nec libero. Vivamus id felis non tortor rhoncus tempus. Fusce
-                            velit est, varius dictum velit et, commodo lacinia turpis. </div>
-                    </div>
-                    <a class="title" href="group.html">
-                        <strong>Bogdan Dzik</strong>&nbsp;dodał wpis w grupie&nbsp;
-                        <strong>Militaria</strong>.</a>
-                </div>
-                <div class="postInfo">
-                    <div class="main">
-                        <div class="person">
-                            <div class="material-icons symbolCircle">person</div>
-                            <span>Marek Kupczyk</span>
-                        </div>
-                        <div class="postContent whiteRounded"> Sed vitae eros vitae turpis dignissim mollis vitae a massa. Donec vel nibh diam. </div>
-                    </div>
-                    <a class="title" href="group.html">
-                        <strong>Marek Kupczyk</strong>&nbsp;dodał wpis w grupie&nbsp;
-                        <strong>Gotowanie w lesie</strong>.</a>
-                </div>
-                <div class="postInfo">
-                    <div class="main">
-                        <div class="person">
-                            <div class="material-icons symbolCircle">person</div>
-                            <span>Jan Rudy</span>
-                        </div>
-                        <div class="postContent whiteRounded"> Duis eu sagittis sapien, at ullamcorper ex. Morbi interdum est libero, in tristique tellus condimentum
-                            sed. Nam eu ante nisi. Aliquam vel ligula non sem lacinia auctor.</div>
-                    </div>
-                    <a class="title" href="group.html">
-                        <strong>Jan Rudy</strong>&nbsp;dodał wpis w grupie&nbsp;
-                        <strong>Fotografowie z Olsztyna</strong>.</a>
-                </div>
-                <div class="postInfo">
-                    <div class="main">
-                        <div class="person">
-                            <div class="material-icons symbolCircle">person</div>
-                            <span>Jadwiga Ćwir</span>
-                        </div>
-                        <div class="postContent whiteRounded"> Sed varius libero sit amet mattis volutpat.</div>
-                    </div>
-                    <a class="title" href="group.html">
-                        <strong>Jadwiga Ćwir</strong>&nbsp;dodała wpis w grupie&nbsp;
-                        <strong>Szydełkowanie</strong>.</a>
-                </div>
-                <div class="postInfo">
-                    <div class="main">
-                        <div class="person">
-                            <div class="material-icons symbolCircle">person</div>
-                            <span>Jadwiga Ćwir</span>
-                        </div>
-                        <div class="postContent whiteRounded"> Vivamus massa tellus, consequat nec dui eu, fringilla interdum erat. Sed vel consectetur magna, nec
-                            pellentesque odio.</div>
-                    </div>
-                    <a class="title" href="group.html">
-                        <strong>Jadwiga Ćwir</strong>&nbsp;dodała wpis w grupie&nbsp;
-                        <strong>Szydełkowanie</strong>.</a>
-                </div>
-
-            </div>
-
-        </div>
-        <div id="rightPanel">
-            <h2>Twoje wydarzenia</h2>
-            <ul class="eventList">
-                <li class="event">
-                    <div class="main">
-                        <div class="date">
-                            <div class="whiteRounded">
-                                <div class="material-icons">event</div>
-                                16
-                                <div class="dateDetails">
-                                    <div class="month">MAR</div>
-                                    <div class="time">12:00</div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="interested">
-                            <div>
-                                <div>Zainteresowani:</div>
-                                <ul class="interestedList">
-                                    <li title="Michał Bosy" class="material-icons symbolCircle">person</li>
-                                    <li title="Marek Kupczyk" class="material-icons symbolCircle">person</li>
-                                    <li title="Janusz Fotograf" class="material-icons symbolCircle">person</li>
-                                    <span>+4</span>
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="groupName">
-                            <div class="whiteRounded">Fotografowie z Olsztyna</div>
-                        </div>
-                        <div class="location">
-                            <div class="whiteRounded">
-                                <div class="material-icons">place</div>Olsztyn</div>
-                        </div>
-                    </div>
-                    <a class="title" href="event.html">Zlot miłośników krajobrazów</a>
-                </li>
-            </ul>
-        </div>
+    <form id="FlexContainer_Login">
+      <input class="form" name="Name" placeholder="Imie" />
+      <input class="form" name="Surname" placeholder="Nazwisko" />
+      <div id="ComboBackground">
+       <select id="Combobox">
+         <option hidden>Województwo</option>
+         <option value="1">Dolnośląskie</option>
+         <option value="2">Kujawsko-pomorskie</option>
+         <option value="3">Lubelskie</option>
+         <option value="4">Lubuskie</option>
+         <option value="5">Łódzkie</option>
+         <option value="6">Małopolskie</option>
+         <option value="7">Mazowieckie</option>
+         <option value="8">Opolskie</option>
+         <option value="9">Podkarpackie</option>
+         <option value="10">Podlaskie</option>
+         <option value="11">Pomorskie</option>
+         <option value="12">Śląskie</option>
+         <option value="13">Świętokrzyskie</option>
+         <option value="14">Warmińsko-mazurskie</option>
+         <option value="15">Wielkopolskie</option>
+         <option value="16">Zachodniopomorskie</option>
+       </select>
+      </div>
+      <input class="form" name="Email" placeholder="E-mail" />
+      <input class="form" name="Password" placeholder="Hasło" />
+      <input class="form" name="Rep_Password" placeholder="Powtórz hasło" />
+      <!-- <input type="submit" name="Create_AccountButton" value="Załóż!" /> -->
+      <a id="signUpButton" href="login.html">Załóż</a>
+    </form>
+    <div id="IsAccount">Mam już konto.
+      <a href="login.html"><button type="button" name="Login_Button">Zaloguj</button></a>
     </div>
+  </div>
+
 </body>
 
 </html>
