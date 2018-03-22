@@ -12,13 +12,13 @@
     /* align-self: flex-start; */
 }
 
-.person{
+#middleScreen .person{
 	 margin: 5px 0;
 	 padding-right: 10px;
 	
 }
 
-.person span {
+#middleScreen .person span {
     background-color: #f7f6f6;
     padding: 0px 15px;
     border-radius: 20px;
@@ -52,7 +52,7 @@
     flex-direction: column;
 }
 
-.person span {
+#middleScreen .person span {
     background-color: #f8f8f8;
     padding: 1px 13px;
     border-radius: 15px;
