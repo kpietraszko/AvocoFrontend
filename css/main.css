@@ -131,7 +131,7 @@ li>.symbolCircle{
 }
 #groupCover{
     height: 100%;
-    background-image: url("img/military.jpg");
+    background-image: url("/img/military.jpg");
     background-size: 100% auto;
     background-position: 0 50%;
     flex-grow: 1;

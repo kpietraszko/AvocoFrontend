@@ -7,10 +7,10 @@
 	<link href="https://fonts.googleapis.com/css?family=Krona+One|Muli|Material+Icons|Roboto" rel="stylesheet">
 	<title>Avoco</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<link rel="stylesheet" href="main.css">
-	<link rel="stylesheet" href="navbar.css">
-	<link rel="stylesheet" href="eventPanel.css">
-	<link rel="stylesheet" href="addEvent.css">
+	<link rel="stylesheet" href="/css/main.css">
+	<link rel="stylesheet" href="/css/navbar.css">
+	<link rel="stylesheet" href="/css/eventPanel.css">
+	<link rel="stylesheet" href="/css/addGroup.css">
 
 </head>
 
@@ -95,26 +95,20 @@
 
 		</div>
 		<div id="middleScreen">
-			<form id="newEventForm">
-				<h1>Nowe wydarzenie w grupie Militaria</h1>
-				<input id="eventNameInput" placeholder="Podaj nazwę wydarzenia" />
-				<div id="eventDetailsFlex">
-					<div id="dateTime" class="whiteRounded">
-						<h3>Wprowadź datę i godzinę</h3>
-						<input type="date" />
-						<input type="time" />
-					</div>
-					<div id="descMap" class="whiteRounded">
-						<textarea placeholder="Wprowadź opis wydarzenia" rows="3"></textarea>
-						<h2>Wybierz miejsce wydarzenia</h2>
-						<div id="map">
-							<iframe frameborder="0" style="border:0" src="https://www.google.com/maps/embed/v1/place?q=place_id:ChIJxxkUBy154kYRD8JUzyaBahA&key=AIzaSyAe_x-NCWFqmMdoudhr8pBb7QhJo8p0y9s"
-							 allowfullscreen></iframe>
-						</div>
-					</div>
-				</div>
-				<input type="submit" value="Utwórz" />
-			</form>
+                <form id="newGroupForm">
+                        <input class="groupNameInput" placeholder="Wpisz nazwę grupy"/>
+                <div id="addGroupImage">
+                  <span class="material-icons">folder_open</span><label for="chooseImageString">Wybierz obraz grupy</label><input type="file" id="chooseImageString"></input> 
+                </div>
+                <input class="groupDescInput" placeholder="Kliknij tutaj, aby dodać opis grupie"/>
+                <div id="groupHobbiesString">Zainteresowania grupy</div>
+                <div id="addHobbiesToGroup">
+                  <span class="material-icons">add_circle</span> 
+                  <input class="searchHobbies" placeholder="Znajdź zainteresowanie"/>
+                </div>
+                <input type="submit" class="createGroup" value="Stwórz grupę"/>
+                 <span class="material-icons">check_circle</span>
+                    </form>
 		</div>
         <div id="rightPanel">
 				<h2>Twoje wydarzenia</h2>
