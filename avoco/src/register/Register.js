@@ -1,5 +1,5 @@
 import React from 'react';
-import classes from './Register.module.css';
+import styles from './Register.module.css';
 const Register = () => {
     return (
         <h2>This is registration page</h2>

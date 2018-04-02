@@ -1,6 +1,9 @@
-export function exampleAction(/*payload*/) {
-    return {
+export default {
+    exampleAction: (payload) => ({
         type: "EXAMPLE",
-        payload: ""
-    }
+            payload
+    }),
+    authorize: () => ({
+        type: "AUTHORIZE"
+    })
 }
