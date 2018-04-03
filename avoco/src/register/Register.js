@@ -4,19 +4,19 @@ import { Link } from 'react-router-dom';
 
 const Register = () => {
     return (
-        <div id="Center">
-    <div id="ToLeft">
-      <div id="Logo">AVOCO</div>
-      <div id="Register">Załóż konto</div>
+        <div id={styles.Center}>
+    <div id={styles.ToLeft}>
+      <div id={styles.Logo}>AVOCO</div>
+      <div id={styles.Register}>Załóż konto</div>
       <p>
-        <div id="LoginDesc">i dołącz do setek ludzi<br></br>o wspólnych zainteresowaniach!</div>
+        <div id={styles.LoginDesc}>i dołącz do setek ludzi<br></br>o wspólnych zainteresowaniach!</div>
       </p>
     </div>
-    <form id="FlexContainer_Login">
-      <input className={styleMedia.form} name="Name" placeholder="Imie" />
-      <input className={styleMedia.form} name="Surname" placeholder="Nazwisko" />
-      <div id="ComboBackground">
-       <select id="Combobox">
+    <form id={styles.FlexContainer_Login}>
+      <input className={styles.form} name="Name" placeholder="Imie" />
+      <input className={styles.form} name="Surname" placeholder="Nazwisko" />
+      <div id={styles.ComboBackground}>
+       <select id={styles.Combobox}>
          <option hidden>Województwo</option>
          <option value="1">Dolnośląskie</option>
          <option value="2">Kujawsko-pomorskie</option>
@@ -36,12 +36,12 @@ const Register = () => {
          <option value="16">Zachodniopomorskie</option>
        </select>
       </div>
-      <input className={styleMedia.form} name="Email" placeholder="E-mail" />
-      <input className={styleMedia.form} name="Password" placeholder="Hasło" />
-      <input className={styleMedia.form} name="Rep_Password" placeholder="Powtórz hasło" />
-      <a id="signUpButton" href="login.html">Załóż</a>
+      <input className={styles.form} name="Email" placeholder="E-mail" />
+      <input className={styles.form} name="Password" placeholder="Hasło" />
+      <input className={styles.form} name="Rep_Password" placeholder="Powtórz hasło" />
+      <a id={styles.signUpButton} href="login.html">Załóż</a>
     </form>
-    <div id="IsAccount">Mam już konto.
+    <div id={styles.IsAccount}>Mam już konto.
     <a href="login.html"><button type="button" name="Login_Button">Zaloguj</button></a>
     </div>
   </div>

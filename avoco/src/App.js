@@ -19,7 +19,7 @@ class App extends Component {
 				<Route exact path="/login" component={Login} />
 				<Route render={() => 
 					this.props.isAuthorized ? <h1>Home page</h1> :
-					<Redirect to="/login"/>
+					<Redirect to="/login"/> 
 				}/>
 			</Switch>
 		);
