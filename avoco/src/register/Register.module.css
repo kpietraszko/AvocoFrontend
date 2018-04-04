@@ -46,6 +46,7 @@ a {
   margin-left: 4%;
   font-weight: bold;
   margin-bottom: 50px;
+  display: block;
 }
 
 .form {

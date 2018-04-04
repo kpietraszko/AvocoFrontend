@@ -12,7 +12,6 @@ class App extends Component {
 		this.props.onAuthorized(); //HACK
 	}
 	render() {
-		console.log(this.props);
 		return (
 			<Switch>
 				<Route exact path="/register" component={Register} />
