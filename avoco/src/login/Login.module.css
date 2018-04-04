@@ -1,94 +1,94 @@
-body { 
+body {
   background-color: #eceff1;
- } 
+}
 
 #center {
-    margin-top: 3%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
-  
-  #flexContainer_Login {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    width: 320px;
-    margin-left: auto;
-    margin-right: auto;
-  }
-  
-  #logo {
-    font-family: "Krona One", sans-serif;
-    font-size: 72px;
-    color: #72bb53;
-    text-shadow: 0 0.25vw 0.3vw rgba(0, 0, 0, 0.08);
-    margin-bottom: 35px;
-  }
-  
-  #login {
-    font-family: "Dosis", sans-serif;
-    font-size: 36px;
-    color: #92d36e;
-    font-weight: bolder;
-    margin-bottom: 100px;
-  }
-  
-  #loginDesc {
-    font-size: 18px;
-    color: #282132;
-    font-weight: bold;
-    margin-bottom: 35px;
-  }
-  
-  .form {
-    width: 100%;
-    font-size: 18px;
-    text-align: center;
-    color: #7a7a7a;
-    padding: 12px;
-    margin-bottom: 25px;
-    border-radius: 6px;
-    border: 0px;
-    box-shadow: 0px 3px 45px 8px rgba(122, 122, 122, 0.18);
-  }
-  
-#loginButton{
-    margin-top: 30px;
-    background: #cbe8ba;
-    color: #629c44;
-    border-radius: 80px;
-    border: 0px;
-    font-size: 18px;
-    font-weight: bold;
-    padding-top: 10px;
-    padding-bottom: 10px;
-    padding-right: 40px;
-    padding-left: 40px;
-    box-shadow: 3px 4px 4px rgba(0, 0, 0, 0.1);
-    outline: none;
-    cursor: pointer;
-    text-decoration: none;
-  }
-  
-  input[type="submit"]:active {
-    transform: translate(1px, 2px);
-  }
-  
-  #no_Account {
-    margin-top: 150px;
-    font-size: 18px;
-  }
-  
-#signUpLink{
-    font-family: inherit;
-    font-size: inherit;
-    outline: none;
-    border: 0px;
-    background-color: Transparent;
-    color: #4c7a34;
-    font-weight: bold;
-    cursor: pointer;
-    text-decoration: none;
-    padding-left: 10px;
-  }
+  margin-top: 3%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#flexContainer_Login {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 320px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+#logo {
+  font-family: "Krona One", sans-serif;
+  font-size: 72px;
+  color: #72bb53;
+  text-shadow: 0 0.25vw 0.3vw rgba(0, 0, 0, 0.08);
+  margin-bottom: 35px;
+}
+
+#login {
+  font-family: "Dosis", sans-serif;
+  font-size: 36px;
+  color: #92d36e;
+  font-weight: bolder;
+  margin-bottom: 100px;
+}
+
+#loginDesc {
+  font-size: 18px;
+  color: #282132;
+  font-weight: bold;
+  margin-bottom: 35px;
+}
+
+.form {
+  width: 100%;
+  font-size: 18px;
+  text-align: center;
+  color: #7a7a7a;
+  padding: 12px;
+  margin-bottom: 25px;
+  border-radius: 6px;
+  border: 0px;
+  box-shadow: 0px 3px 45px 8px rgba(122, 122, 122, 0.18);
+}
+
+#loginButton {
+  margin-top: 30px;
+  background: #cbe8ba;
+  color: #629c44;
+  border-radius: 80px;
+  border: 0px;
+  font-size: 18px;
+  font-weight: bold;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  padding-right: 40px;
+  padding-left: 40px;
+  box-shadow: 3px 4px 4px rgba(0, 0, 0, 0.1);
+  outline: none;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+input[type="submit"]:active {
+  transform: translate(0px, 1px);
+}
+
+#no_Account {
+  margin-top: 150px;
+  font-size: 18px;
+}
+
+#signUpLink {
+  font-family: inherit;
+  font-size: inherit;
+  outline: none;
+  border: 0px;
+  background-color: Transparent;
+  color: #4c7a34;
+  font-weight: bold;
+  cursor: pointer;
+  text-decoration: none;
+  padding-left: 10px;
+}

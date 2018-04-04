@@ -10,12 +10,12 @@ const Login = () => {
                 <div id={styles.login}>Zaloguj się</div>
             </div>
                 <form id={styles.flexContainer_Login}>
-                    <input className={styles.form} name="Email" placeholder="E-mail" />
-                    <input className={styles.form} name="Password" placeholder="Hasło" />
-                    <a id={styles.loginButton} href="home.html">Zaloguj</a>
+                    <input className={styles.form} type="email" name="Email" placeholder="E-mail" required/>
+                    <input className={styles.form} type="password" name="Password" placeholder="Hasło" required/>
+                    <input type="submit" value="Zaloguj"/>
                 </form>
             <div id={styles.no_Account}>Nie masz konta?
-            <a id={styles.signUpLink} href="register.html">Zarejestruj się</a>
+            <Link id={styles.signUpLink} to="/register">Zarejestruj się</Link>
             </div>
         </div>
     )
