@@ -31,14 +31,7 @@ body {
   font-size: 36px;
   color: #92d36e;
   font-weight: bolder;
-  margin-bottom: 100px;
-}
-
-#loginDesc {
-  font-size: 18px;
-  color: #282132;
-  font-weight: bold;
-  margin-bottom: 35px;
+  margin-bottom: 40px;
 }
 
 .form {
@@ -74,9 +67,16 @@ body {
 input[type="submit"]:active {
   transform: translate(0px, 1px);
 }
+#error {
+  font-size: 1.1em;
+  font-weight: bold;
+  padding: 20px;
+  color: firebrick;
+}
 
 #no_Account {
-  margin-top: 150px;
+  position: absolute;
+  bottom: 50px;
   font-size: 18px;
 }
 

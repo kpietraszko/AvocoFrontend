@@ -3,7 +3,8 @@ export default {
         type: "EXAMPLE",
             payload
     }),
-    authorize: () => ({
-        type: "AUTHORIZE"
+    authorize: (token) => ({
+        type: "AUTHORIZE",
+        token
     })
 }

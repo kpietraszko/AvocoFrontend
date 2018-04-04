@@ -30,7 +30,7 @@ class Register extends React.Component {
 	handleRepPassword = (event) => {
 		const form = event.target.form;
 		const validationMessage = form.RepPassword.value !== form.Password.value ?
-			"Podane hasła różnią się" : "";
+			"Podane hasła różnią się" : ""; //pusty string oznacza że pole przeszło walidację
 		event.target.setCustomValidity(validationMessage);
 	}
 	render = () => {

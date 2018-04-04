@@ -6,7 +6,8 @@ export default (state = initialState, action) => { //state bedzie initialState j
         case "AUTHORIZE":
             return {
                 ...state,
-                isAuthorized: true
+                isAuthorized: true,
+                token: action.token
             }
         default:
             return state
