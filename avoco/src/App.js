@@ -9,10 +9,10 @@ class App extends Component {
 		return (
 			<Switch>
 				<Route exact path="/register" component={Register} />
-				<Route exact path="/login" component={Login} />
+				{/* <Route exact path="/login" component={Login} /> */}
 				<Route render={() => 
 					this.props.isAuthorized ? <h1>Home page</h1> :
-					<Redirect to="/login"/> 
+					<Login/>
 				}/>
 			</Switch>
 		);
