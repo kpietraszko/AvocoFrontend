@@ -4,8 +4,13 @@ import { Link } from 'react-router-dom';
 import axios from 'axios';
 import { connect } from 'react-redux';
 import actionCreators from '../store/actionCreators'
+import Redirect from 'react-router-dom/Redirect';
 
 class Login extends React.Component {
+	constructor(props){
+		super(props);
+		this.state = {enteredWrongCred: false, loggedIn: false};
+	}
 	handleSubmit = (event) => {
 		event.preventDefault();
 		const form = event.target;
@@ -15,11 +20,14 @@ class Login extends React.Component {
 		};
 		axios.post("/user/login", loginData)
 			.then((response) => {
-				console.log("Response", response.data.token); //TODO: zapisać token w storze
+				console.log("Response", response.data.token);
+				this.setState({enteredWrongCred: false, loggedIn: true});
 				this.props.authorize(response.data.token);
 			})
 			.catch((error) => {
-				console.log("Error", error);
+				console.log("Error", error.response);
+				if (error.response.status === 401)
+					this.setState({enteredWrongCred: true});
 			});
 
 	}
@@ -36,7 +44,7 @@ class Login extends React.Component {
 					<input type="submit" value="Zaloguj" />
 				</form>
 				{/*true && wyrazenie zwraca wyrazenie, false && wyrazenie zwraca false*/}
-				{ true &&
+				{ this.state.enteredWrongCred &&
 					<div id={styles.error}>
 						Nieprawidłowe dane logowania
 					</div>

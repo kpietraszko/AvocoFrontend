@@ -1,5 +1,5 @@
 const initialState = {
-    isAuthorized: false //temp
+    isAuthorized: false
 };
 export default (state = initialState, action) => { //state bedzie initialState jesli nie przekaze sie pierwszego argumentu lub jesli bedzie on undefined
     switch (action.type) {

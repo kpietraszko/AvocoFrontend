@@ -1,9 +1,13 @@
 import React from 'react';
 import styles from './Register.module.css';
-import { Link } from 'react-router-dom';
+import { Link, Redirect } from 'react-router-dom';
 import axios from 'axios';
 
 class Register extends React.Component {
+	constructor(props){
+		super(props);
+		this.state = {};
+	}
 	handleSubmit = (event) => {
 		event.preventDefault();
 		const form = event.target;
@@ -21,6 +25,7 @@ class Register extends React.Component {
 		axios.post("/user/register", registrationData)
 			.then((response) => {
 				console.log(response);
+				this.setState({registered: true});
 			}).catch((error) => {
 				console.log(error);
 			});
@@ -75,6 +80,7 @@ class Register extends React.Component {
 				<div id={styles.HaveAccount}>Mam już konto.
 				<Link id={styles.LoginButton} to="/login">Zaloguj</Link>
 				</div>
+				{this.state.registered && <Redirect to="/"/>}
 			</div>
 		);
 	}
