@@ -3,7 +3,7 @@ import styles from './Login.module.css';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 import { connect } from 'react-redux';
-import actionCreators from '../store/actionCreators'
+import actionCreators from '../../store/actionCreators'
 import Redirect from 'react-router-dom/Redirect';
 
 class Login extends React.Component {
@@ -18,7 +18,7 @@ class Login extends React.Component {
 			Email: form.Email.value,
 			Password: form.Password.value
 		};
-		axios.post("/user/login", loginData)
+		axios.post("/authentication/login", loginData)
 			.then((response) => {
 				console.log("Response", response.data.token);
 				this.setState({enteredWrongCred: false, loggedIn: true});
@@ -53,7 +53,7 @@ class Login extends React.Component {
            			<Link id={styles.signUpLink} to="/register">Zarejestruj się</Link>
 				</div>
 			</div>
-		)
+		);
 	}
 }
 const mapDispatchToProps = (dispatch) => ({

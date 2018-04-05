@@ -22,7 +22,7 @@ class Register extends React.Component {
 			ConfirmPassword: form.RepPassword.value
 		}
 		console.log("Posting", registrationData);
-		axios.post("/user/register", registrationData)
+		axios.post("/authentication/register", registrationData)
 			.then((response) => {
 				console.log(response);
 				this.setState({registered: true});
