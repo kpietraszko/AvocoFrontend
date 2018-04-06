@@ -7,9 +7,9 @@ import actionCreators from '../../store/actionCreators'
 import Redirect from 'react-router-dom/Redirect';
 
 class Login extends React.Component {
-	constructor(props){
+	constructor(props) {
 		super(props);
-		this.state = {enteredWrongCred: false, loggedIn: false};
+		this.state = { error: "" };
 	}
 	handleSubmit = (event) => {
 		event.preventDefault();
@@ -21,13 +21,15 @@ class Login extends React.Component {
 		axios.post("/authentication/login", loginData)
 			.then((response) => {
 				console.log("Response", response.data.token);
-				this.setState({enteredWrongCred: false, loggedIn: true});
+				this.setState({ enteredWrongCred: false, noConnection: false });
 				this.props.authorize(response.data.token);
 			})
 			.catch((error) => {
-				console.log("Error", error.response);
-				if (error.response.status === 401)
-					this.setState({enteredWrongCred: true});
+				console.log("Error", error);
+				if (error.response && error.response.status === 401)
+					this.setState({ error: "Nieprawidłowe dane logowania" });
+				else if (error.request)
+					this.setState({ error: "Serwer nie odpowiada" });
 			});
 
 	}
@@ -43,12 +45,9 @@ class Login extends React.Component {
 					<input className={styles.form} type="password" name="Password" placeholder="Hasło" required />
 					<input type="submit" value="Zaloguj" />
 				</form>
-				{/*true && wyrazenie zwraca wyrazenie, false && wyrazenie zwraca false*/}
-				{ this.state.enteredWrongCred &&
-					<div id={styles.error}>
-						Nieprawidłowe dane logowania
-					</div>
-				}
+				<div id={styles.error}>
+					{this.state.error}
+				</div>
 				<div id={styles.no_Account}>Nie masz konta?
            			<Link id={styles.signUpLink} to="/register">Zarejestruj się</Link>
 				</div>

@@ -1,5 +1,6 @@
 import React from "react";
 import React, { Component } from 'react';
+import styles from '/styles.css';
 
 class Profile extends Component {
 	render = () => {
@@ -7,7 +8,7 @@ class Profile extends Component {
 			<React.Fragment>
 			<div id="srodekOgolny">
 			<div id="lewysrodek">
-				<img src="https://scontent-waw1-1.xx.fbcdn.net/v/t1.0-9/13516354_838225589641270_2836014028175730850_n.jpg?_nc_cat=0&oh=f053430532769fb90948f509e0f8867e&oe=5B4E516B"
+				<img src=""
 					alt="Zdjecie profilowe" height="200" width="200" border="4"/>
 			</div>
 			<div id="prawysrodek">
