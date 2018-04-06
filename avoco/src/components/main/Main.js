@@ -8,7 +8,7 @@ class Main extends React.Component {
 			<div className="middleScreen">
 				<Switch>
 					{/* <Route exact path="/home" component={Home}/> */}
-					<Route exact path="/profile" component={Profile}/>
+					<Route exact path="/" component={Profile} /> {/* path="/profile" */}
 				</Switch>
 			</div>
 			// tu prawy panel

@@ -1,17 +1,17 @@
 import React, { Component } from 'react';
 import { Route, Switch, withRouter } from 'react-router-dom';
-import Register from './register/Register.js';
-import Login from './login/Login.js';
+import Register from './register/Register';
+import Login from './login/Login';
+import Main from './main/Main'
 import { connect } from 'react-redux';
 
 class App extends Component {
 	render() {
 		return (
 			<Switch>
-				<Route exact path="/register" component={Register} />
-				{/* <Route exact path="/login" component={Login} /> */}
+				<Route exact path="/register" component={Register} />ty
 				<Route render={() => 
-					this.props.isAuthorized ? <h1>Home page</h1> :
+					this.props.isAuthorized ? <Main/> :
 					<Login/>
 				}/>
 			</Switch>
