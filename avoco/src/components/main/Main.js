@@ -9,15 +9,17 @@ class Main extends React.Component {
 	render = () => {
 		return (
 			<React.Fragment>
-			<Navbar/>
-			<LeftPanel/>
-			<div className={styles.middleScreen}>
-				<Switch>
-					{/* <Route exact path="/home" component={Home}/> */}
-					<Route exact path="/" component={Profile} /> {/* path="/profile" */}
-				</Switch>
-			</div>
-			<RightPanel/>
+				<Navbar />
+				<div id={styles.container}>
+					<LeftPanel />
+					<div className={styles.middleScreen}>
+						<Switch>
+							{/* <Route exact path="/home" component={Home}/> */}
+							<Route exact path="/" component={Profile} /> {/* path="/profile" */}
+						</Switch>
+					</div>
+					<RightPanel />
+				</div>
 			</React.Fragment>
 		);
 	}

@@ -1,0 +1,15 @@
+.navbarButton{
+    display: flex;
+    align-items: center;
+    color: rgb(62, 56, 70);
+    font-size: 36px;
+    text-shadow: -0.2vw -0.2vw 0.25vw rgba(0,0,0,0.1);
+    user-select: none;
+    cursor: pointer;
+}
+.navbarButton:hover{
+    color: rgb(30, 30, 30)
+}
+.navbarButton:active{
+    transform: translate(0, 1px);
+}

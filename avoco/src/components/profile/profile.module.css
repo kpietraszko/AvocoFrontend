@@ -83,17 +83,6 @@ ul{
     margin: 4px 0;
     padding: 0;
 }
-#leftPanel li, .person, .person>a{
-    display: flex;
-    align-items: center;
-    cursor: pointer;
-}
-.person, .group {
-    margin: 6px 0;
-}
-#leftPanel li:active,.person:active{
-    transform: translate(0,1px);
-}
 li>.symbolCircle{
     font-size: 22px;
     padding: 2px;

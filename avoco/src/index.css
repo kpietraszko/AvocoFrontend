@@ -8,6 +8,12 @@ body {
 input{
   font-family: 'Muli', sans-serif;
 }
-.testRed{
-  color:red;
+primaryColor{
+  color: #282132;
+}
+.circlePic{
+  color: rgb(68, 62, 77);
+  background-color: white;
+  border-radius: 100%;
+  margin-right: 5px;
 }
