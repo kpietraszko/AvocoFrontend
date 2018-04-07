@@ -11,7 +11,7 @@ class Profile extends React.Component {
 	componentDidMount = () => {
 		axios.get("/user/photo/6", { responseType: "blob"})
 			.then((response) => {
-				console.log(response);
+				console.log(response.data);
 				this.setState({ profileImage: URL.createObjectURL(response.data) });
 			})
 			.catch((error) => {
