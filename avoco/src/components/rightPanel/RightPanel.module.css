@@ -3,4 +3,8 @@
     box-shadow: -0.25vw 0 0.4vw rgba(0, 0, 0, 0.08);
     min-width: 27%;
     /* user-select: none; */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    overflow: auto;
 }

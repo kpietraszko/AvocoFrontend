@@ -9,7 +9,7 @@ class App extends Component {
 	render() {
 		return (
 			<Switch>
-				<Route exact path="/register" component={Register} />ty
+				<Route exact path="/register" component={Register} />
 				<Route render={() => 
 					this.props.isAuthorized ? <Main/> :
 					<Login/>

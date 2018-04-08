@@ -4,7 +4,6 @@ import { Link } from 'react-router-dom';
 import axios from 'axios';
 import { connect } from 'react-redux';
 import actionCreators from '../../store/actionCreators'
-import Redirect from 'react-router-dom/Redirect';
 
 class Login extends React.Component {
 	constructor(props) {
