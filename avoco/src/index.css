@@ -17,3 +17,10 @@ primaryColor{
   border-radius: 100%;
   margin-right: 5px;
 }
+.whiteRounded{
+  background-color: #fafafa;
+  border-radius: 15px;
+  padding: 5px 10px;
+  display: flex;
+  align-items: center;
+}
