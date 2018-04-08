@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
+import styles from './LeftPanel.module.css';
 
 class LeftPanel extends Component {
 	render() {
 		return (
-			<div>
+			<div id={styles.leftPanel}>
 				
 			</div>
 		);

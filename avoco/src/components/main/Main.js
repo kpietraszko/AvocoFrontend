@@ -12,10 +12,10 @@ class Main extends React.Component {
 				<Navbar />
 				<div id={styles.container}>
 					<LeftPanel />
-					<div className={styles.middleScreen}>
+					<div id={styles.middleScreen}>
 						<Switch>
 							{/* <Route exact path="/home" component={Home}/> */}
-							<Route exact path="/" component={Profile} /> {/* path="/profile" */}
+							<Route path="/" component={Profile} /> {/* path="/profile" */}
 						</Switch>
 					</div>
 					<RightPanel />

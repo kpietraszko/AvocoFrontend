@@ -7,7 +7,7 @@ const Person = (props) => {
 		<div className={styles.person}>
 			<Link to={`/profile/${props.userId}`}>
 				<img className="circlePic" src={props.pictureUrl} width={24} height={24}/>
-				<span>{props.fullName}</span>
+				<span className={props.background ? styles.spanBackground : styles.spanNoBackground}>{props.fullName}</span>
 			</Link>
 		</div>
 	);

@@ -11,8 +11,12 @@
 .person:active{
     transform: translate(0,1px);
 }
-.person span{
-    background-color: #f8f8f8;
+.spanBackground{
     padding: 3px 15px;
     border-radius: 15px;
+    background-color: #f8f8f8;
+}
+.spanNoBackground{
+    background-color: transparent;
+    padding: 3px 0;
 }
