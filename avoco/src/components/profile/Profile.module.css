@@ -117,11 +117,12 @@ border-radius: 15px;
 }
 #prawysrodek
 {
+		margin-top: -7px;
 		flex-grow:1;
 		display:flex;
 		flex-flow:column;
 		text-align:right;
-    padding: 10px;
+    	padding: 10px;
 }
 #lewysrodek
 {
@@ -129,14 +130,15 @@ border-radius: 15px;
 		display:flex;
 		flex-flow:column;
 		text-align:left;
-    padding: 10px;
+		padding: 10px;
+		margin-right:-50px;
 }
 .message, .message>a, .message span
 {
 	cursor:pointer;
 	margin: 8px 0;
-	background-color: #e6ecef;
-	padding: 3px 15px;
+	background-color: #baf3c6;
+	padding: 3px 10px;
 	border-radius: 15px;
 }
 .message:active,  .friends:active
@@ -154,6 +156,7 @@ border-radius: 15px;
 .messfriends
 {
 	display:flex;
+	justify-content: space-between;
 	width:100%;
 }
 .zainteresowania
@@ -188,6 +191,7 @@ border-radius: 15px;
 {
 	display:flex;
 	align-items:center;
+	margin-top: 10px;
 }
 
 .messfriends>span
@@ -200,7 +204,8 @@ border-radius: 15px;
 	margin-top: -3px;
 	display:flex;
 	flex-flow:column;
-	width:67%;
+	width:70%;
+	margin-right:-20px;
 }
 
 .groups
