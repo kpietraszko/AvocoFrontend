@@ -113,35 +113,36 @@ border-radius: 15px;
 #srodekOgolny{
 	padding:20px;
 	display: flex;
+	justify-content: center;
 	/* display-direction:row; */
 }
 #prawysrodek
 {
 		margin-top: -7px;
-		flex-grow:1;
+		/* flex-grow:1; */
 		display:flex;
 		flex-flow:column;
 		text-align:right;
-    	padding: 10px;
+		padding: 10px;
+		margin: 0 50px;
 }
 #lewysrodek
 {
-		flex-grow:1;
+		/* flex-grow:1; */
 		display:flex;
 		flex-flow:column;
 		text-align:left;
-		padding: 10px;
-		margin-right:-50px;
+		padding: 10px;	
 }
 .message, .message>a, .message span
 {
 	cursor:pointer;
 	margin: 8px 0;
-	background-color: #baf3c6;
+	background-color: #99d3f2;
 	padding: 3px 10px;
 	border-radius: 15px;
 }
-.message:active,  .friends:active
+.message:active, .friends:active
 {
 	transform: translate(0,1px);
 }
@@ -150,8 +151,13 @@ border-radius: 15px;
 	cursor: pointer;
 	border-radius: 15px;
 	padding: 3px 15px;
-	background-color: #e0cbcb;
 	margin: 8px 0;
+}
+.friendsAdd{
+	background-color: #baf3c6;
+}
+.friendsRemove{
+	background-color: #e0cbcb;
 }
 .messfriends
 {
@@ -198,6 +204,7 @@ border-radius: 15px;
 {
 	display:flex;
 	align-items:center;
+
 }
 .nad
 {

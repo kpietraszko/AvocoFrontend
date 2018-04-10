@@ -6,10 +6,13 @@ import axios from 'axios';
 class Profile extends React.Component {
 	constructor(props) {
 		super(props);
-		this.state = { profileImage: new Blob() }
+		this.state = {
+			profileImage: new Blob(),
+			isFriend: false
+		}
 	}
 	componentDidMount = () => {
-		axios.get("/user/photo/6", { responseType: "blob"})
+		axios.get("/user/photo/6"/* +this.props.userId */, { responseType: "blob" })
 			.then((response) => {
 				console.log(response.data);
 				this.setState({ profileImage: URL.createObjectURL(response.data) });
@@ -17,6 +20,18 @@ class Profile extends React.Component {
 			.catch((error) => {
 				console.log(error);
 			});
+	}
+	handleAddFriendClick(event){
+		axios.put("/user/AddFriend/6/3")
+			.then((response)=>{
+				console.log(response);
+			})
+			.catch((error)=>{
+				console.log(error);
+			});
+	}
+	handleUnfriendClick(event){
+
 	}
 	render = () => {
 		return (
@@ -35,8 +50,10 @@ class Profile extends React.Component {
 								<div className="material-icons navbarButton">message</div>
 								<span>Napisz wiadomość</span>
 							</span>
-							<span className={styles.friends}>
-								<span>Usuń ze znajomych</span>
+							<span className={`${styles.friends} 
+							${this.state.isFriend? styles.friendsRemove:styles.friendsAdd}`}>
+								{this.state.isFriend && <span onClick={this.handleUnfriendClick}>Usuń ze znajomych</span>}
+								{!this.state.isFriend && <span onClick={this.handleAddFriendClick}>Dodaj do znajomych</span>}
 							</span>
 						</div>
 					</div>
@@ -47,25 +64,8 @@ class Profile extends React.Component {
 						<span className="zainteresowania">Zainteresowania</span>
 						<ul id={styles.hobbiesList}>
 							<li>
-								<div className="material-icons symbolCircle">local_movies</div>
 								<span className={styles.hobby}>Filmy</span>
 							</li>
-							{/* <li>
-						<div className="material-icons symbolCircle">photo_camera</div>
-						<span className="hobby">Fotografia</span>
-					</li>
-					<li>
-						<div className="material-icons symbolCircle">airplanemode_active</div>
-						<span className="hobby">Podróże</span>
-					</li>
-					<li>
-						<div className="material-icons symbolCircle">pets</div>
-						<span className="hobby">Zwierzęta</span>
-					</li>
-					<li>
-						<div className="material-icons symbolCircle">restaurant_menu</div>
-						<span className="hobby">Gotowanie</span>
-					</li>  TODO: Zrobić z tego komponent*/}
 						</ul>
 					</div>
 					<div className={styles.nad}>

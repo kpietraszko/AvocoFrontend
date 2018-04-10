@@ -2,9 +2,10 @@ import React from 'react';
 import styles from './Register.module.css';
 import { Link, Redirect } from 'react-router-dom';
 import axios from 'axios';
+import Regions from '../../regions';
 
 class Register extends React.Component {
-	constructor(props){
+	constructor(props) {
 		super(props);
 		this.state = {};
 	}
@@ -25,7 +26,7 @@ class Register extends React.Component {
 		axios.post("/authentication/register", registrationData)
 			.then((response) => {
 				console.log(response);
-				this.setState({registered: true});
+				this.setState({ registered: true });
 			}).catch((error) => {
 				console.log(error);
 			});
@@ -54,22 +55,9 @@ class Register extends React.Component {
 					<div id={styles.ComboBackground}>
 						<select id={styles.Combobox} name="Region">
 							<option hidden>Województwo</option>
-							<option value="1">dolnośląskie</option>
-							<option value="2">kujawsko-pomorskie</option>
-							<option value="3">lubelskie</option>
-							<option value="4">lubuskie</option>
-							<option value="5">łódzkie</option>
-							<option value="6">małopolskie</option>
-							<option value="7">mazowieckie</option>
-							<option value="8">opolskie</option>
-							<option value="9">podkarpackie</option>
-							<option value="10">podlaskie</option>
-							<option value="11">pomorskie</option>
-							<option value="12">śląskie</option>
-							<option value="13">świętokrzyskie</option>
-							<option value="14">warmińsko-mazurskie</option>
-							<option value="15">wielkopolskie</option>
-							<option value="16">zachodniopomorskie</option>
+							{Regions.map((region, i) =>
+								<option value={i} key={i}>{region}</option>
+							)}
 						</select>
 					</div>
 					<input className={styles.form} type="email" name="Email" placeholder="E-mail" required />
@@ -78,9 +66,9 @@ class Register extends React.Component {
 					<input type="submit" value="Załóż" />
 				</form>
 				<div id={styles.HaveAccount}>Mam już konto.
-				<Link id={styles.LoginButton} to="/login">Zaloguj</Link>
+				<Link id={styles.LoginButton} to="/">Zaloguj</Link>
 				</div>
-				{this.state.registered && <Redirect to="/"/>}
+				{this.state.registered && <Redirect to="/" />}
 			</div>
 		);
 	}
