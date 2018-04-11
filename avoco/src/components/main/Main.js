@@ -15,7 +15,7 @@ class Main extends React.Component {
 					<div id={styles.middleScreen}>
 						<Switch>
 							{/* <Route exact path="/home" component={Home}/> */}
-							<Route path="/" component={Profile} /> {/* path="/profile" */}
+							<Route path="/profile/:userId" component={Profile}/>
 						</Switch>
 					</div>
 					<RightPanel />

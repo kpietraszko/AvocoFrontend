@@ -3,8 +3,25 @@ import styles from './Navbar.module.css';
 import NavbarButton from './navbarButton/NavbarButton';
 import Person from '../person/Person';
 import SearchBar from '../searchBar/SearchBar';
+import { connect } from 'react-redux';
+import axios from 'axios';
 
 class Navbar extends Component {
+	constructor() {
+		super();
+		this.state = {
+			fullName: ""
+		}
+	}
+	componentDidMount = () => {
+		axios.get(`/user/${this.props.userId}/userInfo`)
+			.then((response) => {
+				this.setState({fullName: response.data.fullName});
+			})
+			.catch((error) => {
+				console.log(error);
+			})
+	}
 	render() {
 		return (
 			<div id={styles.navbar}>
@@ -15,13 +32,15 @@ class Navbar extends Component {
 					<NavbarButton title="Stwórz grupę" icon="add_circle" path="/" />
 				</div>
 				<div id={styles.rightAlignedItems}>
-				<Person userId={6} fullName="Andrzej Zalogowany"/> {/*TODO: propsy tutaj ze store'a*/}
-				<SearchBar/>
-				<NavbarButton icon="exit_to_app" path="/">Wyloguj</NavbarButton>
+					<Person userId={this.props.userId} fullName={this.state.fullName} />
+					<SearchBar />
+					<NavbarButton icon="exit_to_app" path="/">Wyloguj</NavbarButton>
 				</div>
 			</div>
 		);
 	}
 }
-
-export default Navbar;
+const mapStateToProps = (state) => ({
+	userId: state.user.userId
+});
+export default connect(mapStateToProps)(Navbar);

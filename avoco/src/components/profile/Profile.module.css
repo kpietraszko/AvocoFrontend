@@ -92,6 +92,9 @@ li>.symbolCircle{
     padding: 3px 15px;
     border-radius: 15px;
 }
+.profil:empty:before{
+	content: "\200b";
+}
 .profil, .profil>a .profil span{
 margin: 6px 0;
 text-align: center;
@@ -163,7 +166,7 @@ border-radius: 15px;
 {
 	display:flex;
 	justify-content: space-between;
-	width:100%;
+	min-width: 416px;
 }
 .zainteresowania
 {
