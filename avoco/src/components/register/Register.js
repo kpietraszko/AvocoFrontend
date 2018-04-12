@@ -50,8 +50,8 @@ class Register extends React.Component {
 					</p>
 				</div>
 				<form id={styles.FlexContainer_Login} onSubmit={this.handleSubmit}>
-					<input className={styles.form} name="Name" placeholder="Imię" required />
-					<input className={styles.form} name="Surname" placeholder="Nazwisko" required />
+					<input className={styles.form} name="Name" placeholder="Imię" required pattern="[a-zA-Z]+" />
+					<input className={styles.form} name="Surname" placeholder="Nazwisko" required pattern="[a-zA-Z]+"/>
 					<div id={styles.ComboBackground}>
 						<select id={styles.Combobox} name="Region">
 							<option hidden>Województwo</option>
