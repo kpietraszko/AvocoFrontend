@@ -1,13 +1,17 @@
+import axios from 'axios';
+
 export default {
-    exampleAction: (payload) => ({
-        type: "EXAMPLE",
-            payload
-    }),
-    authorize: (token) => ({
-        type: "AUTHORIZE",
-        token
-    }),
+    authorize: (token) => {
+        return {
+            type: "AUTHORIZE",
+            token
+        }
+    },
     unauthorize: () => ({
         type: "UNAUTHORIZE"
+    }),
+    updateName: (newFullName) => ({
+        type: "UPDATE_NAME",
+        newFullName
     })
 }

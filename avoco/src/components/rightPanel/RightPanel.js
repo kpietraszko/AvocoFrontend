@@ -37,7 +37,7 @@ class RightPanel extends Component {
 								</div>
 							</div>
 							<div className={styles.groupName}>
-								<a href="group.html">
+								<a>
 									<div className={styles.whiteRounded}>Fotografowie z Olsztyna</div>
 								</a>
 							</div>
@@ -46,7 +46,7 @@ class RightPanel extends Component {
 									<div className="material-icons">place</div>Olsztyn</div>
 							</div>
 						</div>
-						<a className={styles.title} href="event.html">Zlot miłośników krajobrazów</a>
+						<a className={styles.title}>Zlot miłośników krajobrazów</a>
 					</li>
 				</ul>
 			</div>

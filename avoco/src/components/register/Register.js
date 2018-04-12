@@ -13,7 +13,7 @@ class Register extends React.Component {
 		event.preventDefault();
 		const form = event.target;
 		const region = form.Region.value === "Województwo" ?
-			"" : form.Region[form.Region.value].text;
+			null : form.Region.value;
 		const registrationData = {
 			FirstName: form.Name.value,
 			LastName: form.Surname.value,

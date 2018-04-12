@@ -8,16 +8,10 @@ import axios from 'axios';
 import actionCreators from '../../store/actionCreators';
 
 class Navbar extends Component {
-	constructor() {
-		super();
-		this.state = {
-			fullName: ""
-		}
-	}
 	componentDidMount = () => {
 		axios.get(`/user/${this.props.userId}/userInfo`)
 			.then((response) => {
-				this.setState({fullName: response.data.fullName});
+				this.props.updateName(response.data.fullName)
 			})
 			.catch((error) => {
 				console.log(error);
@@ -33,7 +27,7 @@ class Navbar extends Component {
 					<NavbarButton title="Stwórz grupę" icon="add_circle" path="/" />
 				</div>
 				<div id={styles.rightAlignedItems}>
-					<Person userId={this.props.userId} fullName={this.state.fullName} />
+					<Person userId={this.props.userId} fullName={this.props.fullName} />
 					<SearchBar />
 					<NavbarButton icon="exit_to_app" path="/" onClick={this.props.logOut}>Wyloguj</NavbarButton>
 				</div>
@@ -42,9 +36,11 @@ class Navbar extends Component {
 	}
 }
 const mapStateToProps = (state) => ({
-	userId: state.user.userId
+	userId: state.user.userId,
+	fullName: state.user.fullName
 });
 const mapDispatchToProps = (dispatch) => ({
-	logOut: () => dispatch(actionCreators.unauthorize())
+	logOut: () => dispatch(actionCreators.unauthorize()),
+	updateName: (newFullName) => dispatch(actionCreators.updateName(newFullName))
 });
 export default connect(mapStateToProps, mapDispatchToProps)(Navbar);

@@ -41,6 +41,7 @@ class LeftPanel extends Component {
 						<p>Nie masz znajomych ☹️</p>
 					}
 				</ul>
+				<hr/>
 				<h2>Twoje grupy</h2>
 				<ul id="groupsList">
 					{this.state.groups.map((group) =>

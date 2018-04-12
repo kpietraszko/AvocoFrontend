@@ -7,7 +7,7 @@ const initialState = {
     }
 
 };
-export default (state = initialState, action) => { //state bedzie initialState jesli nie przekaze sie pierwszego argumentu lub jesli bedzie on undefined
+export default (state = initialState, action) => {
     switch (action.type) {
         case "AUTHORIZE":
             var decoded = jwt_decode(action.token);
@@ -19,7 +19,7 @@ export default (state = initialState, action) => { //state bedzie initialState j
                     userId: parseInt(decoded.userId),
                     token: action.token
                 }
-            }
+            };
         case "UNAUTHORIZE":
             axios.defaults.headers.common['Authorization'] = "";
             return {
@@ -29,7 +29,15 @@ export default (state = initialState, action) => { //state bedzie initialState j
                     userId: undefined,
                     token: undefined
                 }
-            }
+            };
+        case "UPDATE_NAME":
+            return {
+                ...state,
+                user: {
+                    ...state.user,
+                    fullName: action.newFullName
+                }
+            };
         default:
             return state
     }

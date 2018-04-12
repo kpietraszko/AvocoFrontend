@@ -55,6 +55,6 @@ class Login extends React.Component {
 	}
 }
 const mapDispatchToProps = (dispatch) => ({
-	authorize: (token) => dispatch(actionCreators.authorize(token))
+	authorize: (token) => dispatch(actionCreators.authorize(token)),
 });
 export default connect(null, mapDispatchToProps)(Login);
