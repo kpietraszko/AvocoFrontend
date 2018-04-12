@@ -23,13 +23,13 @@ class Profile extends React.Component {
 		}
 	}
 	componentDidMount = () => {
-		this.loadUserInfo();
-		this.loadUserPhoto();
+		this.getUserInfo();
+		this.getUserPhoto();
 		this.getFriendsList();
 		this.getInterests();
 		this.getGroups();
 	}
-	loadUserInfo = () => {
+	getUserInfo = () => {
 		this.setState({ isSelf: this.props.loggedUserId === parseInt(this.props.match.params.userId) });
 		axios.get(`/user/${this.props.match.params.userId}/userInfo`)
 			.then((response) => {
@@ -42,7 +42,7 @@ class Profile extends React.Component {
 				console.log(error);
 			});
 	}
-	loadUserPhoto = () => {
+	getUserPhoto = () => {
 		axios.get(`/user/${this.props.match.params.userId}/photo`, { responseType: "blob" })
 			.then((response) => {
 				this.setState({ profileImage: URL.createObjectURL(response.data) });
@@ -100,8 +100,8 @@ class Profile extends React.Component {
 
 	componentDidUpdate = (prevProps) => {
 		if (this.props.match.params.userId !== prevProps.match.params.userId) { //jesli przejście na profil innego użytkownika
-			this.loadUserInfo();
-			this.loadUserPhoto();
+			this.getUserInfo();
+			this.getUserPhoto();
 			this.checkIfFriend();
 			this.getInterests();
 			this.getGroups();
@@ -120,8 +120,7 @@ class Profile extends React.Component {
 	}
 	handleUnfriendClick = () => {
 		axios.put(`/user/${this.props.match.params.userId}/Unfriend/`)
-			.then((response) => {
-				console.log(response);
+			.then(() => {
 				this.setState({ isFriend: false });
 			})
 			.catch((error) => {
@@ -144,7 +143,7 @@ class Profile extends React.Component {
 				lastName: names[1]
 			}
 		}).then(() => {
-			this.loadUserInfo();
+			this.getUserInfo();
 			this.props.updateName(fullName);
 		}).catch((error) => {
 			console.log(error);
@@ -152,7 +151,7 @@ class Profile extends React.Component {
 	}
 	handleRegionChanged = (e) => {
 		const newRegion = e.target.value;
-		this.setState({region: newRegion});
+		this.setState({ region: newRegion });
 		axios({
 			url: "/user/UserInfo",
 			method: "put",
@@ -160,6 +159,20 @@ class Profile extends React.Component {
 				region: newRegion
 			}
 		})
+	}
+	handleImageUpload = (e) => {
+		console.log("submit");
+		const image = e.target.files[0];
+		const formData = new FormData();
+		formData.append("file", image)
+		console.log(formData);
+		axios.put("/user/Photo", formData)
+			.then((response) => {
+				this.getUserPhoto();
+			})
+			.catch((error) => {
+				console.log(error);
+			})
 	}
 
 	render = () => {
@@ -169,6 +182,12 @@ class Profile extends React.Component {
 					<div id={styles.lewysrodek}>
 						<img src={this.state.profileImage || placeholder}
 							alt="Zdjecie profilowe" height="200" width="200" border="4" />
+						{this.state.isSelf &&
+							<form>
+								<label htmlFor={styles.uploadInput} id={styles.uploadImage} className="material-icons">file_upload</label>
+								<input type="file" id={styles.uploadInput} onChange={this.handleImageUpload}/>
+							</form>}
+						{/* <div id={styles.uploadImage} className="material-icons">file_upload</div> */}
 					</div>
 					<div id={styles.prawysrodek}>
 						{!this.state.editingName &&
@@ -181,7 +200,7 @@ class Profile extends React.Component {
 							</span>}
 						{this.state.editingName &&
 							<form onSubmit={this.handleNameChanged} className={styles.profil}>
-								<input name="newFullName" defaultValue={this.state.fullName} className={styles.nameInput} onBlur={this.toggleEditName}/>
+								<input name="newFullName" defaultValue={this.state.fullName} className={styles.nameInput} onBlur={this.toggleEditName} />
 							</form>
 						}
 						{this.state.isSelf &&

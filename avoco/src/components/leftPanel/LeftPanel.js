@@ -9,25 +9,31 @@ class LeftPanel extends Component {
 	constructor() {
 		super();
 		this.state = {
-			friends: [],//["Joanna Kowalska", "Jadwiga Ćwir", "Marek Kupczyk", "Michał Bosy"],
-			groups: []//["Militaria", "Gotowanie w lesie", "Fotografowie z Olsztyna"]
+			friends: [],
+			groups: []
 		};
 	}
 	componentDidMount = () => {
+		this.getFriends();
+	}
+	/* componentDidUpdate = (prevProps) => { //uwaga: rekurencja jesli nie ma ifa
+
+	} */
+	getFriends = () => {
 		axios.get("/user/friends")
-			.then((response) => {
-				this.setState({ friends: response.data });
-			})
-			.catch((error) => {
-				console.log(error);
-			});
-		axios.get(`/user/${this.props.userId}/groups`)
-			.then((response) => {
-				this.setState({ groups: response.data});
-			})
-			.catch((error) => {
-				console.log(error);
-			});
+		.then((response) => {
+			this.setState({ friends: response.data });
+		})
+		.catch((error) => {
+			console.log(error);
+		});
+	axios.get(`/user/${this.props.userId}/groups`)
+		.then((response) => {
+			this.setState({ groups: response.data});
+		})
+		.catch((error) => {
+			console.log(error);
+		});
 	}
 	render() {
 		return (
