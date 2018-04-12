@@ -119,13 +119,18 @@ class Profile extends React.Component {
 			});
 	}
 	handleUnfriendClick = () => {
-		axios.put(`/user/${this.props.match.params.userId}/Unfriend/`)
-			.then(() => {
-				this.setState({ isFriend: false });
-			})
-			.catch((error) => {
-				console.log(error);
-			});
+		if (this.state.confirmingRemoveFriend) {
+			axios.put(`/user/${this.props.match.params.userId}/Unfriend/`)
+				.then(() => {
+					this.setState({ isFriend: false, confirmingRemoveFriend: false });
+				})
+				.catch((error) => {
+					console.log(error);
+				});
+		} else {
+			this.setState({ confirmingRemoveFriend: true });
+			setTimeout(() => {this.setState({ confirmingRemoveFriend: false })}, 2000)
+		}
 	}
 	toggleEditName = () => {
 		this.setState({ editingName: !this.state.editingName });
@@ -167,7 +172,7 @@ class Profile extends React.Component {
 		formData.append("file", image)
 		console.log(formData);
 		axios.put("/user/Photo", formData)
-			.then((response) => {
+			.then(() => {
 				this.getUserPhoto();
 			})
 			.catch((error) => {
@@ -185,7 +190,7 @@ class Profile extends React.Component {
 						{this.state.isSelf &&
 							<form>
 								<label htmlFor={styles.uploadInput} id={styles.uploadImage} className="material-icons">file_upload</label>
-								<input type="file" id={styles.uploadInput} onChange={this.handleImageUpload}/>
+								<input type="file" id={styles.uploadInput} onChange={this.handleImageUpload} />
 							</form>}
 						{/* <div id={styles.uploadImage} className="material-icons">file_upload</div> */}
 					</div>
@@ -219,7 +224,14 @@ class Profile extends React.Component {
 								</span>
 								<span className={`${styles.friends} 
 							${this.state.isFriend ? styles.friendsRemove : styles.friendsAdd}`}>
-									{this.state.isFriend && <span onClick={this.handleUnfriendClick}>Usuń ze znajomych</span>}
+									{this.state.isFriend && !this.state.confirmingRemoveFriend &&
+										<span onClick={this.handleUnfriendClick}>
+											Usuń ze znajomych
+									</span>}
+									{this.state.isFriend && this.state.confirmingRemoveFriend &&
+										<span onClick={this.handleUnfriendClick}>
+											Na pewno?
+									</span>}
 									{!this.state.isFriend && <span onClick={this.handleAddFriendClick}>Dodaj do znajomych</span>}
 								</span></React.Fragment>}
 						</div>
