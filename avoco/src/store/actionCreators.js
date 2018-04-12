@@ -6,5 +6,8 @@ export default {
     authorize: (token) => ({
         type: "AUTHORIZE",
         token
+    }),
+    unauthorize: () => ({
+        type: "UNAUTHORIZE"
     })
 }

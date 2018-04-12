@@ -20,6 +20,16 @@ export default (state = initialState, action) => { //state bedzie initialState j
                     token: action.token
                 }
             }
+        case "UNAUTHORIZE":
+            axios.defaults.headers.common['Authorization'] = "";
+            return {
+                ...state,
+                user: {
+                    isAuthorized: false,
+                    userId: undefined,
+                    token: undefined
+                }
+            }
         default:
             return state
     }

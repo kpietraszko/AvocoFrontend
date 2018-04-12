@@ -5,6 +5,7 @@ import Person from '../person/Person';
 import SearchBar from '../searchBar/SearchBar';
 import { connect } from 'react-redux';
 import axios from 'axios';
+import actionCreators from '../../store/actionCreators';
 
 class Navbar extends Component {
 	constructor() {
@@ -34,7 +35,7 @@ class Navbar extends Component {
 				<div id={styles.rightAlignedItems}>
 					<Person userId={this.props.userId} fullName={this.state.fullName} />
 					<SearchBar />
-					<NavbarButton icon="exit_to_app" path="/">Wyloguj</NavbarButton>
+					<NavbarButton icon="exit_to_app" path="/" onClick={this.props.logOut}>Wyloguj</NavbarButton>
 				</div>
 			</div>
 		);
@@ -43,4 +44,7 @@ class Navbar extends Component {
 const mapStateToProps = (state) => ({
 	userId: state.user.userId
 });
-export default connect(mapStateToProps)(Navbar);
+const mapDispatchToProps = (dispatch) => ({
+	logOut: () => dispatch(actionCreators.unauthorize())
+});
+export default connect(mapStateToProps, mapDispatchToProps)(Navbar);
