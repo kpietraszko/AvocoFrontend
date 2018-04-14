@@ -10,13 +10,13 @@ const initialState = {
 export default (state = initialState, action) => {
     switch (action.type) {
         case "AUTHORIZE":
-            var decoded = jwt_decode(action.token);
-            axios.defaults.headers.common['Authorization'] = "Bearer " + action.token;
+            var decoded = jwt_decode(action.token); //service
+            axios.defaults.headers.common['Authorization'] = "Bearer " + action.token; //service
             return {
                 ...state,
                 user: {
                     isAuthorized: true,
-                    userId: parseInt(decoded.userId),
+                    userId: parseInt(decoded.userId), //service
                     token: action.token
                 }
             };

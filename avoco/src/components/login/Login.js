@@ -1,9 +1,13 @@
 import React from 'react';
 import styles from './Login.module.css';
 import { Link } from 'react-router-dom';
-import axios from 'axios';
 import { connect } from 'react-redux';
-import actionCreators from '../../store/actionCreators'
+import { actionCreators as authActionCreators} from '../../actions/authenticationActions';
+import { actionCreators as userActionCreators} from '../../actions/userActions';
+import { login } from '../../api/authentication';
+import getDataFromToken from '../../services/getDataFromToken';
+import setAuthorizationHeader from '../../services/setAuthorizationHeader';
+
 
 class Login extends React.Component {
 	constructor(props) {
@@ -13,24 +17,21 @@ class Login extends React.Component {
 	handleSubmit = (event) => {
 		event.preventDefault();
 		const form = event.target;
-		const loginData = {
-			Email: form.Email.value,
-			Password: form.Password.value
-		};
-		axios.post("/authentication/login", loginData)
+		login(form)
 			.then((response) => {
-				console.log("Response", response.data.token);
-				this.setState({ enteredWrongCred: false, noConnection: false });
-				this.props.authorize(response.data.token);
+				const token = response.data.token;
+				setAuthorizationHeader(token);
+				this.props.authorize(token);
+				const data = getDataFromToken(token)
+				this.props.saveTokenData(data);
 			})
 			.catch((error) => {
-				console.log("Error", error);
+				console.log(error);
 				if (error.response && error.response.status === 401)
 					this.setState({ error: "Nieprawidłowe dane logowania" });
 				else if (error.request)
 					this.setState({ error: "Serwer nie odpowiada" });
 			});
-
 	}
 	render = () => {
 		return (
@@ -55,6 +56,7 @@ class Login extends React.Component {
 	}
 }
 const mapDispatchToProps = (dispatch) => ({
-	authorize: (token) => dispatch(actionCreators.authorize(token)),
+	authorize: (token) => dispatch(authActionCreators.authorize(token)),
+	saveTokenData: (data) => dispatch(userActionCreators.saveTokenData(data))
 });
 export default connect(null, mapDispatchToProps)(Login);

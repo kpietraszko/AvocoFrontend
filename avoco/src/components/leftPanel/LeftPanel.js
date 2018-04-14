@@ -2,60 +2,59 @@ import React, { Component } from 'react';
 import styles from './LeftPanel.module.css';
 import Person from '../person/Person';
 import { Link } from 'react-router-dom';
-import axios from 'axios';
 import { connect } from 'react-redux';
+import { getFriends, getGroups } from '../../api/user';
+import { actionCreators } from '../../actions/userActions';
 
 class LeftPanel extends Component {
-	constructor() {
-		super();
-		this.state = {
-			friends: [],
-			groups: []
-		};
-	}
-	componentDidMount = () => {
-		this.getFriends();
-	}
-	/* componentDidUpdate = (prevProps) => { //uwaga: rekurencja jesli nie ma ifa
+	componentDidUpdate = (prevProps) => {
+		if (this.props.friends !== prevProps.friends)
+			this.getFriends();
 
-	} */
+		if (this.props.userId !== prevProps.userId)
+			this.getGroups();
+	}
 	getFriends = () => {
-		axios.get("/user/friends")
-		.then((response) => {
-			this.setState({ friends: response.data });
-		})
-		.catch((error) => {
-			console.log(error);
-		});
-	axios.get(`/user/${this.props.userId}/groups`)
-		.then((response) => {
-			this.setState({ groups: response.data});
-		})
-		.catch((error) => {
-			console.log(error);
-		});
+		getFriends()
+			.then((response) => {
+				console.log(response.data);
+				this.props.updateFriends(response.data)
+			})
+			.catch((error) => {
+				console.log(error);
+			});
+		getGroups()
+			.then((response) => {
+				this.setState({ groups: response.data });
+			})
+			.catch((error) => {
+				console.log(error);
+			});
+	}
+	getGroups = () => {
+
 	}
 	render() {
 		return (
 			<div id={styles.leftPanel}>
 				<h2>Twoi znajomi</h2>
 				<ul id="friendsList">
-					{this.state.friends.map((friend) =>
+					{this.props.friends.map((friend) =>
 						<li key={friend.userId}><Person userId={friend.userId} fullName={friend.fullName} background></Person></li>
 					)}
-					{this.state.friends.length === 0 &&
+					{this.props.friends.length === 0 &&
 						<p>Nie masz znajomych ☹️</p>
 					}
 				</ul>
-				<hr/>
+				<hr />
 				<h2>Twoje grupy</h2>
 				<ul id="groupsList">
-					{this.state.groups.map((group) =>
+					{this.props.groups.map((group) =>
 						<li key={group.groupId} className={styles.group}>
 							<Link to="/group">{group.groupName}</Link>
 						</li>
 					)}
-					{this.state.groups.length === 0 &&
+					{this.props.groups.length === 0 &&
 						<p>Nie jesteś w żadnej grupie</p>
 					}
 				</ul>
@@ -63,7 +62,16 @@ class LeftPanel extends Component {
 		);
 	}
 }
+LeftPanel.defaultProps = { //potrzebne, bo render probuje uzyskac dostęp do propów, które jeszcze nie przyszły
+	friends: [],
+	groups: []
+}
 const mapStateToProps = (state) => ({
-	userId: state.user.userId
+	userId: state.user.userId,
+	friends: state.user.friends,
+	groups: state.user.groups
 });
-export default connect(mapStateToProps)(LeftPanel);
+const mapDispatchToProps = (dispatch) => ({
+	updateFriends: (friends) => dispatch(actionCreators.updateFriends(friends))
+});
+export default connect(mapStateToProps, mapDispatchToProps)(LeftPanel);

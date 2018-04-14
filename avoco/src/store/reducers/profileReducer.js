@@ -1,0 +1,1 @@
+//dotyczy obecnie przeglądanego profilu

@@ -4,18 +4,21 @@ import './index.css';
 import App from './components/App';
 import registerServiceWorker from './registerServiceWorker';
 import { BrowserRouter } from 'react-router-dom';
-import { createStore } from 'redux';
 import { Provider } from 'react-redux';
-import reducer from './store/reducer';
-import axios from 'axios';
+import initializeApi from './api/initialize';
+import configureStore from './store/configureStore';
+import { PersistGate } from 'redux-persist/integration/react';
 
-axios.defaults.baseURL = "http://localhost:5000/api";
-const store = createStore(reducer, window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__());
+
+initializeApi();
+const configuredStore = configureStore();
 ReactDOM.render(
-	<Provider store={store}>
-		<BrowserRouter>
-			<App />
-		</BrowserRouter>
+	<Provider store={configuredStore.store}>
+		<PersistGate loading={null} persistor={configuredStore.persistor}>
+			<BrowserRouter>
+				<App />
+			</BrowserRouter>
+		</PersistGate>
 	</Provider>
 	, document.getElementById('root'));
 registerServiceWorker();

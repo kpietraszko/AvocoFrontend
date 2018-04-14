@@ -19,7 +19,7 @@ class App extends Component {
 	}
 }
 const mapStateToProps = state => ({
-	isAuthorized: state.user.isAuthorized
+	isAuthorized: state.authentication.isAuthorized
 });
 
 export default withRouter(connect(mapStateToProps)(App)); //withRouter wymagane przy Route render=...

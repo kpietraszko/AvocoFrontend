@@ -1,118 +1,75 @@
 import React from 'react';
 import styles from './Profile.module.css';
-import axios from 'axios';
 import placeholder from '../person/placeholder.png';
 import { connect } from 'react-redux';
-import actionCreators from '../../store/actionCreators';
+import { actionTypes } from '../../actions/userActions';
 import Regions from '../../regions';
-
+import { getUserInfo, getFriends, getGroups, getPhoto, getInterests, addFriend, unfriend, setName, setRegion, setPhoto } 
+		from '../../api/user'
 
 class Profile extends React.Component {
-	constructor(props) {
-		super(props);
-		this.state = {
-			//profileImage: undefined,
-			isSelf: false,
-			isFriend: false,
-			friends: [],
-			interests: [],
-			groups: [],
-			fullName: "",
-			region: undefined,
-			editingName: false
+
+	componentDidUpdate = (prevProps) => {
+		if (this.props.userId !== prevProps.userId || //jesli podano userId pierwszy raz 
+			this.props.match.params.userId !== prevProps.match.params.userId) //lub jesli przejście na profil innego użytkownika
+		{ 
+			this.getUserInfo();
+			this.getUserPhoto();
+			this.getFriends();
+			this.getInterests();
+			this.getGroups();
 		}
 	}
-	componentDidMount = () => {
-		this.getUserInfo();
-		this.getUserPhoto();
-		this.getFriendsList();
-		this.getInterests();
-		this.getGroups();
-	}
+
 	getUserInfo = () => {
-		this.setState({ isSelf: this.props.loggedUserId === parseInt(this.props.match.params.userId) });
-		axios.get(`/user/${this.props.match.params.userId}/userInfo`)
-			.then((response) => {
-				this.setState({
-					fullName: response.data.fullName,
-					region: response.data.region
-				});
-			})
+		this.setState({ isSelf: this.props.loggedUserId === parseInt(this.props.match.params.userId) }); //raczej w storze
+		getUserInfo(this.props.match.params.userId)
 			.catch((error) => {
 				console.log(error);
 			});
 	}
 	getUserPhoto = () => {
-		axios.get(`/user/${this.props.match.params.userId}/photo`, { responseType: "blob" })
+		getPhoto(this.props.match.params.userId)
 			.then((response) => {
 				this.setState({ profileImage: URL.createObjectURL(response.data) });
 			})
 			.catch((error) => {
 				console.log(error);
-				this.setState({ profileImage: undefined });
 			});
 	};
-	getFriendsList = () => {
-		axios.get("/user/friends")
+	getFriends = () => {
+		getFriends()
 			.then((response) => {
-				this.setState({ friends: response.data }, this.checkIfFriend);
+				this.props.updateFriends(response.data);
+				this.checkIfFriend();
 			})
 			.catch((error) => {
 				console.log(error);
 			});
 	}
 	getInterests = () => {
-		axios.get(`/user/${this.props.match.params.userId}/interests`)
-			.then((response) => {
-				this.setState({ interests: response.data });
-			})
+		getInterests(this.props.match.params.userId)
 			.catch((error) => {
 				console.log(error);
-				this.setState({ interests: [] });
 			})
 	}
 	getGroups = () => {
-		axios.get(`/user/${this.props.match.params.userId}/groups`)
-			.then((response) => {
-				console.log(response);
-				this.setState({ groups: response.data }, () => {
-					/* const groups = this.state.groups; //zdjecia grup, nie dziala
-					for (let group of groups) {
-						axios.get(`/user/${group.groupId}/GroupPicture`)
-							.then(
-								(response) => { group.groupPicture = URL.createObjectURL(response.data) })
-							.catch((error) => {
-								console.log(error);
-							});
-					} */
-				});
-			})
+		getGroups(this.props.match.params.userId)
 			.catch((error) => {
 				console.log(error);
-				this.setState({ groups: [] });
 			});
 	}
 	checkIfFriend = () => {
-		for (var friend of this.state.friends)
+		for (var friend of this.props.friends)
 			if (friend.userId == this.props.match.params.userId)
 				this.setState({ isFriend: true });
 	}
 
-	componentDidUpdate = (prevProps) => {
-		if (this.props.match.params.userId !== prevProps.match.params.userId) { //jesli przejście na profil innego użytkownika
-			this.getUserInfo();
-			this.getUserPhoto();
-			this.checkIfFriend();
-			this.getInterests();
-			this.getGroups();
-		}
-	}
-
 	handleAddFriendClick = () => {
-		axios.put(`/user/${this.props.match.params.userId}/AddFriend/`)
+		addFriend(this.props.match.params.userId)
 			.then((response) => {
 				console.log(response);
-				this.setState({ isFriend: true });
+				getFriends();
 			})
 			.catch((error) => {
 				console.log(error);
@@ -120,7 +77,7 @@ class Profile extends React.Component {
 	}
 	handleUnfriendClick = () => {
 		if (this.state.confirmingRemoveFriend) {
-			axios.put(`/user/${this.props.match.params.userId}/Unfriend/`)
+			unfriend(this.props.match.params.userId)
 				.then(() => {
 					this.setState({ isFriend: false, confirmingRemoveFriend: false });
 				})
@@ -129,7 +86,6 @@ class Profile extends React.Component {
 				});
 		} else {
 			this.setState({ confirmingRemoveFriend: true });
-			setTimeout(() => {this.setState({ confirmingRemoveFriend: false })}, 2000)
 		}
 	}
 	toggleEditName = () => {
@@ -138,46 +94,26 @@ class Profile extends React.Component {
 	handleNameChanged = (e) => {
 		e.preventDefault();
 		this.setState({ editingName: false });
-		const fullName = e.target.newFullName.value;
 		const names = e.target.newFullName.value.split(" ");
-		axios({
-			url: "/user/UserInfo",
-			method: "put",
-			params: {
-				firstName: names[0],
-				lastName: names[1]
-			}
-		}).then(() => {
-			this.getUserInfo();
-			this.props.updateName(fullName);
-		}).catch((error) => {
-			console.log(error);
-		});
+		setName(names)
+			.then(() => {
+				this.props.updateName(names[0], names[1]);
+			}).catch((error) => {
+				console.log(error);
+			});
 	}
 	handleRegionChanged = (e) => {
 		const newRegion = e.target.value;
-		this.setState({ region: newRegion });
-		axios({
-			url: "/user/UserInfo",
-			method: "put",
-			params: {
-				region: newRegion
-			}
-		})
+		setRegion(newRegion)
+			.then(()=>{
+
+			});
 	}
 	handleImageUpload = (e) => {
-		console.log("submit");
 		const image = e.target.files[0];
 		const formData = new FormData();
 		formData.append("file", image)
-		console.log(formData);
-		axios.put("/user/Photo", formData)
-			.then(() => {
-				this.getUserPhoto();
-			})
-			.catch((error) => {
-				console.log(error);
-			})
+		setPhoto(formData);
 	}
 
 	render = () => {
@@ -192,7 +128,6 @@ class Profile extends React.Component {
 								<label htmlFor={styles.uploadInput} id={styles.uploadImage} className="material-icons">file_upload</label>
 								<input type="file" id={styles.uploadInput} onChange={this.handleImageUpload} />
 							</form>}
-						{/* <div id={styles.uploadImage} className="material-icons">file_upload</div> */}
 					</div>
 					<div id={styles.prawysrodek}>
 						{!this.state.editingName &&
@@ -265,9 +200,12 @@ class Profile extends React.Component {
 	}
 }
 const mapStateToProps = (state) => ({
-	loggedUserId: state.user.userId
+	loggedUserId: state.user.userId,
+	friends: state.user.friends
 });
 const mapDispatchToProps = (dispatch) => ({
-	updateName: (newFullName) => dispatch(actionCreators.updateName(newFullName))
+	updateName: (firstName, lastName) => dispatch(actionTypes.updateName(firstName, lastName)),
+	updateRegion: (region) => dispatch(actionTypes.updateRegion(region)),
+	updateFriends : (friends) => dispatch(actionTypes.updateFriends(friends))
 });
 export default connect(mapStateToProps, mapDispatchToProps)(Profile);

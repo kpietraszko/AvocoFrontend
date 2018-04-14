@@ -93,3 +93,6 @@ hr{
   -webkit-appearance: none;
   -moz-appearance: none;
 }
+input:focus::placeholder,  input:focus::-ms-input-placeholder, input:focus::-webkit-input-placeholder{
+  opacity: 0;
+}

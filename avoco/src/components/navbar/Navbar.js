@@ -4,18 +4,26 @@ import NavbarButton from './navbarButton/NavbarButton';
 import Person from '../person/Person';
 import SearchBar from '../searchBar/SearchBar';
 import { connect } from 'react-redux';
-import axios from 'axios';
-import actionCreators from '../../store/actionCreators';
+import { actionCreators as authActionCreators } from '../../actions/authenticationActions';
+import { actionCreators as userActionCreators } from '../../actions/userActions';
+import { getUserInfo } from '../../api/user';
 
 class Navbar extends Component {
-	componentDidMount = () => {
-		axios.get(`/user/${this.props.userId}/userInfo`)
-			.then((response) => {
-				this.props.updateName(response.data.fullName)
-			})
-			.catch((error) => {
-				console.log(error);
-			})
+	componentDidUpdate = (prevProps) => {
+		if (this.props.userId !== prevProps.userId) { 
+		    this.saveName();
+		}
+	}
+	saveName = () => {
+		getUserInfo(this.props.userId)
+				.then((response) => {
+					const firstName = response.data.firstName;
+					const lastName = response.data.lastName;
+					this.props.setName(firstName, lastName);
+				})
+				.catch((error) => {
+					console.log(error);
+				})
 	}
 	render() {
 		return (
@@ -27,7 +35,7 @@ class Navbar extends Component {
 					<NavbarButton title="Stwórz grupę" icon="add_circle" path="/" />
 				</div>
 				<div id={styles.rightAlignedItems}>
-					<Person userId={this.props.userId} fullName={this.props.fullName} />
+					<Person userId={this.props.userId} fullName={`${this.props.firstName || ""} ${this.props.lastName || ""}`} />
 					<SearchBar />
 					<NavbarButton icon="exit_to_app" path="/" onClick={this.props.logOut}>Wyloguj</NavbarButton>
 				</div>
@@ -37,10 +45,11 @@ class Navbar extends Component {
 }
 const mapStateToProps = (state) => ({
 	userId: state.user.userId,
-	fullName: state.user.fullName
+	firstName: state.user.firstName,
+	lastName: state.user.lastName
 });
 const mapDispatchToProps = (dispatch) => ({
-	logOut: () => dispatch(actionCreators.unauthorize()),
-	updateName: (newFullName) => dispatch(actionCreators.updateName(newFullName))
+	logOut: () => dispatch(authActionCreators.unauthorize()),
+	setName: (firstName, lastName) => dispatch(userActionCreators.updateName(firstName, lastName))
 });
 export default connect(mapStateToProps, mapDispatchToProps)(Navbar);

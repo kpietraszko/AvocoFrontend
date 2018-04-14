@@ -1,8 +1,8 @@
 import React from 'react';
 import styles from './Register.module.css';
 import { Link, Redirect } from 'react-router-dom';
-import axios from 'axios';
 import Regions from '../../regions';
+import { register } from '../../api/authentication'
 
 class Register extends React.Component {
 	constructor(props) {
@@ -12,26 +12,10 @@ class Register extends React.Component {
 	handleSubmit = (event) => {
 		event.preventDefault();
 		const form = event.target;
-		const region = form.Region.value === "Województwo" ?
-			null : form.Region.value;
-		const registrationData = {
-			FirstName: form.Name.value,
-			LastName: form.Surname.value,
-			Region: region,
-			EmailAddress: form.Email.value,
-			Password: form.Password.value,
-			ConfirmPassword: form.RepPassword.value
-		}
-		console.log("Posting", registrationData);
-		axios.post("/authentication/register", registrationData)
-			.then((response) => {
-				console.log(response);
+		register(form)
+			.then(() => {
 				this.setState({ registered: true });
-			}).catch((error) => {
-				console.log(error);
 			});
-		// for (let i of event.target)
-		// 	console.log({[i.name]: i.value});
 	}
 	handleRepPassword = (event) => {
 		const form = event.target.form;
@@ -50,8 +34,8 @@ class Register extends React.Component {
 					</p>
 				</div>
 				<form id={styles.FlexContainer_Login} onSubmit={this.handleSubmit}>
-					<input className={styles.form} name="Name" placeholder="Imię" required pattern="[a-zA-Z]+" />
-					<input className={styles.form} name="Surname" placeholder="Nazwisko" required pattern="[a-zA-Z]+"/>
+					<input className={styles.form} name="Name" placeholder="Imię" required />
+					<input className={styles.form} name="Surname" placeholder="Nazwisko" required />
 					<div id={styles.ComboBackground}>
 						<select id={styles.Combobox} name="Region">
 							<option hidden>Województwo</option>
