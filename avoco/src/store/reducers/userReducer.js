@@ -12,9 +12,20 @@ export default handleActions({
 		firstName: action.newFirstName,
 		lastName: action.newLastName
 	}),
+	[actionTypes.updateRegion]: (state, action) => ({
+		...state,
+		region: action.newRegion
+	}),
 	[actionTypes.updateFriends]: (state, action) => ({
 		...state,
 		friends: action.friends
+	}),
+	[actionTypes.updateGroups]: (state, action) => ({
+		...state,
+		groups: action.groups
+	}),
+	[actionTypes.updatePhoto]: (state, action) => ({
+		photoUrl: action.photoUrl
 	})
 }, userInitial);
 

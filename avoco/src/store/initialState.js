@@ -4,7 +4,8 @@ export const authenticationInitial = {
 export const userInitial = {
 	firstName: "",
 	lastName: "",
-	friends: []
+	friends: [],
+	groups: []
 }
 export const profileInitial = {
 	

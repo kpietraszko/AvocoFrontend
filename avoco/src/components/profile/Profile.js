@@ -4,15 +4,18 @@ import placeholder from '../person/placeholder.png';
 import { connect } from 'react-redux';
 import { actionTypes } from '../../actions/userActions';
 import Regions from '../../regions';
-import { getUserInfo, getFriends, getGroups, getPhoto, getInterests, addFriend, unfriend, setName, setRegion, setPhoto } 
-		from '../../api/user'
+import { getUserInfo, getFriends, getGroups, getPhoto, getInterests, addFriend, unfriend, setName, setRegion, setPhoto }
+	from '../../api/user'
 
 class Profile extends React.Component {
-
+	constructor(){
+		super();
+		this.state = {}
+	}
 	componentDidUpdate = (prevProps) => {
 		if (this.props.userId !== prevProps.userId || //jesli podano userId pierwszy raz 
 			this.props.match.params.userId !== prevProps.match.params.userId) //lub jesli przejście na profil innego użytkownika
-		{ 
+		{
 			this.getUserInfo();
 			this.getUserPhoto();
 			this.getFriends();
@@ -105,15 +108,18 @@ class Profile extends React.Component {
 	handleRegionChanged = (e) => {
 		const newRegion = e.target.value;
 		setRegion(newRegion)
-			.then(()=>{
-
+			.then((response) => {
+				this.props.updateRegion(response.data)
 			});
 	}
 	handleImageUpload = (e) => {
 		const image = e.target.files[0];
 		const formData = new FormData();
 		formData.append("file", image)
-		setPhoto(formData);
+		setPhoto(formData)
+			.then((response) => {
+				this.props.updatePhoto(URL.createObjectURL(response.data));
+			});
 	}
 
 	render = () => {
@@ -121,7 +127,7 @@ class Profile extends React.Component {
 			<React.Fragment>
 				<div id={styles.srodekOgolny}>
 					<div id={styles.lewysrodek}>
-						<img src={this.state.profileImage || placeholder}
+						<img src={/* this.state.profileImage || */ placeholder}
 							alt="Zdjecie profilowe" height="200" width="200" border="4" />
 						{this.state.isSelf &&
 							<form>
@@ -201,11 +207,13 @@ class Profile extends React.Component {
 }
 const mapStateToProps = (state) => ({
 	loggedUserId: state.user.userId,
-	friends: state.user.friends
+	friends: state.user.friends,
+	photoUrl: state.user.photoUrl
 });
 const mapDispatchToProps = (dispatch) => ({
 	updateName: (firstName, lastName) => dispatch(actionTypes.updateName(firstName, lastName)),
 	updateRegion: (region) => dispatch(actionTypes.updateRegion(region)),
-	updateFriends : (friends) => dispatch(actionTypes.updateFriends(friends))
+	updatePhoto: (photoUrl) => dispatch(actionTypes.updatePhoto(photoUrl)),
+	updateFriends: (friends) => dispatch(actionTypes.updateFriends(friends))
 });
 export default connect(mapStateToProps, mapDispatchToProps)(Profile);

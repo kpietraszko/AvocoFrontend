@@ -32,20 +32,14 @@ export const setName = (names) => {
 	});
 }
 export const setRegion = (region) => {
-	axios({
+	return axios({
 		url: "/user/UserInfo",
 		method: "put",
 		params: {
 			region
 		}
-	})
+	});
 }
 export const setPhoto = (formData) => {
-	axios.put("/user/Photo", formData)
-			.then(() => {
-				this.getUserPhoto();
-			})
-			.catch((error) => {
-				console.log(error);
-			})
+	return axios.put("/user/Photo", formData);
 }
