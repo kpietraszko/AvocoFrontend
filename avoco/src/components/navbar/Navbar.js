@@ -6,24 +6,26 @@ import SearchBar from '../searchBar/SearchBar';
 import { connect } from 'react-redux';
 import { actionCreators as authActionCreators } from '../../actions/authenticationActions';
 import { actionCreators as userActionCreators } from '../../actions/userActions';
-import { getUserInfo } from '../../api/user';
+import { getUserInfo, getPhoto } from '../../api/user';
 
 class Navbar extends Component {
 	componentDidUpdate = (prevProps) => {
-		if (this.props.userId !== prevProps.userId) { 
-		    this.saveName();
+		if (this.props.userId !== prevProps.userId) {
+			this.setName();
 		}
 	}
-	saveName = () => {
+	setName = () => {
 		getUserInfo(this.props.userId)
-				.then((response) => {
-					const firstName = response.data.firstName;
-					const lastName = response.data.lastName;
-					this.props.setName(firstName, lastName);
-				})
-				.catch((error) => {
-					console.log(error);
-				})
+			.then((response) => {
+				this.props.setName(response.data.firstName, response.data.lastName);
+			})
+			.then(() => getPhoto(this.props.userId, "small"))
+			.then((response) => {
+				this.props.setPhoto(URL.createObjectURL(response.data));
+			})
+			.catch((error) => {
+				console.log(error);
+			})
 	}
 	render() {
 		return (
@@ -35,7 +37,7 @@ class Navbar extends Component {
 					<NavbarButton title="Stwórz grupę" icon="add_circle" path="/" />
 				</div>
 				<div id={styles.rightAlignedItems}>
-					<Person userId={this.props.userId} fullName={`${this.props.firstName || ""} ${this.props.lastName || ""}`} />
+					<Person userId={this.props.userId} firstName={this.props.firstName} lastName={this.props.lastName} photoUrl={this.props.photoUrl}/>
 					<SearchBar />
 					<NavbarButton icon="exit_to_app" path="/" onClick={this.props.logOut}>Wyloguj</NavbarButton>
 				</div>
@@ -46,10 +48,12 @@ class Navbar extends Component {
 const mapStateToProps = (state) => ({
 	userId: state.user.userId,
 	firstName: state.user.firstName,
-	lastName: state.user.lastName
+	lastName: state.user.lastName,
+	photoUrl: state.user.photoUrl
 });
 const mapDispatchToProps = (dispatch) => ({
 	logOut: () => dispatch(authActionCreators.unauthorize()),
-	setName: (firstName, lastName) => dispatch(userActionCreators.updateName(firstName, lastName))
+	setName: (firstName, lastName) => dispatch(userActionCreators.updateName(firstName, lastName)),
+	setPhoto: (photoUrl) => dispatch(userActionCreators.setPhoto(photoUrl))
 });
 export default connect(mapStateToProps, mapDispatchToProps)(Navbar);

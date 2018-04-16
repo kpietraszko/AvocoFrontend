@@ -5,8 +5,9 @@ import rootReducer from './reducers/rootReducer';
 //TODO: dodać wygasanie
 
 const authPersistConfig = {
-	key: 'authentication',
+	key: 'root',
 	storage,
+	whitelist: ['authentication']
 }
 
 const persistedReducer = persistReducer(authPersistConfig, rootReducer);

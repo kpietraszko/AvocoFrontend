@@ -12,8 +12,8 @@ export const getGroups = (userId) => {
 export const getInterests = (userId) => {
 	return axios.get(`/user/${userId}/interests`);
 };
-export const getPhoto = (userId) => {
-	return axios.get(`/user/${userId}/photo`, { responseType: "blob" })
+export const getPhoto = (userId, small) => {
+	return axios.get(`/user/${userId}/photo${small ? "/small":""}`, { responseType: "blob" })
 };
 export const addFriend = (userId) => {
 	return axios.put(`/user/${userId}/AddFriend/`)

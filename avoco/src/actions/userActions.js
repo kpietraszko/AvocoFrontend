@@ -1,10 +1,12 @@
 export const actionTypes = {
 	saveTokenData: "SAVE_TOKEN_DATA",
 	updateName: "UPDATE_NAME",
+	updateRegion: "UPDATE_REGION",
+	setPhoto: "SET_PHOTO",
 	updateFriends: "UPDATE_FRIENDS",
+	setFriendPhoto: "SET_FRIEND_PHOTO",
 	updateGroups: "UPDATE_GROUPS",
-	updatePhoto: "UPDATE_PHOTO",
-	updateRegion: "UPDATE_REGION"
+	updatePhoto: "UPDATE_PHOTO"
 }
 
 export const actionCreators = {
@@ -21,9 +23,18 @@ export const actionCreators = {
 		type: actionTypes.updateRegion,
 		newRegion
 	}),
+	setPhoto: (photoUrl) => ({
+		type: actionTypes.setPhoto,
+		photoUrl
+	}),
 	updateFriends: (friends) => ({
 		type: actionTypes.updateFriends,
 		friends
+	}),
+	setFriendPhoto: (userId, photoUrl) =>({
+		type: actionTypes.setFriendPhoto,
+		userId,
+		photoUrl
 	}),
 	updateGroups: (groups) => ({
 		type: actionTypes.updateGroups,
