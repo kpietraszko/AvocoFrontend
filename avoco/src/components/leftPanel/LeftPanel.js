@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import styles from './LeftPanel.module.css';
-import Person from '../person/Person';
+import Person from '../../componentsStateless/person/Person';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { getFriends, getGroups } from '../../api/user';

@@ -8,5 +8,8 @@ export const userInitial = {
 	groups: []
 }
 export const profileInitial = {
-	
+	firstName: "",
+	lastName: "",
+	interests: [],
+	groups: []
 }

@@ -26,35 +26,6 @@ li>.symbolCircle{
     padding: 3px 15px;
     border-radius: 15px;
 }
-.profil:before{
-	content: "\200b";
-}
-.profil{
-	position: relative;
-}
-.edit{
-	position: absolute;
-	right: 15px;
-	cursor: pointer;
-}
-.nameInput{
-	width: 90%;
-	text-align: center;
-}
-
-.profil, .profil>a .profil span{
-margin: 6px 0;
-text-align: center;
-font-size: 18px;
-background-color: #f8f8f8;
-padding: 3px 15px;
-border-radius: 15px;
-}
-.regionCombobox{
-	background-color: #f8f8f8;
-	border: none;
-	text-align: center;
-}
 #leftPanel li a,
 #leftPanel li span{
     width: 100%;
@@ -81,75 +52,7 @@ border-radius: 15px;
 		padding: 10px;
 		margin: 0 50px;
 }
-#lewysrodek
-{
-		/* flex-grow:1; */
-		display:flex;
-		flex-flow:column;
-		text-align:left;
-		padding: 10px;	
-		position: relative;
-}
-#uploadImage{
-	position: absolute;
-	right: 20px;
-	bottom: 20px;
-	font-size: 34px;
-	cursor: pointer;
-}
-#uploadImage:hover{
-	transform: scale(1.2);
-}
-#uploadInput{
-	width: 0.1px;
-	height: 0.1px;
-	opacity: 0;
-	overflow: hidden;
-	position: absolute;
-	z-index: -1;
-}
-.message, .message>a, .message span
-{
-	cursor:pointer;
-	margin: 8px 0;
-	background-color: #99d3f2;
-	padding: 3px 10px;
-	border-radius: 15px;
-}
-.message:active, .friends:active
-{
-	transform: translate(0,1px);
-}
-.friends, .friends>a, .friends span
-{
-	cursor: pointer;
-	border-radius: 15px;
-	padding: 3px 15px;
-	margin: 8px 0;
-}
-.friendsAdd{
-	background-color: #baf3c6;
-}
-.friendsRemove{
-	background-color: #e0cbcb;
-}
-.messfriends
-{
-	display:flex;
-	justify-content: space-between;
-	min-width: 416px;
-}
-.zainteresowania
-{
-	box-sizing:border-box;
-	width:100%;
-	font-size:22px;
-	text-align:center;
-	background-color: #f8f8f8;
-	padding: 3px 15px;
-	border-radius: 15px;
-}
-.grupyizainteresowania
+.interestsAndGroups
 {
 	padding: 0 54px;
 	margin-top: 15px;
@@ -157,63 +60,4 @@ border-radius: 15px;
 	justify-content:space-between;
 	display:flex;
 	width:100%;
-}
-.interest
-{
-	box-sizing:border-box;
-	font-size:16px;
-	text-align:center;
-	background-color: #f8f8f8;
-	padding: 1px 15px;
-	border-radius: 14px;
-}
-
-#interestsList li
-{
-	display:flex;
-	align-items:center;
-	margin-top: 10px;
-}
-
-.messfriends>span
-{
-	display:flex;
-	align-items:center;
-	width: 100%;
-	white-space: nowrap;
-}
-.nad
-{
-	margin-top: -3px;
-	display:flex;
-	flex-flow:column;
-	width:70%;
-	margin-right:-20px;
-}
-
-.groups
-{
-	padding-top:10px;
-	width:100%;
-	display:flex;
-	flex-direction: column;
-}
-
-.groupPhoto
-{
-	border-radius:20px;
-	width:100%;
-	height: 75px;
-	background-color: #f6f9fa;
-	/* background-image: url("/img/military.jpg"); */
-	background-size: 100% auto;
-	background-position: 0 50%;
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	cursor: pointer;
-	margin-bottom: 10px;
-}
-.groupPhoto h2{
-	margin: 0
 }

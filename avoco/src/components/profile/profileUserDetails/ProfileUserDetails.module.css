@@ -1,0 +1,29 @@
+.profil:before{
+	content: "\200b";
+}
+.profil{
+	position: relative;
+}
+.edit{
+	position: absolute;
+	right: 15px;
+	cursor: pointer;
+}
+.nameInput{
+	width: 90%;
+	text-align: center;
+}
+
+.profil, .profil>a .profil span{
+margin: 6px 0;
+text-align: center;
+font-size: 18px;
+background-color: #f8f8f8;
+padding: 3px 15px;
+border-radius: 15px;
+}
+.regionCombobox{
+	background-color: #f8f8f8;
+	border: none;
+	text-align: center;
+}

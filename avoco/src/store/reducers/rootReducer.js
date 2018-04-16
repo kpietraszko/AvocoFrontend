@@ -4,5 +4,3 @@ import user from './userReducer';
 import profile from './profileReducer'
 
 export default combineReducers({ authentication, user, profile });
-
-

@@ -1,0 +1,38 @@
+.message, .message>a, .message span
+{
+	cursor:pointer;
+	margin: 8px 0;
+	background-color: #99d3f2;
+	padding: 3px 10px;
+	border-radius: 15px;
+}
+.message:active, .friends:active
+{
+	transform: translate(0,1px);
+}
+.friends, .friends>a, .friends span
+{
+	cursor: pointer;
+	border-radius: 15px;
+	padding: 3px 15px;
+	margin: 8px 0;
+}
+.friendsAdd{
+	background-color: #baf3c6;
+}
+.friendsRemove{
+	background-color: #e0cbcb;
+}
+.messfriends
+{
+	display:flex;
+	justify-content: space-between;
+	min-width: 416px;
+}
+.messfriends>span
+{
+	display:flex;
+	align-items:center;
+	width: 100%;
+	white-space: nowrap;
+}

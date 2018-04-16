@@ -1,14 +1,18 @@
 import React from 'react';
 import styles from './Profile.module.css';
-import placeholder from '../person/placeholder.png';
 import { connect } from 'react-redux';
 import { actionTypes } from '../../actions/userActions';
 import Regions from '../../regions';
 import { getUserInfo, getFriends, getGroups, getPhoto, getInterests, addFriend, unfriend, setName, setRegion, setPhoto }
-	from '../../api/user'
+	from '../../api/user';
+import ProfilePhoto from './profilePhoto/ProfilePhoto';
+import ProfileUserDetails from './profileUserDetails/ProfileUserDetails';
+import ProfileButtons from './profileButtons/ProfileButtons';
+import ProfileInterests from './profileInterests/ProfileInterests';
+import ProfileGroups from './profileGroups/ProfileGroups';
 
 class Profile extends React.Component {
-	constructor(){
+	constructor() {
 		super();
 		this.state = {}
 	}
@@ -126,80 +130,16 @@ class Profile extends React.Component {
 		return (
 			<React.Fragment>
 				<div id={styles.srodekOgolny}>
-					<div id={styles.lewysrodek}>
-						<img src={/* this.state.profileImage || */ placeholder}
-							alt="Zdjecie profilowe" height="200" width="200" border="4" />
-						{this.state.isSelf &&
-							<form>
-								<label htmlFor={styles.uploadInput} id={styles.uploadImage} className="material-icons">file_upload</label>
-								<input type="file" id={styles.uploadInput} onChange={this.handleImageUpload} />
-							</form>}
-					</div>
+					<ProfilePhoto />
 					<div id={styles.prawysrodek}>
-						{!this.state.editingName &&
-							<span className={styles.profil}>
-								{!this.state.editingName &&
-									this.state.fullName}
-
-								{this.state.isSelf && !this.state.editingName &&
-									<button className={`material-icons ${styles.edit}`} onClick={this.toggleEditName}>mode_edit</button>}
-							</span>}
-						{this.state.editingName &&
-							<form onSubmit={this.handleNameChanged} className={styles.profil}>
-								<input name="newFullName" defaultValue={this.state.fullName} className={styles.nameInput} onBlur={this.toggleEditName} />
-							</form>
-						}
-						{this.state.isSelf &&
-							<select value={this.state.region} className={`${styles.profil} ${styles.regionCombobox}`} name="Region" onChange={this.handleRegionChanged}>
-								{Regions.map((region, i) =>
-									<option value={i} key={i}>{region}</option>
-								)}
-							</select>}
-						{!this.state.isSelf &&
-							<span className={styles.profil}>{Regions[this.state.region]}</span>}
-						<div className={styles.messfriends}>
-							{!this.state.isSelf && <React.Fragment>
-								<span className={styles.message}>
-									<div className="material-icons navbarButton">message</div>
-									<span>Napisz wiadomość</span>
-								</span>
-								<span className={`${styles.friends} 
-							${this.state.isFriend ? styles.friendsRemove : styles.friendsAdd}`}>
-									{this.state.isFriend && !this.state.confirmingRemoveFriend &&
-										<span onClick={this.handleUnfriendClick}>
-											Usuń ze znajomych
-									</span>}
-									{this.state.isFriend && this.state.confirmingRemoveFriend &&
-										<span onClick={this.handleUnfriendClick}>
-											Na pewno?
-									</span>}
-									{!this.state.isFriend && <span onClick={this.handleAddFriendClick}>Dodaj do znajomych</span>}
-								</span></React.Fragment>}
-						</div>
+						<ProfileUserDetails />
+						<ProfileButtons />
 					</div>
 
 				</div>
-				<div className={styles.grupyizainteresowania}>
-					<div>
-						<span className="zainteresowania">Zainteresowania</span>
-						<ul id={styles.interestsList}>
-							{this.state.interests.map((interest) =>
-								<li key={interest.interestId}>
-									<span className={styles.interest}>{interest.interestName}</span>
-								</li>
-							)}
-						</ul>
-					</div>
-					<div className={styles.nad}>
-						<span className={styles.zainteresowania}>Grupy</span>
-						<ul className={styles.groups}>
-							{this.state.groups.map((group) =>
-								<li key={group.groupId} className={styles.groupPhoto} style={{ backgroundImage: `url(${group.groupPicture})` }}>
-									<h2>{group.groupName}</h2>
-								</li>
-							)}
-						</ul>
-					</div>
+				<div className={styles.interestsAndGroups}>
+					<ProfileInterests/>
+					<ProfileGroups/>
 				</div>
 			</React.Fragment>
 		);

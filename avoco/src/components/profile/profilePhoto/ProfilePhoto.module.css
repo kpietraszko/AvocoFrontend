@@ -1,0 +1,27 @@
+#container
+{
+		/* flex-grow:1; */
+		display:flex;
+		flex-flow:column;
+		text-align:left;
+		padding: 10px;	
+		position: relative;
+}
+#uploadImage{
+	position: absolute;
+	right: 20px;
+	bottom: 20px;
+	font-size: 34px;
+	cursor: pointer;
+}
+#uploadImage:hover{
+	transform: scale(1.2);
+}
+#uploadInput{
+	width: 0.1px;
+	height: 0.1px;
+	opacity: 0;
+	overflow: hidden;
+	position: absolute;
+	z-index: -1;
+}

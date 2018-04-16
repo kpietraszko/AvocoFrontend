@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Route, Switch, withRouter } from 'react-router-dom';
 import Register from './register/Register';
 import Login from './login/Login';
-import Main from './main/Main'
+import Main from '../componentsStateless/main/Main'
 import { connect } from 'react-redux';
 
 class App extends Component {
