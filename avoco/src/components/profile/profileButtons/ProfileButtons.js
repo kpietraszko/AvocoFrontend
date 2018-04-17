@@ -1,25 +1,25 @@
 import React from 'react';
 import styles from './ProfileButtons.module.css';
 
-const ProfileButtons = () => {
+const ProfileButtons = (props) => {
 	return (
 		<div className={styles.messfriends}>
-			{!this.state.isSelf && <React.Fragment>
+			{!props.isSelf && <React.Fragment>
 				<span className={styles.message}>
 					<div className="material-icons navbarButton">message</div>
 					<span>Napisz wiadomość</span>
 				</span>
 				<span className={`${styles.friends} 
-							${this.state.isFriend ? styles.friendsRemove : styles.friendsAdd}`}>
-					{this.state.isFriend && !this.state.confirmingRemoveFriend &&
-						<span onClick={this.handleUnfriendClick}>
+							${props.isFriend ? styles.friendsRemove : styles.friendsAdd}`}>
+					{props.isFriend && !props.confirmingRemoveFriend &&
+						<span onClick={props.handleUnfriendClick}>
 							Usuń ze znajomych
 									</span>}
-					{this.state.isFriend && this.state.confirmingRemoveFriend &&
+					{props.isFriend && props.confirmingRemoveFriend &&
 						<span onClick={this.handleUnfriendClick}>
 							Na pewno?
 									</span>}
-					{!this.state.isFriend && <span onClick={this.handleAddFriendClick}>Dodaj do znajomych</span>}
+					{!props.isFriend && <span onClick={props.handleAddFriendClick}>Dodaj do znajomych</span>}
 				</span></React.Fragment>}
 		</div>
 	);

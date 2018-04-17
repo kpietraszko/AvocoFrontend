@@ -30,7 +30,7 @@ class Profile extends React.Component {
 	}
 
 	getUserInfo = () => {
-		this.setState({ isSelf: this.props.loggedUserId === parseInt(this.props.match.params.userId) }); //raczej w storze
+		this.props.setIsSelf(this.props.loggedUserId === parseInt(this.props.match.params.userId));
 		getUserInfo(this.props.match.params.userId)
 			.catch((error) => {
 				console.log(error);
@@ -39,7 +39,7 @@ class Profile extends React.Component {
 	getUserPhoto = () => {
 		getPhoto(this.props.match.params.userId)
 			.then((response) => {
-				this.setState({ profileImage: URL.createObjectURL(response.data) });
+				this.setState({ profileImage: URL.createObjectURL(response.data) }); //zmienic
 			})
 			.catch((error) => {
 				console.log(error);
@@ -70,7 +70,7 @@ class Profile extends React.Component {
 	checkIfFriend = () => {
 		for (var friend of this.props.friends)
 			if (friend.userId == this.props.match.params.userId)
-				this.setState({ isFriend: true });
+				this.props.setIsFriend(true);
 	}
 
 	handleAddFriendClick = () => {
@@ -87,7 +87,9 @@ class Profile extends React.Component {
 		if (this.state.confirmingRemoveFriend) {
 			unfriend(this.props.match.params.userId)
 				.then(() => {
-					this.setState({ isFriend: false, confirmingRemoveFriend: false });
+					this.props.setIsFriend(true);
+					this.setState({ confirmingRemoveFriend: false });
+
 				})
 				.catch((error) => {
 					console.log(error);
@@ -131,16 +133,19 @@ class Profile extends React.Component {
 		return (
 			<React.Fragment>
 				<div id={styles.userData}>
-					<ProfilePhoto photoUrl={this.props.photoUrl} isSelf={this.props.isSelf} />
+					{this.props.profile && <ProfilePhoto photoUrl={this.props.photoUrl} isSelf={this.props.profile.isSelf} handleImageUpload={this.handleImageUpload} />}
 					<div id={styles.userDetails}>
-						<ProfileUserDetails />
-						<ProfileButtons />
+						{this.props.profile && <ProfileUserDetails {...this.props.profile} editingName={this.state.editingName}
+							handleNameChanged={this.handleNameChanged} handleRegionChanged={this.handleRegionChanged} regions={Regions}/>}
+						{this.props.profile && <ProfileButtons isSelf={this.props.profile.isSelf} ifFriend={this.props.profile.isFriend}
+							confirmingRemoveFriend={this.state.confirmingRemoveFriend} handleUnfriendClick={this.handleUnfriendClick}
+							handleAddFriendClick={this.handleAddFriendClick} />}
 					</div>
 
 				</div>
 				<div className={styles.interestsAndGroups}>
-					<ProfileInterests/>
-					<ProfileGroups/>
+					{this.props.profile && <ProfileInterests interests={this.props.profile.interests} />}
+					{this.props.profile && <ProfileGroups groups={this.props.profile.groups} />}
 				</div>
 			</React.Fragment>
 		);
@@ -152,7 +157,7 @@ const mapStateToProps = (state) => ({
 	loggedUserLastName: state.user.lastName,
 	loggedUserRegion: state.user.region,
 	friends: state.user.friends,
-	photoUrl: state.user.photoUrl,
+	photoUrl: state.user.photoUrl, //wywalic raczej
 	/* 	profileId: state.profile.Id,
 	profileFirstName: state.profile.firstName,
 	profileLastName: state.profile.lastName,

@@ -1,7 +1,7 @@
 import React from 'react';
 import styles from './Register.module.css';
 import { Link, Redirect } from 'react-router-dom';
-import Regions from '../../regions';
+import Regions from '../../services/regions';
 import { register } from '../../api/authentication'
 
 class Register extends React.Component {

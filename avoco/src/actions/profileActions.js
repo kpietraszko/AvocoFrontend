@@ -3,7 +3,7 @@ export const actionTypes = {
 	setIsSelf: "SET_IS_SELF",
 	setIsFriend: "SET_IS_FRIEND",
 	setInterests: "SET_INTERESTS",
-	setGroups: "SET_GROUPS"
+	setGroups: "SET_GROUPS",
 }
 export const actionCreators = {
 	setUserDetails: (firstName, lastName, region) => ({
