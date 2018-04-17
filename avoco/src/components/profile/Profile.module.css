@@ -36,13 +36,13 @@ li>.symbolCircle{
     align-items: center;
     overflow: auto;
 }
-#srodekOgolny{
+#userData{
 	padding:20px;
 	display: flex;
 	justify-content: center;
 	/* display-direction:row; */
 }
-#prawysrodek
+#userDetails
 {
 		margin-top: -7px;
 		/* flex-grow:1; */

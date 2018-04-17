@@ -16,10 +16,6 @@ export default handleActions({
 		...state,
 		region: action.newRegion
 	}),
-	[actionTypes.setPhoto]: (state, action) => ({
-		...state,
-		photoUrl: action.photoUrl
-	}),
 	[actionTypes.updateFriends]: (state, action) => ({
 		...state,
 		friends: action.friends
@@ -35,6 +31,7 @@ export default handleActions({
 		groups: action.groups
 	}),
 	[actionTypes.updatePhoto]: (state, action) => ({
+		...state,
 		photoUrl: action.photoUrl
 	})
 }, userInitial);

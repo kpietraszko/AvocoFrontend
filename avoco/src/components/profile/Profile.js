@@ -1,8 +1,9 @@
 import React from 'react';
 import styles from './Profile.module.css';
 import { connect } from 'react-redux';
-import { actionTypes } from '../../actions/userActions';
-import Regions from '../../regions';
+import { actionCreators as userActions } from '../../actions/userActions';
+import { actionCreators as profileActions } from '../../actions/profileActions';
+import Regions from '../../services/regions';
 import { getUserInfo, getFriends, getGroups, getPhoto, getInterests, addFriend, unfriend, setName, setRegion, setPhoto }
 	from '../../api/user';
 import ProfilePhoto from './profilePhoto/ProfilePhoto';
@@ -129,9 +130,9 @@ class Profile extends React.Component {
 	render = () => {
 		return (
 			<React.Fragment>
-				<div id={styles.srodekOgolny}>
-					<ProfilePhoto />
-					<div id={styles.prawysrodek}>
+				<div id={styles.userData}>
+					<ProfilePhoto photoUrl={this.props.photoUrl} isSelf={this.props.isSelf} />
+					<div id={styles.userDetails}>
 						<ProfileUserDetails />
 						<ProfileButtons />
 					</div>
@@ -147,13 +148,26 @@ class Profile extends React.Component {
 }
 const mapStateToProps = (state) => ({
 	loggedUserId: state.user.userId,
+	loggedUserFirstName: state.user.firstName,
+	loggedUserLastName: state.user.lastName,
+	loggedUserRegion: state.user.region,
 	friends: state.user.friends,
-	photoUrl: state.user.photoUrl
+	photoUrl: state.user.photoUrl,
+	/* 	profileId: state.profile.Id,
+	profileFirstName: state.profile.firstName,
+	profileLastName: state.profile.lastName,
+	profileRegion: state.profile.region, */
+	profile: state.profile, //nie wiem czy tak mozna
 });
 const mapDispatchToProps = (dispatch) => ({
-	updateName: (firstName, lastName) => dispatch(actionTypes.updateName(firstName, lastName)),
-	updateRegion: (region) => dispatch(actionTypes.updateRegion(region)),
-	updatePhoto: (photoUrl) => dispatch(actionTypes.updatePhoto(photoUrl)),
-	updateFriends: (friends) => dispatch(actionTypes.updateFriends(friends))
+	updateName: (firstName, lastName) => dispatch(userActions.updateName(firstName, lastName)),
+	updateRegion: (region) => dispatch(userActions.updateRegion(region)),
+	updatePhoto: (photoUrl) => dispatch(userActions.updatePhoto(photoUrl)),
+	updateFriends: (friends) => dispatch(userActions.updateFriends(friends)),
+	setUserDetails: (firstName, lastName, region) => dispatch(profileActions.setUserDetails(firstName, lastName, region)),
+	setIsSelf: (isSelf) => dispatch(profileActions.setIsSelf(isSelf)),
+	setIsFriend: (isFriend) => dispatch(profileActions.setIsFriend(isFriend)),
+	setInterests: (interests) => dispatch(profileActions.setInterests(interests)),
+	setGroups: (groups) => dispatch(profileActions.setGroups(groups))
 });
 export default connect(mapStateToProps, mapDispatchToProps)(Profile);
