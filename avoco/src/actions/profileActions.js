@@ -1,5 +1,6 @@
 export const actionTypes = {
 	setUserDetails: "SET_USER_DETAILS",
+	setProfilePhoto: "SET_PROFILE_PHOTO",
 	setIsSelf: "SET_IS_SELF",
 	setIsFriend: "SET_IS_FRIEND",
 	setInterests: "SET_INTERESTS",
@@ -11,6 +12,10 @@ export const actionCreators = {
 		firstName,
 		lastName,
 		region	
+	}),
+	setProfilePhoto: (photoUrl) => ({
+		type: actionTypes.setProfilePhoto,
+		photoUrl
 	}),
 	setIsSelf: (isSelf) => ({
 		type: actionTypes.setIsSelf,

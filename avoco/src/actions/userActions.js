@@ -1,11 +1,11 @@
 export const actionTypes = {
 	saveTokenData: "SAVE_TOKEN_DATA",
 	updateName: "UPDATE_NAME",
+	setPhoto: "SET_PHOTO", //zdjecie zalogowanego uzytkownika z serwera, do navbara
 	updateRegion: "UPDATE_REGION",
 	updateFriends: "UPDATE_FRIENDS",
 	setFriendPhoto: "SET_FRIEND_PHOTO",
-	updateGroups: "UPDATE_GROUPS",
-	updatePhoto: "UPDATE_PHOTO"
+	updateGroups: "UPDATE_GROUPS"
 }
 
 export const actionCreators = {
@@ -17,6 +17,10 @@ export const actionCreators = {
 		type: actionTypes.updateName,
 		newFirstName,
 		newLastName
+	}),
+	setPhoto: (photoUrl) => ({
+		type: actionTypes.setPhoto,
+		photoUrl
 	}),
 	updateRegion: (newRegion) => ({
 		type: actionTypes.updateRegion,
@@ -34,9 +38,5 @@ export const actionCreators = {
 	updateGroups: (groups) => ({
 		type: actionTypes.updateGroups,
 		groups
-	}),
-	updatePhoto: (photoUrl) => ({
-		type: actionTypes.updatePhoto,
-		photoUrl
 	})
 }

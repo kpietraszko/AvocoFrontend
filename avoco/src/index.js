@@ -13,12 +13,12 @@ import { PersistGate } from 'redux-persist/integration/react';
 initializeApi();
 const configuredStore = configureStore();
 ReactDOM.render(
-	<Provider store={configuredStore.store}>
-		<PersistGate loading={null} persistor={configuredStore.persistor}>
+	<Provider store={configuredStore}>
+		{/* <PersistGate loading={null} persistor={configuredStore.persistor}> */}
 			<BrowserRouter>
 				<App />
 			</BrowserRouter>
-		</PersistGate>
+		{/* </PersistGate> */}
 	</Provider>
 	, document.getElementById('root'));
 registerServiceWorker();

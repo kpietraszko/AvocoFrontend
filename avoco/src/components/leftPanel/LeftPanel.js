@@ -6,10 +6,12 @@ import { connect } from 'react-redux';
 import { getFriends, getGroups } from '../../api/user';
 import { actionCreators } from '../../actions/userActions';
 import getUsersPhotos from '../../services/getUsersPhotos';
+import initializeApi from '../../api/initialize';
 
 class LeftPanel extends Component {
 	componentDidMount = () => {
-		this.getFriends();
+		initializeApi();
+		this.getFriends(); //unauthorized przy odswiezeniu/wpisaniu url
 	}
 	getFriends = () => {
 		console.log("getting friends");
@@ -37,8 +39,8 @@ class LeftPanel extends Component {
 				<h2>Twoi znajomi</h2>
 				<ul id="friendsList">
 					{this.props.friends && this.props.friends.map((friend) =>
-						<li key={friend.Id}>
-							<Person key={friend.Id} userId={friend.Id} firstName={friend.firstName} lastName={friend.lastName}
+						<li key={friend.id}>
+							<Person key={friend.id} userId={friend.id} firstName={friend.firstName} lastName={friend.lastName}
 								photoUrl={friend.photoUrl} background></Person>
 						</li>
 					)}
@@ -50,8 +52,8 @@ class LeftPanel extends Component {
 				<h2>Twoje grupy</h2>
 				<ul id="groupsList">
 					{this.props.groups && this.props.groups.map((group) =>
-						<li key={group.groupId} className={styles.group}>
-							<Link to="/group">{group.groupName}</Link>
+						<li key={group.id} className={styles.group}>
+							<Link key={group.groupId} to="/group">{group.groupName}</Link>
 						</li>
 					)}
 					{this.props.groups.length === 0 &&
@@ -64,6 +66,7 @@ class LeftPanel extends Component {
 }
 
 const mapStateToProps = (state) => ({
+	isAuthorized: state.authentication.isAuthorized,
 	userId: state.user.userId,
 	friends: state.user.friends,
 	groups: state.user.groups

@@ -16,7 +16,7 @@ const ProfileButtons = (props) => {
 							Usuń ze znajomych
 									</span>}
 					{props.isFriend && props.confirmingRemoveFriend &&
-						<span onClick={this.handleUnfriendClick}>
+						<span onClick={props.handleUnfriendClick}>
 							Na pewno?
 									</span>}
 					{!props.isFriend && <span onClick={props.handleAddFriendClick}>Dodaj do znajomych</span>}

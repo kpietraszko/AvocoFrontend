@@ -17,13 +17,18 @@ class Profile extends React.Component {
 		super();
 		this.state = {}
 	}
+	componentDidMount = () => {
+		this.getUserInfo();
+		this.getUserPhoto();
+		this.getInterests();
+		this.getGroups();
+	}
 	componentDidUpdate = (prevProps) => {
-		if (this.props.userId !== prevProps.userId || //jesli podano userId pierwszy raz 
+		if (this.props.loggedUserId !== prevProps.loggedUserId || //jesli podano userId pierwszy raz 
 			this.props.match.params.userId !== prevProps.match.params.userId) //lub jesli przejście na profil innego użytkownika
 		{
 			this.getUserInfo();
 			this.getUserPhoto();
-			this.getFriends();
 			this.getInterests();
 			this.getGroups();
 		}
@@ -32,6 +37,11 @@ class Profile extends React.Component {
 	getUserInfo = () => {
 		this.props.setIsSelf(this.props.loggedUserId === parseInt(this.props.match.params.userId));
 		getUserInfo(this.props.match.params.userId)
+			.then((response) => {
+				const info = response.data;
+				this.props.setUserDetails(info.firstName, info.lastName, info.region);
+				this.getFriends();
+			})
 			.catch((error) => {
 				console.log(error);
 			});
@@ -39,7 +49,7 @@ class Profile extends React.Component {
 	getUserPhoto = () => {
 		getPhoto(this.props.match.params.userId)
 			.then((response) => {
-				this.setState({ profileImage: URL.createObjectURL(response.data) }); //zmienic
+				this.props.setProfilePhoto(URL.createObjectURL(response.data));
 			})
 			.catch((error) => {
 				console.log(error);
@@ -57,27 +67,38 @@ class Profile extends React.Component {
 	}
 	getInterests = () => {
 		getInterests(this.props.match.params.userId)
+			.then((response) => {
+				this.props.setInterests(response.data);
+			})
 			.catch((error) => {
 				console.log(error);
 			})
 	}
 	getGroups = () => {
 		getGroups(this.props.match.params.userId)
+			.then((response) => {
+				this.props.setGroups(response.data);
+			})
 			.catch((error) => {
 				console.log(error);
 			});
 	}
 	checkIfFriend = () => {
-		for (var friend of this.props.friends)
-			if (friend.userId == this.props.match.params.userId)
+		for (var friend of this.props.friends) {
+			if (friend.id === parseInt(this.props.match.params.userId)) {
 				this.props.setIsFriend(true);
+				return;
+			}
+		}
+		this.props.setIsFriend(false);
 	}
 
 	handleAddFriendClick = () => {
 		addFriend(this.props.match.params.userId)
 			.then((response) => {
 				console.log(response);
-				getFriends();
+				this.getFriends();
+				
 			})
 			.catch((error) => {
 				console.log(error);
@@ -87,9 +108,9 @@ class Profile extends React.Component {
 		if (this.state.confirmingRemoveFriend) {
 			unfriend(this.props.match.params.userId)
 				.then(() => {
-					this.props.setIsFriend(true);
 					this.setState({ confirmingRemoveFriend: false });
-
+					this.getFriends();
+					this.checkIfFriend();
 				})
 				.catch((error) => {
 					console.log(error);
@@ -98,9 +119,8 @@ class Profile extends React.Component {
 			this.setState({ confirmingRemoveFriend: true });
 		}
 	}
-	toggleEditName = () => {
-		this.setState({ editingName: !this.state.editingName });
-	}
+	toggleEditName = () => this.setState({ editingName: !this.state.editingName });
+
 	handleNameChanged = (e) => {
 		e.preventDefault();
 		this.setState({ editingName: false });
@@ -133,15 +153,15 @@ class Profile extends React.Component {
 		return (
 			<React.Fragment>
 				<div id={styles.userData}>
-					{this.props.profile && <ProfilePhoto photoUrl={this.props.photoUrl} isSelf={this.props.profile.isSelf} handleImageUpload={this.handleImageUpload} />}
+					{this.props.profile && <ProfilePhoto photoUrl={this.props.profile.photoUrl}
+						isSelf={this.props.profile.isSelf} handleImageUpload={this.handleImageUpload} />}
 					<div id={styles.userDetails}>
 						{this.props.profile && <ProfileUserDetails {...this.props.profile} editingName={this.state.editingName}
-							handleNameChanged={this.handleNameChanged} handleRegionChanged={this.handleRegionChanged} regions={Regions}/>}
-						{this.props.profile && <ProfileButtons isSelf={this.props.profile.isSelf} ifFriend={this.props.profile.isFriend}
+							handleNameChanged={this.handleNameChanged} handleRegionChanged={this.handleRegionChanged} regions={Regions} />}
+						{this.props.profile && <ProfileButtons isSelf={this.props.profile.isSelf} isFriend={this.props.profile.isFriend}
 							confirmingRemoveFriend={this.state.confirmingRemoveFriend} handleUnfriendClick={this.handleUnfriendClick}
 							handleAddFriendClick={this.handleAddFriendClick} />}
 					</div>
-
 				</div>
 				<div className={styles.interestsAndGroups}>
 					{this.props.profile && <ProfileInterests interests={this.props.profile.interests} />}
@@ -157,19 +177,15 @@ const mapStateToProps = (state) => ({
 	loggedUserLastName: state.user.lastName,
 	loggedUserRegion: state.user.region,
 	friends: state.user.friends,
-	photoUrl: state.user.photoUrl, //wywalic raczej
-	/* 	profileId: state.profile.Id,
-	profileFirstName: state.profile.firstName,
-	profileLastName: state.profile.lastName,
-	profileRegion: state.profile.region, */
 	profile: state.profile, //nie wiem czy tak mozna
 });
 const mapDispatchToProps = (dispatch) => ({
 	updateName: (firstName, lastName) => dispatch(userActions.updateName(firstName, lastName)),
 	updateRegion: (region) => dispatch(userActions.updateRegion(region)),
-	updatePhoto: (photoUrl) => dispatch(userActions.updatePhoto(photoUrl)),
+	updatePhoto: (photoUrl) => dispatch(userActions.updatePhoto(photoUrl)), //zdjecie zalogowanego użytkownika, przy wrzucaniu nowego
 	updateFriends: (friends) => dispatch(userActions.updateFriends(friends)),
 	setUserDetails: (firstName, lastName, region) => dispatch(profileActions.setUserDetails(firstName, lastName, region)),
+	setProfilePhoto: (photoUrl) => dispatch(profileActions.setProfilePhoto(photoUrl)), //zdjecie pobierane z serwera przy wczytywaniu profilu
 	setIsSelf: (isSelf) => dispatch(profileActions.setIsSelf(isSelf)),
 	setIsFriend: (isFriend) => dispatch(profileActions.setIsFriend(isFriend)),
 	setInterests: (interests) => dispatch(profileActions.setInterests(interests)),

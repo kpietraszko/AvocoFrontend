@@ -20,7 +20,7 @@ const ProfileUserDetails = (props) => {
 			}
 			{props.isSelf &&
 				<select value={props.region} className={`${styles.profil} ${styles.regionCombobox}`} name="Region" onChange={props.handleRegionChanged}>
-					{props.Regions.map((region, i) =>
+					{props.regions.map((region, i) =>
 						<option value={i} key={i}>{region}</option>
 					)}
 				</select>}

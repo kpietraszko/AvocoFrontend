@@ -7,7 +7,12 @@ export default handleActions({
 	[actionTypes.setUserDetails] : (state, action) => ({
 		...state,
 		firstName: action.firstName,
-		lastName: action.lastName
+		lastName: action.lastName,
+		region: action.region
+	}),
+	[actionTypes.setProfilePhoto] : (state, action) => ({
+		...state,
+		photoUrl: action.photoUrl
 	}),
 	[actionTypes.setIsSelf] : (state, action) => ({
 		...state,
