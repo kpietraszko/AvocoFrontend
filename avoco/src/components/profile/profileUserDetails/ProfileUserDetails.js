@@ -9,7 +9,7 @@ const ProfileUserDetails = (props) => {
 					{!props.editingName &&
 						props.firstName + " " + props.lastName}
 
-					{props.isSelf && !props.editingName &&
+					{props.isLoggedProfile && !props.editingName &&
 						<button className={`material-icons ${styles.edit}`} onClick={props.toggleEditName}>mode_edit</button>}
 				</span>}
 			{props.editingName &&
@@ -18,13 +18,13 @@ const ProfileUserDetails = (props) => {
 						 className={styles.nameInput} onBlur={props.toggleEditName} />
 				</form>
 			}
-			{props.isSelf &&
-				<select value={props.region} className={`${styles.profil} ${styles.regionCombobox}`} name="Region" onChange={props.handleRegionChanged}>
+			{props.isLoggedProfile &&
+				<select value={props.region} className={`${styles.profil} ${styles.regionCombobox} Combobox`} name="Region" onChange={props.handleRegionChanged}>
 					{props.regions.map((region, i) =>
 						<option value={i} key={i}>{region}</option>
 					)}
 				</select>}
-			{!props.isSelf &&
+			{!props.isLoggedProfile &&
 				<span className={styles.profil}>{props.regions[props.region]}</span>}
 		</React.Fragment>
 	);

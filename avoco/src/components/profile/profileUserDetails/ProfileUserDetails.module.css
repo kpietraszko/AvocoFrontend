@@ -26,4 +26,6 @@ border-radius: 15px;
 	background-color: #f8f8f8;
 	border: none;
 	text-align: center;
+	font-family: inherit;
+	text-align-last: center;
 }

@@ -35,7 +35,7 @@ class Profile extends React.Component {
 	}
 
 	getUserInfo = () => {
-		this.props.setIsSelf(this.props.loggedUserId === parseInt(this.props.match.params.userId));
+		this.props.setIsLoggedProfile(this.props.loggedUserId === parseInt(this.props.match.params.userId));
 		getUserInfo(this.props.match.params.userId)
 			.then((response) => {
 				const info = response.data;
@@ -154,17 +154,19 @@ class Profile extends React.Component {
 			<React.Fragment>
 				<div id={styles.userData}>
 					{this.props.profile && <ProfilePhoto photoUrl={this.props.profile.photoUrl}
-						isSelf={this.props.profile.isSelf} handleImageUpload={this.handleImageUpload} />}
+						isLoggedProfile={this.props.profile.isLoggedProfile} handleImageUpload={this.handleImageUpload} />}
 					<div id={styles.userDetails}>
 						{this.props.profile && <ProfileUserDetails {...this.props.profile} editingName={this.state.editingName}
-							handleNameChanged={this.handleNameChanged} handleRegionChanged={this.handleRegionChanged} regions={Regions} />}
-						{this.props.profile && <ProfileButtons isSelf={this.props.profile.isSelf} isFriend={this.props.profile.isFriend}
+							handleNameChanged={this.handleNameChanged} handleRegionChanged={this.handleRegionChanged} regions={Regions} 
+							toggleEditName={this.toggleEditName}/>}
+						{this.props.profile && <ProfileButtons isLoggedProfile={this.props.profile.isLoggedProfile} isFriend={this.props.profile.isFriend}
 							confirmingRemoveFriend={this.state.confirmingRemoveFriend} handleUnfriendClick={this.handleUnfriendClick}
 							handleAddFriendClick={this.handleAddFriendClick} />}
 					</div>
 				</div>
 				<div className={styles.interestsAndGroups}>
-					{this.props.profile && <ProfileInterests interests={this.props.profile.interests} />}
+					{this.props.profile && <ProfileInterests interests={this.props.profile.interests} isLoggedProfile={this.props.profile.isLoggedProfile}
+						getInterests={this.getInterests}/>}
 					{this.props.profile && <ProfileGroups groups={this.props.profile.groups} />}
 				</div>
 			</React.Fragment>
@@ -186,7 +188,7 @@ const mapDispatchToProps = (dispatch) => ({
 	updateFriends: (friends) => dispatch(userActions.updateFriends(friends)),
 	setUserDetails: (firstName, lastName, region) => dispatch(profileActions.setUserDetails(firstName, lastName, region)),
 	setProfilePhoto: (photoUrl) => dispatch(profileActions.setProfilePhoto(photoUrl)), //zdjecie pobierane z serwera przy wczytywaniu profilu
-	setIsSelf: (isSelf) => dispatch(profileActions.setIsSelf(isSelf)),
+	setIsLoggedProfile: (isLoggedProfile) => dispatch(profileActions.setIsLoggedProfile(isLoggedProfile)),
 	setIsFriend: (isFriend) => dispatch(profileActions.setIsFriend(isFriend)),
 	setInterests: (interests) => dispatch(profileActions.setInterests(interests)),
 	setGroups: (groups) => dispatch(profileActions.setGroups(groups))

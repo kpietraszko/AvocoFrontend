@@ -67,32 +67,6 @@ hr{
   display: flex;
   align-items: center;
 }
-
-#Combobox {
-  /*tekst*/
-  text-align-last: center;
-  font-family: inherit;
-  background: inherit;
-  color: inherit;
-  font-size: inherit;
-  border: 0px;
-  /*strzałka*/
-  background-image: linear-gradient(45deg, transparent 50%, gray 50%), linear-gradient(135deg, gray 50%, transparent 50%), linear-gradient(to right, #ccc, #ccc);
-  background-position: calc(100% - 20px) calc(1em + 2px), calc(100% - 15px) calc(1em + 2px), calc(100% - 2.5em) 0.5em;
-  background-size: 5px 5px, 5px 5px, 1px 1.5em;
-  background-repeat: no-repeat;
-  /* styling */
-  padding: 0.5em 4em 0.5em 3em;
-  /* reset */
-  border-radius: 0;
-  margin-top: -10px;
-  margin-bottom: -10px;
-  -webkit-box-sizing: border-box;
-  -moz-box-sizing: border-box;
-  box-sizing: border-box;
-  -webkit-appearance: none;
-  -moz-appearance: none;
-}
-input:focus::placeholder,  input:focus::-ms-input-placeholder, input:focus::-webkit-input-placeholder{
+input:focus::placeholder,input:focus::-webkit-input-placeholder{
   opacity: 0;
 }

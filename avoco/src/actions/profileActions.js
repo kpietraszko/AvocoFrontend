@@ -1,7 +1,7 @@
 export const actionTypes = {
 	setUserDetails: "SET_USER_DETAILS",
 	setProfilePhoto: "SET_PROFILE_PHOTO",
-	setIsSelf: "SET_IS_SELF",
+	setIsLoggedProfile: "SET_IS_LOGGED_PROFILE",
 	setIsFriend: "SET_IS_FRIEND",
 	setInterests: "SET_INTERESTS",
 	setGroups: "SET_GROUPS",
@@ -17,9 +17,9 @@ export const actionCreators = {
 		type: actionTypes.setProfilePhoto,
 		photoUrl
 	}),
-	setIsSelf: (isSelf) => ({
-		type: actionTypes.setIsSelf,
-		isSelf
+	setIsLoggedProfile: (isLoggedProfile) => ({
+		type: actionTypes.setIsLoggedProfile,
+		isLoggedProfile
 	}),
 	setIsFriend: (isFriend) => ({
 		type: actionTypes.setIsFriend,

@@ -4,7 +4,7 @@ import styles from './ProfileButtons.module.css';
 const ProfileButtons = (props) => {
 	return (
 		<div className={styles.messfriends}>
-			{!props.isSelf && <React.Fragment>
+			{!props.isLoggedProfile && <React.Fragment>
 				<span className={styles.message}>
 					<div className="material-icons navbarButton">message</div>
 					<span>Napisz wiadomość</span>
