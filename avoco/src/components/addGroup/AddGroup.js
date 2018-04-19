@@ -10,29 +10,7 @@ class AddGroup extends React.Component {
 		super();
 		this.state = {};
 	}
-	/*
-	handleSelectImage = () => {
-
-	}
-	handleSubmitZLoginuProszeNieUzywac = (event) => {
-		event.preventDefault();
-		const form = event.target;
-		login(form)
-			.then((response) => {
-				const token = response.data.token;
-				setAuthorizationHeader(token);
-				this.props.authorize(token);
-				const data = getDataFromToken(token)
-				this.props.saveTokenData(data);
-			})
-			.catch((error) => {
-				console.log(error);
-				if (error.response && error.response.status === 401)
-					this.setState({ error: "Nieprawidłowe dane logowania" });
-				else if (error.request)
-					this.setState({ error: "Serwer nie odpowiada" });
-			});
-	}*/
+	
 	handleSubmit = (event) => {
 		event.preventDefault();
 		const form = event.target;
@@ -51,8 +29,6 @@ class AddGroup extends React.Component {
 		event.preventDefault();
 		var getImagePath = URL.createObjectURL(event.target.files[0]);
 		this.setState({imageUrl: getImagePath});
-
-		//$('#addGroupImage').css('groupImage', 'url(' + getImagePath + ')');
 	} 
 
 	render = () => {
