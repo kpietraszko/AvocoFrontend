@@ -8,7 +8,7 @@ const NavbarButton = (props) => {
 			<Link to={props.path} title={props.title} className={`material-icons ${styles.navbarButton}`} onClick={props.onClick}>
 				{props.icon}
 				{props.children &&
-					<span style={{ fontFamily: "'Muli', sans-serif", fontSize: "16px" }}>
+					<span className={styles.children}>
 						{props.children}
 					</span>
 				}

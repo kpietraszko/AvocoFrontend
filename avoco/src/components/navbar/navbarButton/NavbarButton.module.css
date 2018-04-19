@@ -13,3 +13,7 @@
 .navbarButton:active{
     transform: translate(0, 1px);
 }
+.children{
+    font-family: 'Muli', sans-serif;
+    font-size: 16px;
+}

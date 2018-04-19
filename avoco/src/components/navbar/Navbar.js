@@ -34,7 +34,7 @@ class Navbar extends Component {
 					<div id={styles.logo}>AVOCO</div>
 					<NavbarButton title="Strona domowa" icon="home" path="/" />
 					<NavbarButton title="Wiadomości" icon="message" path="/" />
-					<NavbarButton title="Stwórz grupę" icon="add_circle" path="/" />
+					<NavbarButton title="Stwórz grupę" icon="add_circle" path="/test" />
 				</div>
 				<div id={styles.rightAlignedItems}>
 					<Person userId={this.props.userId} firstName={this.props.firstName} lastName={this.props.lastName} photoUrl={this.props.photoUrl}/>

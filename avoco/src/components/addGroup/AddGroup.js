@@ -3,7 +3,7 @@ import styles from './AddGroup.module.css';
 import { connect } from 'react-redux';
 //import { actionCreators as userActions } from '../../actions/userActions'; tu chyba trzeba zrobic wlasne akcje
 //import { getUserInfo, getFriends, getGroups, getPhoto, getInterests, addFriend, unfriend, setName, setRegion, setPhoto }
-//import api
+import { createGroupApi } from '../../api/group';
 
 class AddGroup extends React.Component {
 	constructor() {
@@ -13,7 +13,7 @@ class AddGroup extends React.Component {
 	handleSelectImage = () => {
 
 	}
-	handleSubmit = (event) => {
+	handleSubmitZLoginuProszeNieUzywac = (event) => {
 		event.preventDefault();
 		const form = event.target;
 		login(form)
@@ -32,21 +32,33 @@ class AddGroup extends React.Component {
 					this.setState({ error: "Serwer nie odpowiada" });
 			});
 	}*/
+	handleSubmit = (event) => {
+		event.preventDefault();
+		const form = event.target;
+		alert("Stworzono grupe"); //to w then
+		this.props.history.push("/");
+		createGroupApi(form)
+/* 			.then((response) => {
+				//tu przekierowanie zapewne history.push("/");
+			})
+			.catch((error) => {
+				console.log(error);
+			}) */
+	}
 
 	render = () => {
 		return (
-			<form id={styles.newGroupForm} onSubmit={handleSubmit}>
-				<input className={styles.groupNameInput} placeholder="Wpisz nazwę grupy" />
+			<form id={styles.newGroupForm} onSubmit={this.handleSubmit}>
+				<input name="groupName" className={styles.groupNameInput} placeholder="Wpisz nazwę grupy" />
 				<div id={styles.addGroupImage}>
 					<label>Obraz grupy</label>
-					<input type="file" id={styles.chooseImageString}></input>
+					<input name="groupImage" type="file" className={styles.chooseImageString}></input>
 				</div>
-				<input className={styles.groupDescInput} placeholder="Kliknij tutaj, aby dodać opis grupie" />
+				<textarea name="groupDesc" rows="1" className={styles.groupDescInput} placeholder="Kliknij tutaj, aby dodać opis grupie" />
 				<input type="submit" className={styles.createGroup} value="Stwórz grupę" />
 			</form>
 		);
 	}
-}
-//const
-;
+};
 export default AddGroup;
+//dac submitowi w rejestracji,logowaniu i tutaj klase i dac ten styl do indexu
