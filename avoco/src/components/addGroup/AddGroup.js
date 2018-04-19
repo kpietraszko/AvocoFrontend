@@ -35,15 +35,15 @@ class AddGroup extends React.Component {
 	handleSubmit = (event) => {
 		event.preventDefault();
 		const form = event.target;
-		alert("Stworzono grupe"); //to w then
-		this.props.history.push("/");
+
 		createGroupApi(form)
-/* 			.then((response) => {
-				//tu przekierowanie zapewne history.push("/");
+			.then((response) => {
+				this.props.history.push("/");
+				alert("Stworzono grupe");
 			})
 			.catch((error) => {
 				console.log(error);
-			}) */
+			})
 	}
 
 	render = () => {
