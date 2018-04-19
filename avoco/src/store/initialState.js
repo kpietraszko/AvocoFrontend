@@ -1,5 +1,5 @@
 export const authenticationInitial = {
-	isAuthorized: false
+	isAuthorized: true //ZMIENIC NA FALSE PRZED BILLENNIUM
 }
 export const userInitial = {
 	firstName: "",

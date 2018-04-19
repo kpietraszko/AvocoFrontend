@@ -1,0 +1,120 @@
+#newGroupForm{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+#newGroupForm .whiteRounded{
+    box-shadow: 3.5px 3.5px 3px rgba(0,0,0,0.06);
+}
+#newGroupForm input{
+    display: block;
+}
+#eventNameInput{
+    width: 60%;
+
+}
+#eventDetailsFlex{
+    width: 100%;
+    flex-grow: 1;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-around;
+}
+#eventDetailsFlex>div{
+    width: 40%;
+    min-width: 200px;
+    margin: 15px 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+}
+#eventDetailsFlex h3{
+    margin-top: 0;
+}
+h1{
+    font-size: 1.5em;
+}
+
+.groupNameInput
+{
+  width: 50%;
+  background-color: white;
+  font-size: 1.4em;
+  padding: 8px;
+  margin-bottom: 50px;
+  text-align: center;
+  border-radius: 15px; 
+  box-shadow: 3px 4px 4px rgba(0, 0, 0, 0.1);
+  border: none;
+}
+#addGroupImage
+{ 
+  display: flex;
+  align-items: center;
+  background-color:white;
+  margin-top: 10px;
+  margin-bottom: 50px;
+  padding-left: 10px;
+  padding-top: 5px;
+  padding-right: 5px;
+  padding-bottom: 5px;
+  box-shadow: 3px 4px 4px rgba(0, 0, 0, 0.1);
+}
+
+#chooseImageString{
+  margin-left: 10px;
+  padding-right: 5px;
+}
+
+.groupDescInput{
+  box-shadow: 3px 4px 4px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  margin-bottom:70px;
+  border: none;
+  box-sizing: border-box;
+}
+
+#groupHobbiesString
+{
+  background-color: white;
+  border-radius:30px;
+  padding: 2px;
+  padding-left: 20px;
+  padding-right: 20px;
+  font-size:1.3em;
+  box-shadow: 3px 4px 4px rgba(0, 0, 0, 0.1);
+  margin-bottom: 15px;
+}
+
+#addHobbiesToGroup{
+  display: flex;
+}
+
+#addHobbiesIcon {
+   box-shadow: 3px 4px 4px rgba(0, 0, 0, 0.1);
+}
+
+
+.searchHobbies{
+  margin-left: 10px;
+  margin-top: -2px;
+  border: none;
+  border-radius: 1px;
+}
+
+.createGroup{
+  margin-top: 140px;
+  background: none;
+  border: none;
+  font-size: 2em;
+  margin-bottom: 10px;
+}
+
+.createGroup:active{
+  transform: translate(1px, 2px);
+}
