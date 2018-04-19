@@ -59,7 +59,7 @@ class AddGroup extends React.Component {
 		return (
 			<form id={styles.newGroupForm} onSubmit={this.handleSubmit}>
 				<input name="groupName" className={styles.groupNameInput} placeholder="Wpisz nazwę grupy" />
-				<div id={styles.addGroupImage} style={{ backgroundImage: `url(${this.state.getImagePath})` }}> 
+				<div id={styles.addGroupImage} style={{ backgroundImage: `url(${this.state.imageUrl})` }}> 
 					<label>Obraz grupy</label>
 					<input name="groupImage" type="file" className={styles.chooseImageString}> onChange={this.saveURL}</input>
 				</div>
