@@ -49,7 +49,7 @@ class SearchBar extends Component {
 		return (
 			<div className={styles.searchBar} onBlur={this.handleBlur}>
 				<input placeholder="Szukaj..." value={this.state.searchText} onInput={this.handleInput}
-					onKeyUp={this.handleKeyUp}></input>
+					onKeyUp={this.handleKeyUp} className={styles.searchInput}></input>
 				<div className={`material-icons primaryColor ${styles.searchIcon}`}>search</div>
 				{this.state.searchText.length >= 2 && !this.state.resultsHidden &&
 					<ul className={styles.searchResults}>
