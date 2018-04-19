@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import styles from './Navbar.module.css';
 import NavbarButton from './navbarButton/NavbarButton';
 import Person from '../../componentsStateless/person/Person';
-import SearchBar from '../../componentsStateless/searchBar/SearchBar';
+import SearchBar from '../../components/searchBar/SearchBar';
 import { connect } from 'react-redux';
 import { actionCreators as authActionCreators } from '../../actions/authenticationActions';
 import { actionCreators as userActionCreators } from '../../actions/userActions';

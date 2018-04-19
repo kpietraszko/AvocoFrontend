@@ -14,9 +14,9 @@ export default handleActions({
 		...state,
 		photoUrl: action.photoUrl
 	}),
-	[actionTypes.setIsSelf] : (state, action) => ({
+	[actionTypes.setIsLoggedProfile] : (state, action) => ({
 		...state,
-		isSelf: action.isSelf
+		isLoggedProfile: action.isLoggedProfile
 	}),
 	[actionTypes.setIsFriend] : (state, action) => ({
 		...state,

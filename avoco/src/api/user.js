@@ -43,3 +43,9 @@ export const setRegion = (region) => {
 export const setPhoto = (formData) => {
 	return axios.put("/user/Photo", formData);
 }
+export const searchInterests = (searchText) => {
+	return axios.get(`/user/SearchInterests/${searchText}`);
+}
+export const addInterest = (interestIdOrName) => {
+	return axios.post(`/user/AddInterest/${interestIdOrName}`);
+}
