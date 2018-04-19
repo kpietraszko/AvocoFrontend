@@ -9,7 +9,8 @@ class AddGroup extends React.Component {
 	constructor() {
 		super();
 		this.state = {};
-	}/*
+	}
+	/*
 	handleSelectImage = () => {
 
 	}
@@ -46,13 +47,21 @@ class AddGroup extends React.Component {
 			}) */
 	}
 
+	 saveURL = (event) => {
+		event.preventDefault();
+		var getImagePath = URL.createObjectURL(event.target.files[0]);
+		this.setState({imageUrl: getImagePath});
+
+		//$('#addGroupImage').css('groupImage', 'url(' + getImagePath + ')');
+	} 
+
 	render = () => {
 		return (
 			<form id={styles.newGroupForm} onSubmit={this.handleSubmit}>
 				<input name="groupName" className={styles.groupNameInput} placeholder="Wpisz nazwę grupy" />
-				<div id={styles.addGroupImage}>
+				<div id={styles.addGroupImage} style={{ backgroundImage: `url(${this.state.getImagePath})` }}> 
 					<label>Obraz grupy</label>
-					<input name="groupImage" type="file" className={styles.chooseImageString}></input>
+					<input name="groupImage" type="file" className={styles.chooseImageString}> onChange={this.saveURL}</input>
 				</div>
 				<textarea name="groupDesc" rows="1" className={styles.groupDescInput} placeholder="Kliknij tutaj, aby dodać opis grupie" />
 				<input className="submitButtonGreen" type="submit" value="Stwórz grupę" />
@@ -61,4 +70,3 @@ class AddGroup extends React.Component {
 	}
 };
 export default AddGroup;
-//dac submitowi w rejestracji,logowaniu i tutaj klase i dac ten styl do indexu

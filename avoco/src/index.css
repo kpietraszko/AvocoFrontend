@@ -82,23 +82,3 @@ input:focus::placeholder,input:focus::-webkit-input-placeholder{
 .submitButtonGreen:active{
   transform: translate(1px, 2px);
 }
-/* nowe */ 
-
-
-/* input {
-  font-family: 'Muli', sans-serif;
-  padding: 2px;
-  border-radius: 5px;
-  border: 1px solid;
-  border-color: rgb(204, 204, 204);
-  padding: 6px 15px;
-} */
-
-/* .submitButtonGreen{
-  font-family: 'Muli', sans-serif;
-  padding: 2px;
-  border-radius: 5px;
-  border: 1px solid;
-  border-color: rgb(204, 204, 204);
-  padding: 6px 15px;
-} */
