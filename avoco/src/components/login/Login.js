@@ -43,7 +43,7 @@ class Login extends React.Component {
 				<form id={styles.flexContainer_Login} onSubmit={this.handleSubmit}>
 					<input className={styles.form} type="email" name="Email" placeholder="E-mail" required />
 					<input className={styles.form} type="password" name="Password" placeholder="Hasło" required />
-					<input type="submit" value="Zaloguj" />
+					<input className={submitButtonGreen} type="submit" value="Zaloguj" />
 				</form>
 				<div id={styles.error}>
 					{this.state.error}

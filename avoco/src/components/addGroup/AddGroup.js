@@ -55,7 +55,7 @@ class AddGroup extends React.Component {
 					<input name="groupImage" type="file" className={styles.chooseImageString}></input>
 				</div>
 				<textarea name="groupDesc" rows="1" className={styles.groupDescInput} placeholder="Kliknij tutaj, aby dodać opis grupie" />
-				<input type="submit" className={styles.createGroup} value="Stwórz grupę" />
+				<input className={submitButtonGreen} type="submit" value="Stwórz grupę" />
 			</form>
 		);
 	}

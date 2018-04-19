@@ -103,7 +103,3 @@ h1{
 #addHobbiesIcon {
    box-shadow: 3px 4px 4px rgba(0, 0, 0, 0.1);
 }
-
-.createGroup:active{
-  transform: translate(1px, 2px);
-}

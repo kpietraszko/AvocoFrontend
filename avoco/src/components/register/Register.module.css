@@ -100,28 +100,6 @@ a {
   -moz-appearance: none;
 }
 
-input[type="submit"] {
-  font-weight: bold;
-  margin-top: 10px;
-  background: #cbe8ba;
-  color: #629c44;
-  border-radius: 80px;
-  border: 0px;
-  font-size: 18px;
-  padding-top: 10px;
-  padding-bottom: 10px;
-  padding-right: 40px;
-  padding-left: 40px;
-  box-shadow: 3px 4px 4px rgba(0, 0, 0, 0.1);
-  outline: none;
-  cursor: pointer;
-  text-decoration: none;
-}
-
-input[type="submit"]:active {
-  transform: translate(1px, 2px);
-}
-
 #HaveAccount {
   margin-top: 50px;
   font-size: 18px;
