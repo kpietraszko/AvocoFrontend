@@ -53,6 +53,11 @@ h1{
 }
 #addGroupImage
 { 
+
+    background-image:url('');
+    background-size:cover;
+    background-position: center;
+
   display: flex;
   align-items: center;
   background-color:white;
