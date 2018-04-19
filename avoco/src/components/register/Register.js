@@ -47,7 +47,7 @@ class Register extends React.Component {
 					<input className={styles.form} type="email" name="Email" placeholder="E-mail" required />
 					<input className={styles.form} type="password" name="Password" placeholder="Hasło" required minLength="6" />
 					<input className={styles.form} type="password" name="RepPassword" placeholder="Powtórz hasło" required onInput={this.handleRepPassword} />
-					<input className={submitButtonGreen} type="submit" value="Załóż" />
+					<input className="submitButtonGreen" type="submit" value="Załóż" />
 				</form>
 				<div id={styles.HaveAccount}>Mam już konto.
 				<Link id={styles.LoginButton} to="/">Zaloguj</Link>

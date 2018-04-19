@@ -3,7 +3,7 @@ import styles from './ProfileGroups.module.css';
 
 const ProfileGroups = (props) => {
 	return (
-		<div className={styles.nad}> {/* poprawic te nazwy styli dziwne */}
+		<div className={styles.groupsTab}> 
 			<span className={styles.groupsHeader}>Grupy</span>
 			<ul className={styles.groups}>
 				{props.groups && props.groups.map((group) =>

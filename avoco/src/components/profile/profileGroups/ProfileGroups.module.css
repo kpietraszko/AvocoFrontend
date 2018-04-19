@@ -9,7 +9,7 @@
 	border-radius: 15px;
 }
 
-.nad
+.groupsTab
 {
 	margin-top: -3px;
 	display:flex;
@@ -41,6 +41,7 @@
 	cursor: pointer;
 	margin-bottom: 10px;
 }
+
 .groupPhoto h2{
 	margin: 0
 }
