@@ -10,7 +10,7 @@ class AddGroup extends React.Component {
 		super();
 		this.state = {};
 	}
-	
+
 	handleSubmit = (event) => {
 		event.preventDefault();
 		const form = event.target;
@@ -25,19 +25,21 @@ class AddGroup extends React.Component {
 			})
 	}
 
-	 saveURL = (event) => {
+	saveURL = (event) => {
 		event.preventDefault();
 		var getImagePath = URL.createObjectURL(event.target.files[0]);
-		this.setState({imageUrl: getImagePath});
-	} 
+		this.setState({ imageUrl: getImagePath });
+	}
 
 	render = () => {
 		return (
 			<form id={styles.newGroupForm} onSubmit={this.handleSubmit}>
-				<input name="groupName" className={styles.groupNameInput} placeholder="Wpisz nazwę grupy" />
-				<div id={styles.addGroupImage} style={{ backgroundImage: `url(${this.state.imageUrl})` }}> 
-					<label>Obraz grupy</label>
-					<input name="groupImage" type="file" className={styles.chooseImageString}> onChange={this.saveURL}</input>
+				<div className={styles.background} style={{ backgroundImage: `url(${this.state.imageUrl})` }}>
+					<input name="groupName" className={styles.groupNameInput} placeholder="Wpisz nazwę grupy" />
+					<div id={styles.addGroupImage}>
+						<label>Obraz grupy</label>
+						<input name="groupImage" type="file" className={styles.chooseImageString} onChange={this.saveURL}></input>
+					</div>
 				</div>
 				<textarea name="groupDesc" rows="1" className={styles.groupDescInput} placeholder="Kliknij tutaj, aby dodać opis grupie" />
 				<input className="submitButtonGreen" type="submit" value="Stwórz grupę" />

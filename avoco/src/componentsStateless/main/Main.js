@@ -16,7 +16,7 @@ const Main = () => {
 					<Switch>
 						{/* <Route exact path="/home" component={Home}/> */}
 						<Route path="/profile/:userId" component={Profile} />
-						<Route exact path="/test" component={AddGroup} />
+						<Route exact path="/addGroup" component={AddGroup} />
 					</Switch>
 				</div>
 				<RightPanel />
