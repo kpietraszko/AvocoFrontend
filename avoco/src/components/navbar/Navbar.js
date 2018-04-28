@@ -7,8 +7,13 @@ import { connect } from 'react-redux';
 import { actionCreators as authActionCreators } from '../../actions/authenticationActions';
 import { actionCreators as userActionCreators } from '../../actions/userActions';
 import { getUserInfo, getPhoto } from '../../api/user';
+import { removeToken } from '../../services/tokenStorage';
 
 class Navbar extends Component {
+	componentDidMount = () => {
+		if (this.props.userId)
+			this.setName();
+	}
 	componentDidUpdate = (prevProps) => {
 		if (this.props.userId !== prevProps.userId) {
 			this.setName();
@@ -27,6 +32,10 @@ class Navbar extends Component {
 				console.log(error);
 			})
 	}
+	handleLogOutClick = () => {
+		removeToken();
+		this.props.logOut();
+	}
 	render() {
 		return (
 			<div id={styles.navbar}>
@@ -39,7 +48,7 @@ class Navbar extends Component {
 				<div id={styles.rightAlignedItems}>
 					<Person userId={this.props.userId} firstName={this.props.firstName} lastName={this.props.lastName} photoUrl={this.props.photoUrl}/>
 					<SearchBar />
-					<NavbarButton icon="exit_to_app" path="/" onClick={this.props.logOut}>Wyloguj</NavbarButton>
+					<NavbarButton icon="exit_to_app" path="/" onClick={this.handleLogOutClick}>Wyloguj</NavbarButton>
 				</div>
 			</div>
 		);

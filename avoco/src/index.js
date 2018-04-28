@@ -6,19 +6,16 @@ import registerServiceWorker from './registerServiceWorker';
 import { BrowserRouter } from 'react-router-dom';
 import { Provider } from 'react-redux';
 import initializeApi from './api/initialize';
-import configureStore from './store/configureStore';
-import { PersistGate } from 'redux-persist/integration/react';
-
+import rootReducer from './store/reducers/rootReducer';
+import { createStore } from 'redux';
 
 initializeApi();
-const configuredStore = configureStore();
+var store = createStore(rootReducer, window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__());
 ReactDOM.render(
-	<Provider store={configuredStore}>
-		{/* <PersistGate loading={null} persistor={configuredStore.persistor}> */}
+	<Provider store={store}>
 			<BrowserRouter>
 				<App />
 			</BrowserRouter>
-		{/* </PersistGate> */}
 	</Provider>
 	, document.getElementById('root'));
 registerServiceWorker();

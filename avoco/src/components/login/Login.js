@@ -7,6 +7,7 @@ import { actionCreators as userActionCreators} from '../../actions/userActions';
 import { login } from '../../api/authentication';
 import getDataFromToken from '../../services/getDataFromToken';
 import setAuthorizationHeader from '../../services/setAuthorizationHeader';
+import { saveToken } from '../../services/tokenStorage';
 
 
 class Login extends React.Component {
@@ -22,6 +23,7 @@ class Login extends React.Component {
 				const token = response.data.token;
 				setAuthorizationHeader(token);
 				this.props.authorize(token);
+				saveToken(token);
 				const data = getDataFromToken(token)
 				this.props.saveTokenData(data);
 			})
