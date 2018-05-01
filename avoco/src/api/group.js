@@ -8,3 +8,12 @@ export const createGroupApi = (form) => {
 
     return axios.post("/group/Create/", formData);
 }
+export const getGroupInfoApi = (groupId) => {
+    return axios.get(`/group/${groupId}/GroupInfo`);
+}
+export const getGroupInterestsApi = (groupId) => {
+    return axios.get(`/group/${groupId}/GroupInterests`);
+}
+export const getGroupImageApi = (groupId) => {
+    return axios.get(`/group/${groupId}/Image`, { responseType: "blob" });
+}

@@ -13,3 +13,8 @@ export const profileInitial = {
 	interests: [],
 	groups: []
 }
+export const groupInitial = {
+	groupName: "",
+	groupDescription: "",
+	groupInterests: []
+}
