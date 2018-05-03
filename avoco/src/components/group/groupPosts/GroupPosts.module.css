@@ -1,0 +1,19 @@
+#newPost{
+	display: flex;
+	align-items: center;
+	margin: 0 10px 10px;
+}
+#newPost>input{
+	width: 90%;
+	border: none;
+}
+.button{
+	color: rgb(62, 56, 70);
+	text-shadow: -0.2vw -0.2vw 0.25vw rgba(0,0,0,0.1);
+	user-select: none;
+	font-size: 32px;
+}
+#posts{
+    flex-grow: 1;
+	padding-left: 22px;
+}

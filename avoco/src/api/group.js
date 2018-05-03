@@ -17,3 +17,11 @@ export const getGroupInterestsApi = (groupId) => {
 export const getGroupImageApi = (groupId) => {
     return axios.get(`/group/${groupId}/Image`, { responseType: "blob" });
 }
+export const newPostApi = (groupId, postContent) => {
+    var form = new FormData();
+    form.append("postContent", postContent); //zwykły json nie działa, bo akcja przyjmuje string a nie model
+    return axios.post(`/group/${groupId}/AddPost`, form);
+}
+export const getPostsApi = (groupId) => {
+    return axios.get(`/group/${groupId}/Posts`);
+}
