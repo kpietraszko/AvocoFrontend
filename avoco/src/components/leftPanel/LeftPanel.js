@@ -11,10 +11,10 @@ import initializeApi from '../../api/initialize';
 class LeftPanel extends Component {
 	componentDidMount = () => {
 		initializeApi();
-		this.getFriends(); //unauthorized przy odswiezeniu/wpisaniu url
+		this.getFriends();
+		this.getGroups();
 	}
 	getFriends = () => {
-		console.log("getting friends");
 		getFriends()
 			.then((response) => {
 				this.props.updateFriends(response.data)
@@ -25,9 +25,9 @@ class LeftPanel extends Component {
 			});
 	}
 	getGroups = () => {
-		getGroups()
+		getGroups(this.props.userId)
 			.then((response) => {
-				this.setState({ groups: response.data });
+				this.props.updateGroups(response.data);
 			})
 			.catch((error) => {
 				console.log(error);
@@ -53,7 +53,7 @@ class LeftPanel extends Component {
 				<ul id="groupsList">
 					{this.props.groups && this.props.groups.map((group) =>
 						<li key={group.id} className={styles.group}>
-							<Link key={group.groupId} to="/group">{group.groupName}</Link>
+							<Link key={group.id} to={`/group/${group.id}`}>{group.groupName}</Link>
 						</li>
 					)}
 					{this.props.groups.length === 0 &&
@@ -73,6 +73,7 @@ const mapStateToProps = (state) => ({
 });
 const mapDispatchToProps = (dispatch) => ({
 	updateFriends: (friends) => dispatch(actionCreators.updateFriends(friends)),
-	setFriendPhoto: (userId, photoUrl) => dispatch(actionCreators.setFriendPhoto(userId, photoUrl))
+	setFriendPhoto: (userId, photoUrl) => dispatch(actionCreators.setFriendPhoto(userId, photoUrl)),
+	updateGroups: (groups) => dispatch(actionCreators.updateGroups(groups))
 });
 export default connect(mapStateToProps, mapDispatchToProps)(LeftPanel);

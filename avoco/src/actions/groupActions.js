@@ -1,7 +1,8 @@
 export const actionTypes = {
 	setGroupInfo: "SET_GROUP_INFO",
 	setGroupInterests: "SET_GROUP_INTERESTS",
-	setGroupImage: "SET_GROUP_IMAGE"
+	setGroupImage: "SET_GROUP_IMAGE",
+	setGroupPosts: "SET_GROUP_POSTS"
 };
 
 export const actionCreators = {
@@ -18,5 +19,9 @@ export const actionCreators = {
 	setGroupImage: (imageUrl) => ({
 		type: actionTypes.setGroupImage,
 		imageUrl
+	}),
+	setGroupPosts: (posts) => ({
+		type: actionTypes.setGroupPosts,
+		posts
 	})
 };

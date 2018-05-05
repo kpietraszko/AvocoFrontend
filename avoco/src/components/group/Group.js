@@ -7,10 +7,12 @@ import { getGroupInfoApi, getGroupInterestsApi, getGroupImageApi } from '../../a
 import { actionCreators } from '../../actions/groupActions';
 import { connect } from 'react-redux';
 import { newPostApi, getPostsApi } from '../../api/group';
+import replaceImagesWithUrls from '../../services/replaceImagesWithUrls';
 
 class Group extends Component {
 	componentDidMount = () => {
 		this.getGroupDetails();
+		this.getPosts();
 	}
 	getGroupDetails = () => {
 		const groupId = this.props.match.params.groupId;
@@ -29,12 +31,23 @@ class Group extends Component {
 			})
 			.catch((error) => console.log(error));
 	}
+	getPosts = () => {
+		getPostsApi(this.props.match.params.groupId)
+			.then((response) => {
+				let posts = response.data;
+				replaceImagesWithUrls(posts);
+				this.props.setGroupPosts(posts);
+			})
+			.catch((error) => console.log(error));
+	}
 	handleNewPost = (e) => {
 		e.preventDefault();
 		const postContent = e.target.postInput.value;
 		newPostApi(this.props.match.params.groupId, postContent)
 			.then((response) => {
-				//response.data to wszystkie posty grupy, zapisac je w storze
+				let posts = response.data;
+				replaceImagesWithUrls(posts);
+				this.props.setGroupPosts(posts);
 			})
 			.catch((error) => {
 				console.log(error.request);
@@ -50,7 +63,7 @@ class Group extends Component {
 					groupInterests={this.props.group.interests}
 					groupImageUrl={this.props.group.imageUrl} />
 				<div className={styles.main}>
-					<GroupPosts handleNewPost={this.handleNewPost} />
+					<GroupPosts posts={this.props.group.posts} handleNewPost={this.handleNewPost} />
 					<GroupEvents />
 				</div>
 			</React.Fragment>
@@ -63,6 +76,7 @@ const mapStateToProps = (state) => ({
 const mapDispatchToProps = (dispatch) => ({
 	setGroupInfo: (id, groupName, groupDescription) => dispatch(actionCreators.setGroupInfo(id, groupName, groupDescription)),
 	setGroupInterests: (interests) => dispatch(actionCreators.setGroupInterests(interests)),
-	setGroupImage: (imageUrl) => dispatch(actionCreators.setGroupImage(imageUrl))
+	setGroupImage: (imageUrl) => dispatch(actionCreators.setGroupImage(imageUrl)),
+	setGroupPosts: (posts) => dispatch(actionCreators.setGroupPosts(posts))
 });
 export default connect(mapStateToProps, mapDispatchToProps)(Group);

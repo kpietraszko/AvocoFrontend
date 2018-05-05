@@ -4,6 +4,7 @@
 	margin: 0 10px 10px;
 }
 #newPost>input{
+	margin-left: 5px;
 	width: 90%;
 	border: none;
 }
@@ -16,4 +17,51 @@
 #posts{
     flex-grow: 1;
 	padding-left: 22px;
+}
+.post{
+	margin-bottom: 16px;
+	background-color: #eef1f3;
+	border: 0.5px solid rgba(0,0,0,0.1);
+	box-shadow: 5px 5px 5px rgba(0,0,0,0.05);
+	border-radius: 4px;
+	position: relative;
+}
+.postContent{
+	margin: 0 15px 15px 39px;
+}
+.postContent>hr{
+	width: 95%;
+	background-color: #e0e0e0;	
+}
+.post>div:first-child{
+	margin-top: 10px;
+	margin-left: 10px;
+	display: inline-block;
+}
+/*komentarze*/
+.comment{
+	padding-top: 3px;
+	padding-bottom: 3px;
+	width: 100%;
+	box-sizing: border-box;
+	margin-bottom: 6px;
+}
+.comment *{
+	vertical-align: middle;
+}
+.comment>div:first-child{
+	font-weight: bold;
+	white-space: nowrap;
+	margin-top: 0;
+	margin-bottom: 0;
+}
+.commentingPerson{
+	
+}
+.commentingPerson>.name::after{
+	content: ":";
+	margin-right: 5px;
+}
+.comment>span{
+	color: rgba(40,33,50,0.9)
 }

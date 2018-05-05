@@ -17,5 +17,9 @@ export default handleActions({
 	[actionTypes.setGroupImage]: (state, action) => ({
 		...state,
 		imageUrl: action.imageUrl
+	}),
+	[actionTypes.setGroupPosts]: (state, action) => ({
+		...state,
+		posts: action.posts
 	})
 }, groupInitial);
