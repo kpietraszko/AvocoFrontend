@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css?family=Krona+One|Muli|Material+Icons|Dosis|Roboto');
+@import url('https://fonts.googleapis.com/css?family=Krona+One|Muli:400,700|Material+Icons|Dosis|Roboto:400,700');
 
 html {
   height: 100%;
@@ -57,8 +57,9 @@ hr{
   display: flex;
   align-items: center;
 }
-input:focus::placeholder,input:focus::-webkit-input-placeholder{
-  opacity: 0;
+input:focus::placeholder,input:focus::-webkit-input-placeholder,
+textarea:focus::placeholder,textarea:focus::-webkit-input-placeholder{
+  opacity: 0; /*ukrycie placeholdera po kliknieciu inputa*/
 }
 
 .submitButtonGreen{
@@ -82,13 +83,17 @@ input:focus::placeholder,input:focus::-webkit-input-placeholder{
 .submitButtonGreen:active{
   transform: translate(0, 1px);
 }
-input{
+input,textarea{
   font-family: inherit;
   padding: 2px;
   border-radius: 5px;
   border: 1px solid;
   border-color: rgb(204,204,204);
   padding: 6px 15px;
+}
+textarea{
+  resize: vertical;
+  min-height: 20px;
 }
 
 .title{

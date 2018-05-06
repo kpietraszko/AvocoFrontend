@@ -9,7 +9,7 @@ import { connect } from 'react-redux';
 import { newPostApi, getPostsApi } from '../../api/group';
 import replaceImagesWithUrls from '../../services/replaceImagesWithUrls';
 
-class Group extends Component {
+class Group extends Component { //dodac przycisk dolaczenia do grupy i jego api
 	componentDidMount = () => {
 		this.getGroupDetails();
 		this.getPosts();

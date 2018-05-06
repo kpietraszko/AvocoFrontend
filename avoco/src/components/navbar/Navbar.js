@@ -41,7 +41,7 @@ class Navbar extends Component {
 			<div id={styles.navbar}>
 				<div id={styles.leftAlignedItems}>
 					<div id={styles.logo}>AVOCO</div>
-					<NavbarButton title="Strona domowa" icon="home" path="/" />
+					<NavbarButton title="Strona główna" icon="home" path="/" />
 					<NavbarButton title="Wiadomości" icon="message" path="/" />
 					<NavbarButton title="Stwórz grupę" icon="add_circle" path="/addGroup" />
 				</div>

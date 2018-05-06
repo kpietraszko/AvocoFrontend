@@ -51,7 +51,7 @@ h1{
     height: auto;
     box-sizing: border-box;
     margin-bottom: 15px;
-    resize: vertical;
+    
 }
 #map{
     position: relative;

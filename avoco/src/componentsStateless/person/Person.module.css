@@ -2,7 +2,8 @@
 	display: flex;
     align-items: center;
 	cursor: pointer;
-	margin: 6px 0;
+    margin: 6px 0;
+    font-weight: normal;
 }
 .person>a{
 	display: flex;
