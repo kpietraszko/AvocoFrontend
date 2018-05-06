@@ -21,5 +21,9 @@ export default handleActions({
 	[actionTypes.setGroupPosts]: (state, action) => ({
 		...state,
 		posts: action.posts
+	}),
+	[actionTypes.setJoined]: (state, action) => ({
+		...state,
+		joined: action.joined
 	})
 }, groupInitial);

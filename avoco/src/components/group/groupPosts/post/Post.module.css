@@ -7,7 +7,7 @@
 	position: relative;
 }
 .postContent{
-	margin: 0 15px 15px 39px;
+	margin: 0 15px 10px 39px;
 }
 .postContent>hr{
 	width: 95%;
@@ -30,12 +30,22 @@
 	vertical-align: middle;
 }
 .comment>div:first-child{
-	font-weight: bold;
+	/* font-weight: bold; */
 	white-space: nowrap;
 	margin-top: 0;
 	margin-bottom: 0;
 }
 .comment>span{
 	color: rgba(40,33,50,0.9);
-	margin-left: 5px;
+	margin-left: 6px;
+}
+.comment a>span::after{
+	content: ":";
+}
+.newComment{
+	width: 81%;
+	margin-right: 5px;
+}
+form{
+	display:flex;
 }

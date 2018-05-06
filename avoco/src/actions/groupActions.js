@@ -2,7 +2,8 @@ export const actionTypes = {
 	setGroupInfo: "SET_GROUP_INFO",
 	setGroupInterests: "SET_GROUP_INTERESTS",
 	setGroupImage: "SET_GROUP_IMAGE",
-	setGroupPosts: "SET_GROUP_POSTS"
+	setGroupPosts: "SET_GROUP_POSTS",
+	setJoined: "SET_JOINED"
 };
 
 export const actionCreators = {
@@ -23,5 +24,9 @@ export const actionCreators = {
 	setGroupPosts: (posts) => ({
 		type: actionTypes.setGroupPosts,
 		posts
+	}),
+	setJoined: (joined) => ({
+		type: actionTypes.setJoined,
+		joined
 	})
 };

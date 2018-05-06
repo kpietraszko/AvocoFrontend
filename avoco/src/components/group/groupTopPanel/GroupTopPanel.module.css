@@ -23,11 +23,11 @@
 .title{
     height: 37px;
 	border-radius: 0;
-	font-weight: normal;
+    font-weight: normal;
+    position: relative;
 }
 #groupCover{
     height: 100%;
-    /* background-image: url("/img/military.jpg"); zrobic w reakcie*/
     background-size: 100% auto;
     background-position: 0 50%;
     flex-grow: 1;
@@ -56,4 +56,17 @@
 }
 #groupInterests>h2{
 	font-size: 1.1em;
+}
+#joinButton{
+	background-color: #fdfdfd;
+	border-radius: 8px;
+	font-size: 20px;
+	font-weight: bold;
+	padding: 5px 12px;
+    box-shadow: 3.5px 3.5px 5px rgba(0,0,0,0.08);
+    position: absolute;
+    right: 20px;
+}
+#joinButton:active{
+	transform: translate(0, 1px);
 }

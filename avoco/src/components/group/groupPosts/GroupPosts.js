@@ -1,6 +1,5 @@
 import React from 'react';
 import styles from './GroupPosts.module.css';
-import Person from '../../../componentsStateless/person/Person';
 import Post from './post/Post';
 
 const GroupPosts = (props) => { 
@@ -12,7 +11,7 @@ const GroupPosts = (props) => {
 					<textarea rows={1} name="postInput" placeholder="Nowy post" minLength={5} />
 				</form>
 				{props.posts && props.posts.map((post) =>
-					<Post key={post.id} post={post} />
+					<Post key={post.id} post={post} handleNewComment={props.handleNewComment}/>
 				)}
 			</ul>
 		</React.Fragment>

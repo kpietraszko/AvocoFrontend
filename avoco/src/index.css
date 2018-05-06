@@ -89,11 +89,11 @@ input,textarea{
   border-radius: 5px;
   border: 1px solid;
   border-color: rgb(204,204,204);
-  padding: 6px 15px;
+  padding: 5px 15px;
 }
 textarea{
   resize: vertical;
-  min-height: 20px;
+  min-height: 18px;
 }
 
 .title{

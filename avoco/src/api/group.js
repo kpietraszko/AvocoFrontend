@@ -30,3 +30,12 @@ export const newCommentApi = (postId, comment) => {
     form.append("comment", comment);
     return axios.post(`/group/AddComment/${postId}`, form);
 }
+export const userInGroupApi = (groupId) => {
+    return axios.get(`/group/${groupId}/UserInGroup`);
+}
+export const joinGroupApi = (groupId) => {
+    return axios.put(`/group/${groupId}/JoinGroup`);
+}
+export const leaveGroupApi = (groupId) => {
+    return axios.put(`/group/${groupId}/LeaveGroup`);
+}

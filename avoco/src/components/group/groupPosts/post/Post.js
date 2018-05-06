@@ -15,17 +15,20 @@ const Post = (props) => { //dodać textarea komentarza
 					<div className="whiteRounded">
 						{props.post.content}
 					</div>
-					{props.post.postComments.length > 0 && <hr />}
+					<hr />
 					{props.post.postComments.map((comment) =>
 						<div key={comment.id} className={`${styles.comment} whiteRounded`}>
 							<Person userId={comment.userId}
 								firstName={comment.firstName}
 								lastName={comment.lastName}
-								photoUrl={comment.userImage}/>
+								photoUrl={comment.userImage} />
 							<span>{comment.content}</span>
 						</div>
 					)}
-					{/* <textarea placeholder="Napisz komentarz..." /> */}
+					<form onSubmit={(e) => props.handleNewComment(e, props.post.id)}>
+						<textarea className={styles.newComment} name="newCommentInput" rows={1} placeholder="Napisz komentarz..." />
+						<input type="submit" value="Wyślij" />
+					</form>
 				</div>
 			</li>}
 		</React.Fragment>
