@@ -58,14 +58,15 @@
 	font-size: 1.1em;
 }
 #joinButton{
-	background-color: #fdfdfd;
+	background-color: #C8CFDE;
 	border-radius: 8px;
 	font-size: 20px;
 	font-weight: bold;
 	padding: 5px 12px;
-    box-shadow: 3.5px 3.5px 5px rgba(0,0,0,0.08);
+    /* box-shadow: 3.5px 3.5px 5px rgba(0,0,0,0.08); */
     position: absolute;
-    right: 20px;
+    right: 30px;
+    height: 90%;
 }
 #joinButton:active{
 	transform: translate(0, 1px);

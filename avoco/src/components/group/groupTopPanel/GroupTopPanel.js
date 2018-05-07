@@ -21,7 +21,8 @@ const GroupTopPanel = (props) => {
 			</div>
 			<div className={`title ${styles.title}`}>
 				{props.groupDescription}
-				<button id={styles.joinButton}>Dołącz</button>
+				{!props.joined && <button id={styles.joinButton} onClick={props.handleJoin}>Dołącz</button>}
+				{props.joined && <button id={styles.joinButton} onClick={props.handleLeave}>Opuść</button>}
 			</div>
 		</div>
 	);

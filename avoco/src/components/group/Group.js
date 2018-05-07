@@ -67,9 +67,19 @@ class Group extends Component { //dodac przycisk dolaczenia do grupy i jego api
 	}
 	checkIfUserInGroup = () => {
 		userInGroupApi(this.props.match.params.groupId)
-			.then((response) =>{
-
+			.then((response) => {
+				this.props.setJoined(response.data);
 			})
+			.catch((error) => console.log(error));
+	}
+	handleJoin = () => {
+		joinGroupApi(this.props.match.params.groupId)
+			.then(() => this.props.setJoined(true))
+			.catch((error) => console.log(error))
+	}
+	handleLeave = () => {
+		leaveGroupApi(this.props.match.params.groupId)
+			.then(() => this.props.setJoined(false))
 			.catch((error) => console.log(error));
 	}
 	render() {
@@ -79,9 +89,12 @@ class Group extends Component { //dodac przycisk dolaczenia do grupy i jego api
 					groupName={this.props.group.groupName}
 					groupDescription={this.props.group.groupDescription}
 					groupInterests={this.props.group.interests}
-					groupImageUrl={this.props.group.imageUrl} />
+					groupImageUrl={this.props.group.imageUrl}
+					joined={this.props.group.joined}
+					handleJoin={this.handleJoin}
+					handleLeave={this.handleLeave} />
 				<div className={styles.main}>
-					<GroupPosts posts={this.props.group.posts} handleNewPost={this.handleNewPost} handleNewComment={this.handleNewComment}/>
+					<GroupPosts posts={this.props.group.posts} handleNewPost={this.handleNewPost} handleNewComment={this.handleNewComment} />
 					<GroupEvents />
 				</div>
 			</React.Fragment>
