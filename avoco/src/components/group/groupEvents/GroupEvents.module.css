@@ -1,7 +1,226 @@
-#groupEvents{
+ #groupEvents{
 	min-width: 32%;
 	display: flex;
 	flex-direction: column;
 	align-items: center;
 	margin-top: 4px;
+} 
+
+.placeIcon{
+	left: -20px;
 }
+
+.eventList{
+    width: 90%;
+    margin-top: 6px;
+}
+
+.event{
+    margin: 4px 0;
+    height: 190px;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 6px 6px 5px rgba(0,0,0,0.06);
+}
+
+#groupEvents .event{
+	height: auto;
+	font-size: 0.85em;
+}
+#groupEvents .event>.main{
+	flex-flow: row wrap;
+	justify-content: space-evenly;
+}
+
+#middleScreen>.main{
+    width: 100%;
+    display: flex;
+    padding-top: 15px;
+}
+
+#groupEvents .event>.main{
+	flex-flow: row wrap;
+	justify-content: space-evenly;
+}
+
+#groupEvents .date{
+	flex-basis: 150px;
+	font-size: 0.9em;
+}
+#groupEvents .date .whiteRounded{
+	margin: 7px 0 0 7px;
+}
+
+.date{
+    border-top-left-radius: 4px;
+}
+
+.date>.whiteRounded{
+    margin: auto;
+    margin-top: 10px;
+    box-sizing: border-box;
+    padding: 3px;
+    width: 85%;
+    /* align-self: flex-start; */
+    font-size: 2.7em;
+}
+.date>.whiteRounded>.material-icons{
+    font-size: 24px;
+}
+
+#groupEvents .date .whiteRounded{
+	margin: 7px 0 0 7px;
+}
+
+.groupName .whiteRounded{
+    cursor: pointer;
+}
+.groupName .whiteRounded:active{
+    transform: translate(0,1px);
+}
+
+#newEventButton>.material-icons{
+	margin-right: 5px;
+}
+
+.date>.whiteRounded>.material-icons{
+    font-size: 24px;
+}
+
+.location .material-icons{
+    position: absolute;
+	left: -25px;
+}
+
+.dateDetails{
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    font-size: 1.04rem;
+    margin-left: 5px;
+}
+
+.month{
+    text-transform: capitalize;
+    font-weight: bold;
+}
+
+#groupEvents .location{
+	flex-basis: 100px;
+}
+
+.groupName .whiteRounded, .location>.whiteRounded{
+    height: 25px;
+}
+.groupName,.location{
+    flex: 0 0 50%;
+    justify-content: flex-end;
+}
+.groupName .whiteRounded, .location>.whiteRounded{
+    margin: 10px 20px 10px 0;
+    font-size: 0.9em;
+    position: relative;
+}
+.location .material-icons{
+    position: absolute;
+    left: -25px;
+}
+
+#groupEvents .date .whiteRounded{
+	margin: 7px 0 0 7px;
+}
+
+.whiteRounded{
+    background-color: #fafafa;
+    border-radius: 15px;
+    padding: 5px 10px;
+    display: flex;
+    align-items: center;
+}
+.date>.whiteRounded{
+    margin: auto;
+    margin-top: 10px;
+    box-sizing: border-box;
+    padding: 3px;
+    width: 85%;
+    /* align-self: flex-start; */
+    font-size: 2.7em;
+}
+.date>.whiteRounded>.material-icons{
+    font-size: 24px;
+}
+
+.groupName .whiteRounded, .location>.whiteRounded{
+    height: 25px;
+}
+
+.groupName .whiteRounded, .location>.whiteRounded{
+    margin: 10px 20px 10px 0;
+    font-size: 0.9em;
+    position: relative;
+}
+
+.groupName .whiteRounded{
+    cursor: pointer;
+}
+.groupName .whiteRounded:active{
+    transform: translate(0,1px);
+}
+
+#groupEvents .date .whiteRounded{
+	margin: 7px 0 0 7px;
+}
+
+#groupEvents .title{
+	padding-top: 6px;
+	padding-bottom: 6px;
+}
+
+#newEventButton{
+	margin-top: 7px;
+	vertical-align: middle;
+	line-height: 100%;
+	box-shadow: 3.5px 3.5px 5px rgba(0,0,0,0.08);
+	cursor: pointer;
+}
+#newEventButton:active{
+	transform: translate(0, 1px);
+}
+#newEventButton>.material-icons{
+	margin-right: 5px;
+}
+
+.event>.main>*{
+    background-color: #f0f3f5;
+    width: 50%;
+}
+
+.event>.main {
+	padding-bottom: 5px;
+    height: 80%;
+    display: flex;
+    flex-flow: column wrap;
+    background-color: #f0f3f5;
+}
+
+.location{
+	padding-top: 3px;
+}
+
+.location::after{
+	padding-right: 4px;
+}
+
+.title {
+    background-color: white;
+    flex-grow: 1;
+    display: flex;
+    align-items: center;
+    padding: 0 15px;
+    font-family: 'Roboto', sans-serif;
+    font-weight: bold;
+    border-bottom-right-radius: 4px;
+    border-bottom-left-radius: 4px;
+}
+
+
