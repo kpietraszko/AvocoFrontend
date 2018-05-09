@@ -8,6 +8,8 @@ import { actionCreators as authActionCreators} from '../actions/authenticationAc
 import { actionCreators as userActionCreators} from '../actions/userActions';
 import { readToken } from '../services/tokenStorage';
 import getDataFromToken from '../services/getDataFromToken';
+import moment from 'moment';
+import 'moment/locale/pl';
 
 class App extends Component {
 	componentDidMount = () => {
@@ -20,6 +22,7 @@ class App extends Component {
 		}
 	}
 	render() {
+		moment.locale("pl");
 		return (
 			<Switch>
 				<Route exact path="/register" component={Register} />

@@ -1,5 +1,7 @@
 import React from 'react';
 import styles from './GroupEvents.module.css';
+import moment from 'moment';
+import { Link, Redirect } from 'react-router-dom';
 
 const GroupEvents = () => {
 	return (
@@ -14,10 +16,10 @@ const GroupEvents = () => {
 						<div className={styles.date}>
 							<div className={styles.whiteRounded}>
 								<div className="material-icons">event</div>
-								16
+								{moment().format("MM")}
 										<div className={styles.dateDetails}>
-									<div className={styles.month}>MAR</div>
-									<div className={styles.time}>12:00</div>
+									<div className={styles.month}>{moment().format("MMM")}</div>
+									<div className={styles.time}>{moment().format("HH:mm")}</div>
 								</div>
 							</div>
 						</div>
@@ -28,13 +30,13 @@ const GroupEvents = () => {
 							</div>
 						</div>
 					</div>
-					<a className={styles.title} href="event.html">ASG w terenie</a>
+					<Link className={styles.title} to="/event/:eventId">MOK</Link> 
 				</li>
 			</ul>
 			<a href="addEvent.html" id={styles.newEventButton} className={styles.whiteRounded}>
 				<div className="material-icons">add_circle</div>
-				Dodaj wydarzenie
-					</a>
+				<Link to="/addEvent">Dodaj wydarzenie</Link>
+			</a>
 		</div>
 	);
 };
