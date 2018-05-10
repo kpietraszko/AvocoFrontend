@@ -1,42 +1,43 @@
 import React from 'react';
 import styles from './GroupEvents.module.css';
 import moment from 'moment';
-import { Link, Redirect } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
-const GroupEvents = () => {
+const GroupEvents = (props) => {
 	return (
-
 		<div id={styles.groupEvents}>
 			<h2>
 				Wydarzenia
-		</h2>
+			</h2>
 			<ul className={styles.eventList}>
-				<li className={styles.event}>
-					<div className={styles.main}>
-						<div className={styles.date}>
-							<div className={styles.whiteRounded}>
-								<div className="material-icons">event</div>
-								{moment().format("MM")}
-										<div className={styles.dateDetails}>
-									<div className={styles.month}>{moment().format("MMM")}</div>
-									<div className={styles.time}>{moment().format("HH:mm")}</div>
+				{props.events && props.events.map((event) => 
+					<li key={event.id} className={styles.event}>
+						<div className={styles.main}>
+							<div className={styles.date}>
+								<div className={styles.whiteRounded}>
+									<div className="material-icons">event</div>
+									{moment(event.eventDateTime).format("DD")}
+									<div className={styles.dateDetails}>
+										<div className={styles.month}>{moment(event.eventDateTime).format("MMM")}</div>
+										<div className={styles.time}>{moment(event.eventDateTime).format("HH:mm")}</div>
+									</div>
 								</div>
 							</div>
-						</div>
-						<div className={styles.location}>
-							<div className={styles.whiteRounded}>
-								<div className={`material-icons ${styles.placeIcon}`}>place</div>
-								Olsztyn
+							<div className={styles.location}>
+								<div className={styles.whiteRounded}>
+									<div className={`material-icons ${styles.placeIcon}`}>place</div>
+									{event.place}
+							</div>
 							</div>
 						</div>
-					</div>
-					<Link className={styles.title} to="/event/:eventId">MOK</Link> 
-				</li>
+						<Link className={styles.title} to={`/event/${event.id}`}>{event.eventName}</Link>
+					</li>
+				)}
 			</ul>
-			<a href="addEvent.html" id={styles.newEventButton} className={styles.whiteRounded}>
+			<Link to="/addEvent" id={styles.newEventButton} className={styles.whiteRounded}>
 				<div className="material-icons">add_circle</div>
-				<Link to="/addEvent">Dodaj wydarzenie</Link>
-			</a>
+				Dodaj wydarzenie
+			</Link>
 		</div>
 	);
 };

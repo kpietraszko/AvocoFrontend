@@ -3,7 +3,8 @@ export const actionTypes = {
 	setGroupInterests: "SET_GROUP_INTERESTS",
 	setGroupImage: "SET_GROUP_IMAGE",
 	setGroupPosts: "SET_GROUP_POSTS",
-	setJoined: "SET_JOINED"
+	setJoined: "SET_JOINED",
+	setGroupEvents: "SET_GROUP_EVENTS"
 };
 
 export const actionCreators = {
@@ -28,5 +29,9 @@ export const actionCreators = {
 	setJoined: (joined) => ({
 		type: actionTypes.setJoined,
 		joined
+	}),
+	setGroupEvents: (events) => ({
+		type: actionTypes.setGroupEvents,
+		events
 	})
 };

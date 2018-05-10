@@ -1,7 +1,7 @@
 #rightPanel{
     background-color: rgb(228,231,233);
     box-shadow: -0.25vw 0 0.4vw rgba(0, 0, 0, 0.08);
-    min-width: 27%;
+    min-width: 24%;
     /* user-select: none; */
     display: flex;
     flex-direction: column;

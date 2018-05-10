@@ -4,16 +4,20 @@ import GroupTopPanel from './groupTopPanel/GroupTopPanel';
 import GroupPosts from './groupPosts/GroupPosts';
 import GroupEvents from './groupEvents/GroupEvents';
 import { getGroupInfoApi, getGroupInterestsApi, getGroupImageApi } from '../../api/group';
-import { actionCreators } from '../../actions/groupActions';
+import { actionCreators as groupActionCreators } from '../../actions/groupActions';
+import { actionCreators as userActionCreators } from '../../actions/userActions';
 import { connect } from 'react-redux';
-import { newPostApi, getPostsApi, newCommentApi, userInGroupApi, joinGroupApi, leaveGroupApi } from '../../api/group';
+import { newPostApi, getPostsApi, newCommentApi, userInGroupApi, joinGroupApi, leaveGroupApi, getEventsApi } from '../../api/group';
 import replaceImagesWithUrls from '../../services/replaceImagesWithUrls';
+import replaceDates from '../../services/replaceDates';
+import replaceCoords from '../../services/replaceCoords';
 
 class Group extends Component { //dodac przycisk dolaczenia do grupy i jego api
 	componentDidMount = () => {
 		this.getGroupDetails();
 		this.getPosts();
 		this.checkIfUserInGroup();
+		this.getEvents();
 	}
 	getGroupDetails = () => {
 		const groupId = this.props.match.params.groupId;
@@ -40,6 +44,15 @@ class Group extends Component { //dodac przycisk dolaczenia do grupy i jego api
 				this.props.setGroupPosts(posts);
 			})
 			.catch((error) => console.log(error));
+	}
+	getEvents = () => {
+		getEventsApi(this.props.match.params.groupId)
+			.then((response) => {
+				let events = response.data;
+				replaceDates(events);
+				replaceCoords(events);
+				this.props.setGroupEvents(events);
+			})
 	}
 	handleNewPost = (e) => {
 		e.preventDefault();
@@ -74,12 +87,18 @@ class Group extends Component { //dodac przycisk dolaczenia do grupy i jego api
 	}
 	handleJoin = () => {
 		joinGroupApi(this.props.match.params.groupId)
-			.then(() => this.props.setJoined(true))
+			.then((response) => {
+				this.props.setJoined(true);
+				this.props.updateGroups(response.data);
+			})
 			.catch((error) => console.log(error))
 	}
 	handleLeave = () => {
 		leaveGroupApi(this.props.match.params.groupId)
-			.then(() => this.props.setJoined(false))
+			.then((response) => { 
+				this.props.setJoined(false);
+				this.props.updateGroups(response.data);
+			})
 			.catch((error) => console.log(error));
 	}
 	render() {
@@ -95,7 +114,7 @@ class Group extends Component { //dodac przycisk dolaczenia do grupy i jego api
 					handleLeave={this.handleLeave} />
 				<div className={styles.main}>
 					<GroupPosts posts={this.props.group.posts} handleNewPost={this.handleNewPost} handleNewComment={this.handleNewComment} />
-					<GroupEvents />
+					<GroupEvents events={this.props.group.events}/>
 				</div>
 			</React.Fragment>
 		);
@@ -105,10 +124,12 @@ const mapStateToProps = (state) => ({
 	group: state.group
 });
 const mapDispatchToProps = (dispatch) => ({
-	setGroupInfo: (id, groupName, groupDescription) => dispatch(actionCreators.setGroupInfo(id, groupName, groupDescription)),
-	setGroupInterests: (interests) => dispatch(actionCreators.setGroupInterests(interests)),
-	setGroupImage: (imageUrl) => dispatch(actionCreators.setGroupImage(imageUrl)),
-	setGroupPosts: (posts) => dispatch(actionCreators.setGroupPosts(posts)),
-	setJoined: (joined) => dispatch(actionCreators.setJoined(joined))
+	setGroupInfo: (id, groupName, groupDescription) => dispatch(groupActionCreators.setGroupInfo(id, groupName, groupDescription)),
+	setGroupInterests: (interests) => dispatch(groupActionCreators.setGroupInterests(interests)),
+	setGroupImage: (imageUrl) => dispatch(groupActionCreators.setGroupImage(imageUrl)),
+	setGroupPosts: (posts) => dispatch(groupActionCreators.setGroupPosts(posts)),
+	setJoined: (joined) => dispatch(groupActionCreators.setJoined(joined)),
+	updateGroups: (groups) => dispatch(userActionCreators.updateGroups(groups)),
+	setGroupEvents: (events) => dispatch(groupActionCreators.setGroupEvents(events))
 });
 export default connect(mapStateToProps, mapDispatchToProps)(Group);

@@ -25,5 +25,9 @@ export default handleActions({
 	[actionTypes.setJoined]: (state, action) => ({
 		...state,
 		joined: action.joined
+	}),
+	[actionTypes.setGroupEvents]: (state, action) => ({
+		...state,
+		events: action.events
 	})
 }, groupInitial);

@@ -7,7 +7,7 @@ class RightPanel extends Component {
 			<div id={styles.rightPanel}>
 				<h2>Twoje wydarzenia</h2>
 				<ul className={styles.eventList}>
-					<li className={styles.event}>
+					{/* <li className={styles.event}>
 						<div className={styles.main}>
 							<div className={styles.date}>
 								<div className={styles.whiteRounded}>
@@ -17,23 +17,6 @@ class RightPanel extends Component {
 										<div className={styles.month}>MAR</div>
 										<div className={styles.time}>12:00</div>
 									</div>
-								</div>
-							</div>
-							<div className={styles.interested}>
-								<div>
-									<div>Zainteresowani:</div>
-									<ul className={styles.interestedList}>
-										<a href="profile.html">
-											<li title="Michał Bosy" className="material-icons symbolCircle">person</li>
-										</a>
-										<a href="profile.html">
-											<li title="Marek Kupczyk" className="material-icons symbolCircle">person</li>
-										</a>
-										<a href="profile.html">
-											<li title="Janusz Fotograf" className="material-icons symbolCircle">person</li>
-										</a>
-										<span>+4</span>
-									</ul>
 								</div>
 							</div>
 							<div className={styles.groupName}>
@@ -47,7 +30,7 @@ class RightPanel extends Component {
 							</div>
 						</div>
 						<a className={styles.title}>Zlot miłośników krajobrazów</a>
-					</li>
+					</li> */}
 				</ul>
 			</div>
 		);

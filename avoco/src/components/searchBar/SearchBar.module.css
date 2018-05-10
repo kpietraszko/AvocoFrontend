@@ -18,6 +18,7 @@
     width: 100%;
     border-radius: 5px;
     margin: 0;
+    z-index: 10000;
 }
 .searchResults>li{
     padding: 5px;

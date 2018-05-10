@@ -39,3 +39,6 @@ export const joinGroupApi = (groupId) => {
 export const leaveGroupApi = (groupId) => {
     return axios.put(`/group/${groupId}/LeaveGroup`);
 }
+export const getEventsApi = (groupId) => {
+    return axios.get(`/group/${groupId}/Events`);
+}
