@@ -49,3 +49,6 @@
 form{
 	display:flex;
 }
+.commentSubmit{
+	height: 30px;
+}

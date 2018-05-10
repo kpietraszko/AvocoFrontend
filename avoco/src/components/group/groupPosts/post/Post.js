@@ -27,7 +27,7 @@ const Post = (props) => { //dodać textarea komentarza
 					)}
 					<form onSubmit={(e) => props.handleNewComment(e, props.post.id)}>
 						<textarea className={styles.newComment} name="newCommentInput" rows={1} placeholder="Napisz komentarz..." />
-						<input type="submit" value="Wyślij" />
+						<input className={styles.commentSubmit} type="submit" value="Wyślij" />
 					</form>
 				</div>
 			</li>}
