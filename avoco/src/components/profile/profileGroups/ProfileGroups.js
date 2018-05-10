@@ -7,7 +7,7 @@ const ProfileGroups = (props) => {
 			<span className={styles.groupsHeader}>Grupy</span>
 			<ul className={styles.groups}>
 				{props.groups && props.groups.map((group) =>
-					<li key={group.groupId} className={styles.groupPhoto} style={{ backgroundImage: `url(${group.groupPicture})` }}>
+					<li key={group.id} className={styles.groupPhoto} style={{ backgroundImage: `url(${group.groupPicture})` }}>
 						<h2>{group.groupName}</h2>
 					</li>
 				)}

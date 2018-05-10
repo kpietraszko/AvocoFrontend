@@ -13,45 +13,71 @@ import replaceDates from '../../services/replaceDates';
 import replaceCoords from '../../services/replaceCoords';
 
 class Group extends Component { //dodac przycisk dolaczenia do grupy i jego api
+	constructor() {
+		super();
+		this.state = { searchString: ""};
+	}
+
 	componentDidMount = () => {
 		this.getGroupDetails();
 		this.getPosts();
 		this.checkIfUserInGroup();
 		this.getEvents();
 	}
+	componentDidUpdate = (prevProps, prevState, snapshot) => {
+		if (prevProps.match.params.groupId !== this.props.match.params.groupId) {
+			this.props.setGroupImage(null);
+			this.getGroupDetails();
+			this.getPosts();
+			this.checkIfUserInGroup();
+			this.getEvents();
+		}
+	}
 	getGroupDetails = () => {
 		const groupId = this.props.match.params.groupId;
 		getGroupInfoApi(groupId)
 			.then((response) => {
-				const groupInfo = response.data;
-				this.props.setGroupInfo(groupInfo.id, groupInfo.groupName, groupInfo.groupDescription);
+				if (this.props.match.params.groupId === groupId) {
+					const groupInfo = response.data;
+					this.props.setGroupInfo(groupInfo.id, groupInfo.groupName, groupInfo.groupDescription);
+				}
 				return getGroupInterestsApi(groupId);
 			})
 			.then((response) => {
-				this.props.setGroupInterests(response.data);
+				if (this.props.match.params.groupId === groupId) {
+					this.props.setGroupInterests(response.data);
+				}
 				return getGroupImageApi(groupId);
 			})
 			.then((response) => {
-				this.props.setGroupImage(URL.createObjectURL(response.data))
+				if (this.props.match.params.groupId === groupId) {
+					this.props.setGroupImage(URL.createObjectURL(response.data))
+				}
 			})
 			.catch((error) => console.log(error));
 	}
 	getPosts = () => {
-		getPostsApi(this.props.match.params.groupId)
+		const groupId = this.props.match.params.groupId;
+		getPostsApi(groupId)
 			.then((response) => {
-				let posts = response.data;
-				replaceImagesWithUrls(posts);
-				this.props.setGroupPosts(posts);
+				if (this.props.match.params.groupId === groupId) {
+					let posts = response.data;
+					replaceImagesWithUrls(posts);
+					this.props.setGroupPosts(posts);
+				}
 			})
 			.catch((error) => console.log(error));
 	}
 	getEvents = () => {
-		getEventsApi(this.props.match.params.groupId)
+		const groupId = this.props.match.params.groupId;
+		getEventsApi(groupId)
 			.then((response) => {
-				let events = response.data;
-				replaceDates(events);
-				replaceCoords(events);
-				this.props.setGroupEvents(events);
+				if (this.props.match.params.groupId === groupId) {
+					let events = response.data;
+					replaceDates(events);
+					replaceCoords(events);
+					this.props.setGroupEvents(events);
+				}
 			})
 	}
 	handleNewPost = (e) => {
@@ -95,11 +121,15 @@ class Group extends Component { //dodac przycisk dolaczenia do grupy i jego api
 	}
 	handleLeave = () => {
 		leaveGroupApi(this.props.match.params.groupId)
-			.then((response) => { 
+			.then((response) => {
 				this.props.setJoined(false);
 				this.props.updateGroups(response.data);
 			})
 			.catch((error) => console.log(error));
+	}
+	handleSearchInput = (e) => {
+		const searchString = e.target.value;
+		this.setState({ searchString });
 	}
 	render() {
 		return (
@@ -114,7 +144,7 @@ class Group extends Component { //dodac przycisk dolaczenia do grupy i jego api
 					handleLeave={this.handleLeave} />
 				<div className={styles.main}>
 					<GroupPosts posts={this.props.group.posts} handleNewPost={this.handleNewPost} handleNewComment={this.handleNewComment} />
-					<GroupEvents events={this.props.group.events}/>
+					<GroupEvents events={this.props.group.events} handleSearchInput={this.handleSearchInput} searchString={this.state.searchString} />
 				</div>
 			</React.Fragment>
 		);

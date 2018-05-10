@@ -14,6 +14,12 @@ class LeftPanel extends Component {
 		this.getFriends();
 		this.getGroups();
 	}
+	componentDidUpdate = (prevProps, prevState, snapshot) => {
+		if(this.props.userId && this.props.userId !== prevProps.userId)
+		{
+			this.getGroups();
+		}
+	}
 	getFriends = () => {
 		getFriends()
 			.then((response) => {
@@ -25,13 +31,15 @@ class LeftPanel extends Component {
 			});
 	}
 	getGroups = () => {
-		getGroups(this.props.userId)
-			.then((response) => {
-				this.props.updateGroups(response.data);
-			})
-			.catch((error) => {
-				console.log(error);
-			});
+		if (this.props.userId){
+			getGroups(this.props.userId)
+				.then((response) => {
+					this.props.updateGroups(response.data);
+				})
+				.catch((error) => {
+					console.log(error);
+				});
+			}
 	}
 	render() {
 		return (
