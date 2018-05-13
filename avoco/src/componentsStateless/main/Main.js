@@ -6,6 +6,7 @@ import Navbar from '../../components/navbar/Navbar';
 import LeftPanel from '../../components/leftPanel/LeftPanel';
 import RightPanel from '../../components/rightPanel/RightPanel';
 import Group from "../../components/group/Group";
+import Home from '../../components/home/Home';
 import styles from './Main.module.css';
 
 const Main = () => {
@@ -16,7 +17,7 @@ const Main = () => {
 				<LeftPanel />
 				<div id={styles.middleScreen}>
 					<Switch>
-						{/* <Route exact path="/home" component={Home}/> */}
+						<Route exact path="/" component={Home}/>
 						<Route path="/profile/:userId" component={Profile} />
 						<Route exact path="/addGroup" component={AddGroup} />
 						<Route path="/group/:groupId" component={Group} />

@@ -5,7 +5,8 @@ const GroupTopPanel = (props) => {
 	return (
 		<div id={styles.topPanel}>
 			<div className={styles.main}>
-				<div id={styles.groupCover} style={{ backgroundImage: `url(${props.groupImageUrl})` }}>
+				<div id={styles.groupCover} className={props.groupImageUrl ? styles.groupCoverImage : styles.groupCoverEmpty} 
+					style={{ backgroundImage: `url(${props.groupImageUrl})`}}>
 					<h1>{props.groupName}</h1>
 				</div>
 				<div id={styles.groupInterests}>

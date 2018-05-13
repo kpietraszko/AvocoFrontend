@@ -17,8 +17,8 @@ class AddGroup extends React.Component {
 
 		createGroupApi(form)
 			.then((response) => {
-				this.props.history.push("/");
-				alert("Stworzono grupe");
+				//moze dodac tu modal informujacy ze stworzono grupe
+				this.props.history.push(`/group/${response.data}`);
 			})
 			.catch((error) => {
 				console.log(error);

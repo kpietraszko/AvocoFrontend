@@ -35,6 +35,7 @@ class Group extends Component { //dodac przycisk dolaczenia do grupy i jego api
 	}
 	getGroupDetails = () => {
 		const groupId = this.props.match.params.groupId;
+		this.props.setGroupImage(null);
 		getGroupInfoApi(groupId)
 			.then((response) => {
 				if (this.props.match.params.groupId === groupId) {
@@ -51,7 +52,7 @@ class Group extends Component { //dodac przycisk dolaczenia do grupy i jego api
 			})
 			.then((response) => {
 				if (this.props.match.params.groupId === groupId) {
-					this.props.setGroupImage(URL.createObjectURL(response.data))
+					this.props.setGroupImage(URL.createObjectURL(response.data));
 				}
 			})
 			.catch((error) => console.log(error));

@@ -34,8 +34,24 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    position: relative;
+    z-index: -1;
+}
+#groupCover::before{
+    content: '';
+    position: absolute;
+    top: 0; right: 0; bottom: 0; left: 0;
+    transition: background 1s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+.groupCoverEmpty::before{
+    background: rgba(236,239,241,1)
+}
+.groupCoverImage::before{
+    background: rgba(236,239,241,0);
 }
 #groupCover>h1{
+    z-index: 1000;
+    opacity: 1;
     font-size: 4rem;
     color: white;
     text-shadow:

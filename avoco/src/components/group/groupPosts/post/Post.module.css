@@ -5,6 +5,15 @@
 	box-shadow: 5px 5px 5px rgba(0,0,0,0.05);
 	border-radius: 4px;
 	position: relative;
+	animation: postAppear 0.5s cubic-bezier(0.86, 0, 0.07, 1);
+	opacity: 1;
+	transform: translate(0,0);
+}
+@keyframes postAppear{
+	from{
+		opacity: 0;
+		transform: translate(0, -7%);
+	}
 }
 .postContent{
 	margin: 0 15px 10px 39px;
@@ -25,6 +34,9 @@
 	width: 100%;
 	box-sizing: border-box;
 	margin-bottom: 6px;
+	animation: postAppear 0.5s cubic-bezier(0.86, 0, 0.07, 1);
+	opacity: 1;
+	transform: translate(0,0);
 }
 .comment *{
 	vertical-align: middle;

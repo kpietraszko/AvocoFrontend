@@ -39,11 +39,11 @@ const GroupEvents = (props) => {
 				}
 
 				)}
-			</ul>
 			<Link to="/addEvent" id={styles.newEventButton} className={styles.whiteRounded}>
 				<div className="material-icons">add_circle</div>
 				Dodaj wydarzenie
 			</Link>
+			</ul>
 		</div>
 	);
 };
@@ -57,7 +57,8 @@ const matchesSearch = (event, searchString) => {
 	
 	return event.eventName.toLowerCase().includes(searchStringLower) ||
 		month == searchStringLower ||
-		dayOfMonth == searchStringLower
+		dayOfMonth == searchStringLower ||
+		event.place.toLowerCase().includes(searchStringLower);
 }
 
 
