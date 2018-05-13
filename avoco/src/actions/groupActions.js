@@ -4,7 +4,8 @@ export const actionTypes = {
 	setGroupImage: "SET_GROUP_IMAGE",
 	setGroupPosts: "SET_GROUP_POSTS",
 	setJoined: "SET_JOINED",
-	setGroupEvents: "SET_GROUP_EVENTS"
+	setGroupEvents: "SET_GROUP_EVENTS",
+	clearGroupData: "CLEAR_GROUP_DATA"
 };
 
 export const actionCreators = {
@@ -33,5 +34,8 @@ export const actionCreators = {
 	setGroupEvents: (events) => ({
 		type: actionTypes.setGroupEvents,
 		events
+	}),
+	clearGroupData: () => ({
+		type: actionTypes.clearGroupData
 	})
 };

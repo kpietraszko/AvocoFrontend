@@ -29,5 +29,8 @@ export default handleActions({
 	[actionTypes.setGroupEvents]: (state, action) => ({
 		...state,
 		events: action.events
+	}),
+	[actionTypes.clearGroupData]: () => ({
+		undefined //powinno wyczyscic, ale trzeba przetestowac
 	})
 }, groupInitial);

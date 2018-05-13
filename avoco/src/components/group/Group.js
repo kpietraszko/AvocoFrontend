@@ -15,7 +15,7 @@ import replaceCoords from '../../services/replaceCoords';
 class Group extends Component { //dodac przycisk dolaczenia do grupy i jego api
 	constructor() {
 		super();
-		this.state = { searchString: ""};
+		this.state = { searchString: "" };
 	}
 
 	componentDidMount = () => {
@@ -26,12 +26,15 @@ class Group extends Component { //dodac przycisk dolaczenia do grupy i jego api
 	}
 	componentDidUpdate = (prevProps, prevState, snapshot) => {
 		if (prevProps.match.params.groupId !== this.props.match.params.groupId) {
-			this.props.setGroupImage(null);
+			this.props.clearGroupData();
 			this.getGroupDetails();
 			this.getPosts();
 			this.checkIfUserInGroup();
 			this.getEvents();
 		}
+	}
+	componentWillUnmount = () => {
+		this.props.clearGroupData();
 	}
 	getGroupDetails = () => {
 		const groupId = this.props.match.params.groupId;
@@ -70,6 +73,7 @@ class Group extends Component { //dodac przycisk dolaczenia do grupy i jego api
 			.catch((error) => console.log(error));
 	}
 	getEvents = () => {
+		console.log("getting events");
 		const groupId = this.props.match.params.groupId;
 		getEventsApi(groupId)
 			.then((response) => {
@@ -161,6 +165,7 @@ const mapDispatchToProps = (dispatch) => ({
 	setGroupPosts: (posts) => dispatch(groupActionCreators.setGroupPosts(posts)),
 	setJoined: (joined) => dispatch(groupActionCreators.setJoined(joined)),
 	updateGroups: (groups) => dispatch(userActionCreators.updateGroups(groups)),
-	setGroupEvents: (events) => dispatch(groupActionCreators.setGroupEvents(events))
+	setGroupEvents: (events) => dispatch(groupActionCreators.setGroupEvents(events)),
+	clearGroupData: () => dispatch(groupActionCreators.clearGroupData())
 });
 export default connect(mapStateToProps, mapDispatchToProps)(Group);
