@@ -1,12 +1,13 @@
 import React from 'react';
 import styles from './GroupTopPanel.module.css';
 
+
 const GroupTopPanel = (props) => {
 	return (
 		<div id={styles.topPanel}>
 			<div className={styles.main}>
-				<div id={styles.groupCover} className={props.groupImageUrl ? styles.groupCoverImage : styles.groupCoverEmpty} 
-					style={{ backgroundImage: `url(${props.groupImageUrl})`}}>
+				<div id={styles.groupCover} className={props.groupImageUrl ? styles.groupCoverImage : styles.groupCoverEmpty}
+					style={{ backgroundImage: `url(${props.groupImageUrl})` }}>
 					<h1>{props.groupName}</h1>
 				</div>
 				<div id={styles.groupInterests}>
@@ -22,8 +23,8 @@ const GroupTopPanel = (props) => {
 			</div>
 			<div className={`title ${styles.title}`}>
 				{props.groupDescription}
-				{!props.joined && <button id={styles.joinButton} onClick={props.handleJoin}>Dołącz</button>}
-				{props.joined && <button id={styles.joinButton} onClick={props.handleLeave}>Opuść</button>}
+				{!props.joined && <button id={styles.joinButton} onClick={props.showJoinModal}>Dołącz</button>}
+				{props.joined && <button id={styles.joinButton} onClick={props.showJoinModal}>Opuść</button>}
 			</div>
 		</div>
 	);

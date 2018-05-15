@@ -11,11 +11,14 @@ import { newPostApi, getPostsApi, newCommentApi, userInGroupApi, joinGroupApi, l
 import replaceImagesWithUrls from '../../services/replaceImagesWithUrls';
 import replaceDates from '../../services/replaceDates';
 import replaceCoords from '../../services/replaceCoords';
+import Modal from '../../componentsStateless/modal/Modal';
 
 class Group extends Component { //dodac przycisk dolaczenia do grupy i jego api
-	constructor() {
-		super();
-		this.state = { searchString: "" };
+	state = {
+		searchString: "",
+		modalJoinGroup: false,
+		modalRemovePost: false,
+		modalRemoveComment: false
 	}
 
 	componentDidMount = () => {
@@ -139,6 +142,14 @@ class Group extends Component { //dodac przycisk dolaczenia do grupy i jego api
 	render() {
 		return (
 			<React.Fragment>
+				{this.state.modalJoinGroup && !this.props.group.joined &&
+					<Modal question="Czy na pewno chcesz dołączyć do grupy?"
+						cancel={() => this.setState({ modalJoinGroup: false })}
+						confirm={this.handleJoin} />}
+				{this.state.modalJoinGroup && this.props.group.joined &&
+					<Modal question="Czy na pewno chcesz opuścić grupę?"
+						cancel={() => this.setState({ modalJoinGroup: false })}
+						confirm={this.handleLeave} />}
 				<GroupTopPanel
 					groupName={this.props.group.groupName}
 					groupDescription={this.props.group.groupDescription}
@@ -146,7 +157,8 @@ class Group extends Component { //dodac przycisk dolaczenia do grupy i jego api
 					groupImageUrl={this.props.group.imageUrl}
 					joined={this.props.group.joined}
 					handleJoin={this.handleJoin}
-					handleLeave={this.handleLeave} />
+					handleLeave={this.handleLeave}
+					showJoinModal={() => this.setState({ modalJoinGroup: true })} />
 				<div className={styles.main}>
 					<GroupPosts posts={this.props.group.posts} handleNewPost={this.handleNewPost} handleNewComment={this.handleNewComment} />
 					<GroupEvents events={this.props.group.events} handleSearchInput={this.handleSearchInput} searchString={this.state.searchString} />
