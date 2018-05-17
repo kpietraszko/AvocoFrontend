@@ -1,8 +1,9 @@
 import React from 'react';
-import styles from './Post.module.css';
 import Person from '../../../../componentsStateless/person/Person';
+import styles from './Post.module.css';
 
-const Post = (props) => { //dodać textarea komentarza
+const Post = (props) => {
+	const byLoggedUser = props.loggedUserId === props.post.userId;
 	return (
 		<React.Fragment> {/* potrzebne bo nie mozna na początku jsxa użyć { */}
 			{props.post && <li key={props.post.id} className={styles.post}>
@@ -12,12 +13,20 @@ const Post = (props) => { //dodać textarea komentarza
 					photoUrl={props.post.userImage}
 					background />
 				<div className={styles.postContent}>
+					{byLoggedUser && <div className={`material-icons ${styles.deleteButton}`}
+						onClick={() => props.showDeletePostModal(props.post.id)}>
+						delete
+					</div>}
 					<div className="whiteRounded">
 						{props.post.content}
 					</div>
-					<hr />
+					<hr />{/*  */}
 					{props.post.postComments.map((comment) =>
 						<div key={comment.id} className={`${styles.comment} whiteRounded`}>
+							{comment.userId === props.loggedUserId && <div className={`material-icons ${styles.deleteButton}`}
+								onClick={() => props.showDeleteCommentModal(comment.id)}>
+								delete
+					</div>}
 							<Person userId={comment.userId}
 								firstName={comment.firstName}
 								lastName={comment.lastName}

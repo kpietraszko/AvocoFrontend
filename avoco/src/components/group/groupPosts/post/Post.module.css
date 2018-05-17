@@ -64,3 +64,16 @@ form{
 .commentSubmit{
 	height: 30px;
 }
+.deleteButton{
+	position: absolute;
+	top: 11px;
+	right: 8px;
+	opacity: 0.65;
+	cursor: pointer;
+}
+.deleteButton:active{
+	transform: translate(0, 1px);
+}
+.comment .deleteButton{
+	font-size: 20px;
+}

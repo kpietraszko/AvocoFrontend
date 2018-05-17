@@ -25,10 +25,16 @@ export const newPostApi = (groupId, postContent) => {
 export const getPostsApi = (groupId) => {
     return axios.get(`/group/${groupId}/Posts`);
 }
+export const deletePostApi = (postId) => {
+    return axios.delete(`/group/deletePost/${postId}`);
+}
 export const newCommentApi = (postId, comment) => {
     var form = new FormData();
     form.append("comment", comment);
     return axios.post(`/group/AddComment/${postId}`, form);
+}
+export const deleteCommentApi = (commentId) => {
+    return axios.delete(`/group/deleteComment/${commentId}`);
 }
 export const userInGroupApi = (groupId) => {
     return axios.get(`/group/${groupId}/UserInGroup`);

@@ -2,7 +2,7 @@ import React from 'react';
 import styles from './GroupPosts.module.css';
 import Post from './post/Post';
 
-const GroupPosts = (props) => { 
+const GroupPosts = (props) => {
 	return (
 		<React.Fragment>
 			<ul id={styles.posts}>
@@ -11,7 +11,9 @@ const GroupPosts = (props) => {
 					<button type="submit" className={`${styles.button} material-icons`}>add_circle</button>
 				</form>
 				{props.posts && props.posts.map((post) =>
-					<Post key={post.id} post={post} handleNewComment={props.handleNewComment}/>
+					<Post key={post.id} post={post} handleNewComment={props.handleNewComment}
+						loggedUserId={props.loggedUserId} showDeletePostModal={props.showDeletePostModal}
+						showDeleteCommentModal={props.showDeleteCommentModal} />
 				)}
 			</ul>
 		</React.Fragment>

@@ -9,7 +9,6 @@ class Home extends Component {
 		return (
 			<div id={styles.container}>
 				{/* <Spinner size={40} /> */}
-				{this.state.modal && <Modal question="Czy na pewno?" cancel={() => this.setState({modal: false})}/>}
 			</div>
 		);
 	}

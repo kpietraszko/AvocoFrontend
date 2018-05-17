@@ -7,7 +7,7 @@ import { getGroupInfoApi, getGroupInterestsApi, getGroupImageApi } from '../../a
 import { actionCreators as groupActionCreators } from '../../actions/groupActions';
 import { actionCreators as userActionCreators } from '../../actions/userActions';
 import { connect } from 'react-redux';
-import { newPostApi, getPostsApi, newCommentApi, userInGroupApi, joinGroupApi, leaveGroupApi, getEventsApi } from '../../api/group';
+import { newPostApi, getPostsApi, newCommentApi, userInGroupApi, joinGroupApi, leaveGroupApi, getEventsApi, deletePostApi, deleteCommentApi } from '../../api/group';
 import replaceImagesWithUrls from '../../services/replaceImagesWithUrls';
 import replaceDates from '../../services/replaceDates';
 import replaceCoords from '../../services/replaceCoords';
@@ -17,8 +17,8 @@ class Group extends Component { //dodac przycisk dolaczenia do grupy i jego api
 	state = {
 		searchString: "",
 		modalJoinGroup: false,
-		modalRemovePost: false,
-		modalRemoveComment: false
+		modalDeletePost: false,
+		modalDeleteComment: false
 	}
 
 	componentDidMount = () => {
@@ -139,6 +139,34 @@ class Group extends Component { //dodac przycisk dolaczenia do grupy i jego api
 		const searchString = e.target.value;
 		this.setState({ searchString });
 	}
+	handleDeletePost = () => {
+		//console.log(`Removing post ${this.state.postToRemove}`);
+		if (!this.state.postToRemove) {
+			return;
+		}
+		deletePostApi(this.state.postToRemove)
+			.then(response => {
+				let posts = response.data;
+				replaceImagesWithUrls(posts);
+				this.props.setGroupPosts(posts);
+			})
+			.catch(error => console.log(error));
+		this.setState({ postToRemove: undefined });
+	}
+	handleDeleteComment = () => {
+		if (!this.state.commentToRemove) {
+			return;
+		}
+		deleteCommentApi(this.state.commentToRemove)
+			.then(response => {
+				let posts = response.data;
+				replaceImagesWithUrls(posts);
+				this.props.setGroupPosts(posts);
+			})
+			.catch(error => console.log(error));
+		this.setState({ commentToRemove: undefined });
+	}
+
 	render() {
 		return (
 			<React.Fragment>
@@ -150,17 +178,29 @@ class Group extends Component { //dodac przycisk dolaczenia do grupy i jego api
 					<Modal question="Czy na pewno chcesz opuścić grupę?"
 						cancel={() => this.setState({ modalJoinGroup: false })}
 						confirm={this.handleLeave} />}
+				{this.state.modalDeletePost &&
+					<Modal question="Czy na pewno chcesz usunąć post?"
+						cancel={() => this.setState({ modalDeletePost: false })}
+						confirm={this.handleDeletePost} />}
+				{this.state.modalDeleteComment &&
+					<Modal question="Czy na pewno chcesz usunąć komentarz?"
+						cancel={() => this.setState({ modalDeleteComment: false })}
+						confirm={this.handleDeleteComment} />}
 				<GroupTopPanel
 					groupName={this.props.group.groupName}
 					groupDescription={this.props.group.groupDescription}
 					groupInterests={this.props.group.interests}
 					groupImageUrl={this.props.group.imageUrl}
 					joined={this.props.group.joined}
-					handleJoin={this.handleJoin}
-					handleLeave={this.handleLeave}
 					showJoinModal={() => this.setState({ modalJoinGroup: true })} />
 				<div className={styles.main}>
-					<GroupPosts posts={this.props.group.posts} handleNewPost={this.handleNewPost} handleNewComment={this.handleNewComment} />
+					<GroupPosts
+						posts={this.props.group.posts}
+						handleNewPost={this.handleNewPost}
+						handleNewComment={this.handleNewComment}
+						loggedUserId={this.props.userId}
+						showDeletePostModal={postId => this.setState({ modalDeletePost: true, postToRemove: postId })}
+						showDeleteCommentModal={commentId => this.setState({ modalDeleteComment: true, commentToRemove: commentId })} />
 					<GroupEvents events={this.props.group.events} handleSearchInput={this.handleSearchInput} searchString={this.state.searchString} />
 				</div>
 			</React.Fragment>
@@ -168,7 +208,8 @@ class Group extends Component { //dodac przycisk dolaczenia do grupy i jego api
 	}
 }
 const mapStateToProps = (state) => ({
-	group: state.group
+	group: state.group,
+	userId: state.user.userId
 });
 const mapDispatchToProps = (dispatch) => ({
 	setGroupInfo: (id, groupName, groupDescription) => dispatch(groupActionCreators.setGroupInfo(id, groupName, groupDescription)),
