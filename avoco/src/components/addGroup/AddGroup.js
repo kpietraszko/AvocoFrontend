@@ -4,21 +4,28 @@ import { connect } from 'react-redux';
 //import { actionCreators as userActions } from '../../actions/userActions'; tu chyba trzeba zrobic wlasne akcje
 //import { getUserInfo, getFriends, getGroups, getPhoto, getInterests, addFriend, unfriend, setName, setRegion, setPhoto }
 import { createGroupApi } from '../../api/group';
+import Spinner from '../../componentsStateless/spinner/Spinner'; 
 
 class AddGroup extends React.Component {
 	constructor() {
 		super();
-		this.state = {};
+		this.state = {
+			isLoading: false
+		};
 	}
 
 	handleSubmit = (event) => {
 		event.preventDefault();
 		const form = event.target;
+		
+		/*{this.setState({spinner: true}) && <Spinner size={40}/>} */
+		this.setState({isLoading: true});
 
 		createGroupApi(form)
 			.then((response) => {
 				//moze dodac tu modal informujacy ze stworzono grupe
 				this.props.history.push(`/group/${response.data}`);
+				this.setState({ isLoading: false });
 			})
 			.catch((error) => {
 				console.log(error);
@@ -33,6 +40,7 @@ class AddGroup extends React.Component {
 
 	render = () => {
 		return (
+			this.state.isLoading ? <Spinner size ={40}/> :
 			<form id={styles.newGroupForm} onSubmit={this.handleSubmit}>
 				<div className={styles.background} style={{ backgroundImage: `url(${this.state.imageUrl})` }}>
 					<input name="groupName" className={styles.groupNameInput} placeholder="Wpisz nazwę grupy" minLength={5}/>
