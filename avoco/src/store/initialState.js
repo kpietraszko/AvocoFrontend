@@ -18,3 +18,6 @@ export const groupInitial = {
 	groupDescription: "",
 	groupInterests: []
 }
+export const homeInitial = {
+	posts: []
+}

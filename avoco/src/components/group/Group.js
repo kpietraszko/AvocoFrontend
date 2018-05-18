@@ -15,6 +15,7 @@ import Modal from '../../componentsStateless/modal/Modal';
 
 class Group extends Component { //dodac przycisk dolaczenia do grupy i jego api
 	state = {
+		loading: true,
 		searchString: "",
 		modalJoinGroup: false,
 		modalDeletePost: false,
@@ -73,7 +74,8 @@ class Group extends Component { //dodac przycisk dolaczenia do grupy i jego api
 					this.props.setGroupPosts(posts);
 				}
 			})
-			.catch((error) => console.log(error));
+			.catch((error) => console.log(error))
+			.finally(() => this.setState({ loading: false }));
 	}
 	getEvents = () => {
 		console.log("getting events");
@@ -194,13 +196,14 @@ class Group extends Component { //dodac przycisk dolaczenia do grupy i jego api
 					joined={this.props.group.joined}
 					showJoinModal={() => this.setState({ modalJoinGroup: true })} />
 				<div className={styles.main}>
-					<GroupPosts
-						posts={this.props.group.posts}
-						handleNewPost={this.handleNewPost}
-						handleNewComment={this.handleNewComment}
-						loggedUserId={this.props.userId}
-						showDeletePostModal={postId => this.setState({ modalDeletePost: true, postToRemove: postId })}
-						showDeleteCommentModal={commentId => this.setState({ modalDeleteComment: true, commentToRemove: commentId })} />
+						<GroupPosts
+							loading={this.state.loading}
+							posts={this.props.group.posts}
+							handleNewPost={this.handleNewPost}
+							handleNewComment={this.handleNewComment}
+							loggedUserId={this.props.userId}
+							showDeletePostModal={postId => this.setState({ modalDeletePost: true, postToRemove: postId })}
+							showDeleteCommentModal={commentId => this.setState({ modalDeleteComment: true, commentToRemove: commentId })} />
 					<GroupEvents events={this.props.group.events} handleSearchInput={this.handleSearchInput} searchString={this.state.searchString} />
 				</div>
 			</React.Fragment>

@@ -6,3 +6,9 @@
 	align-items: center;
 	justify-content: center;
 }
+.postsNews{
+	margin-top: 20px;
+	min-width: 67%;
+    max-width: 85%;
+    flex-shrink: 1;
+}

@@ -9,6 +9,12 @@
 	opacity: 1;
 	transform: translate(0,0);
 }
+.feedPost{
+	margin: 0;
+	border-bottom-right-radius: 0;
+	border-bottom-left-radius: 0;
+	border-bottom: 1px solid transparent;
+}
 @keyframes postAppear{
 	from{
 		opacity: 0;

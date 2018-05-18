@@ -31,6 +31,6 @@ export default handleActions({
 		events: action.events
 	}),
 	[actionTypes.clearGroupData]: () => ({
-		undefined //powinno wyczyscic, ale trzeba przetestowac
+		undefined
 	})
 }, groupInitial);
