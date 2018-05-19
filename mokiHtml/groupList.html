@@ -1,0 +1,276 @@
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link href="https://fonts.googleapis.com/css?family=Krona+One|Muli|Material+Icons|Roboto" rel="stylesheet">
+    <title>Avoco</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/navbar.css">
+    <link rel="stylesheet" href="css/eventPanel.css">
+    <link rel="stylesheet" href="css/home.css">
+</head>
+
+<body>
+    <div id="navbar">
+        <div id="leftAlignedItems">
+            <div id="logo">AVOCO</div>
+            <button id="homeButton" class="material-icons navbarButton">
+                <a href="home.html">home</a>
+            </button>
+            <button id="messagesButton" class="material-icons navbarButton">
+                <a href="chat.html">message</a>
+            </button>
+            <button id="addButton" class="material-icons navbarButton">
+                <a href="addGroup.html">add_circle</a>
+            </button>
+				  	<button id="listButton" class="material-icons navbarButton">
+                <a href="groupList.html">view_list</a>
+            </button>
+        </div>
+        <div id="rightAlignedItems">
+            <div id="loggedUser">
+                    <a href="profile.html" style="display:flex;align-items:center;">
+                        <div class="material-icons symbolCircle">person</div>
+                        Andrzej Zalogowany
+                    </a>
+                </div>
+
+            <div class="searchBar">
+                <input placeholder="Szukaj..."></input>
+                <div class="material-icons searchIcon primaryColor">search</div>
+            </div>
+            <button class="logOutButton navbarButton">
+                <a href="login.html">
+                    <span id="logOutIcon" class="material-icons">exit_to_app</span>
+                    Wyloguj
+                </a>
+            </button>
+        </div>
+    </div>
+    <div id="container">
+        <div id="leftPanel">
+            <h2>Twoi znajomi</h2>
+            <ul id="friendsList">
+                <li class="person">
+                    <a href="profile.html">
+                        <div class="material-icons symbolCircle">person</div>
+                        <span>Joanna Kowalska</span>
+                    </a>
+                </li>
+                <li class="person">
+                    <a href="profile.html">
+                        <div class="material-icons symbolCircle">person</div>
+                        <span>Jadwiga Ćwir</span>
+                    </a>
+                </li>
+                <li class="person">
+                    <a href="profile.html">
+                        <div class="material-icons symbolCircle">person</div>
+                        <span>Marek Kupczyk</span>
+                    </a>
+                </li>
+                <li class="person">
+                    <a href="profile.html">
+                        <div class="material-icons symbolCircle">person</div>
+                        <span>Michał Bosy</span>
+                    </a>
+                </li class="person">
+            </ul>
+            <hr>
+            <h2>Twoje grupy</h2>
+            <ul id="groupsList">
+                <li class="group">
+                    <!-- <div class="material-icons symbolCircle">local_movies</div> -->
+                    <a href="group.html">Militaria</a>
+                </li>
+                <li class="group">
+                    <!-- <div class="material-icons symbolCircle">local_movies</div> -->
+                    <a href="group.html">Gotowanie w lesie</a>
+                </li>
+                <li class="group">
+                    <!-- <div class="material-icons symbolCircle">local_movies</div> -->
+                    <a href="group.html">Fotografowie z Olsztyna</a>
+                </li>
+            </ul>
+
+        </div>
+        <div id="middleScreen">
+           <div class="searchGroupBar">
+                <input placeholder="Szukaj grup..."></input>
+                <div class="material-icons searchGroupIcon primaryColor">search</div>
+            </div>
+								<ul id="groupList">
+                <li class="groupFromList">
+                    <a href="group.html">
+                        <span>Militaria</span>
+                    </a>
+                </li>
+                <li class="groupFromList">
+                    <a href="group.html">
+                        <span>Gotowanie w lesie</span>
+                    </a>
+                </li>
+                <li class="groupFromList">
+                    <a href="group.html">
+                        <span>Studiowanie na WMII</span>
+                    </a>
+                </li>
+                <li class="groupFromList">
+                    <a href="group.html">
+                        <span>Oglądanie majora</span>
+                    </a>
+                </li>
+									<li class="groupFromList">
+                    <a href="group.html">
+                        <span>Militaria</span>
+                    </a>
+                </li>
+                <li class="groupFromList">
+                    <a href="group.html">
+                        <span>Gotowanie w lesie</span>
+                    </a>
+                </li>
+                <li class="groupFromList">
+                    <a href="group.html">
+                        <span>Studiowanie na WMII</span>
+                    </a>
+                </li>
+                <li class="groupFromList">
+                    <a href="group.html">
+                        <span>Oglądanie majora</span>
+                    </a>
+                </li>
+									<li class="groupFromList">
+                    <a href="group.html">
+                        <span>Militaria</span>
+                    </a>
+                </li>
+                <li class="groupFromList">
+                    <a href="group.html">
+                        <span>Gotowanie w lesie</span>
+                    </a>
+                </li>
+                <li class="groupFromList">
+                    <a href="group.html">
+                        <span>Studiowanie na WMII</span>
+                    </a>
+                </li>
+                <li class="groupFromList">
+                    <a href="group.html">
+                        <span>Oglądanie majora</span>
+                    </a>
+									</li>
+                <li class="groupFromList">
+                    <a href="group.html">
+                        <span>Militaria</span>
+                    </a>
+                </li>
+                <li class="groupFromList">
+                    <a href="group.html">
+                        <span>Gotowanie w lesie</span>
+                    </a>
+                </li>
+                <li class="groupFromList">
+                    <a href="group.html">
+                        <span>Studiowanie na WMII</span>
+                    </a>
+                </li>
+                <li class="groupFromList">
+                    <a href="group.html">
+                        <span>Oglądanie majora</span>
+                    </a>
+                </li>
+									<li class="groupFromList">
+                    <a href="group.html">
+                        <span>Militaria</span>
+                    </a>
+                </li>
+                <li class="groupFromList">
+                    <a href="group.html">
+                        <span>Gotowanie w lesie</span>
+                    </a>
+                </li>
+                <li class="groupFromList">
+                    <a href="group.html">
+                        <span>Studiowanie na WMII</span>
+                    </a>
+                </li>
+                <li class="groupFromList">
+                    <a href="group.html">
+                        <span>Oglądanie majora</span>
+                    </a>
+                </li>
+									<li class="groupFromList">
+                    <a href="group.html">
+                        <span>Militaria</span>
+                    </a>
+                </li>
+                <li class="groupFromList">
+                    <a href="group.html">
+                        <span>Gotowanie w lesie</span>
+                    </a>
+                </li>
+                <li class="groupFromList">
+                    <a href="group.html">
+                        <span>Studiowanie na WMII</span>
+                    </a>
+                </li>
+                <li class="groupFromList">
+                    <a href="group.html">
+                        <span>Oglądanie majora</span>
+                    </a>
+                </li>
+            	</ul>
+        </div>
+        <div id="rightPanel">
+            <h2>Twoje wydarzenia</h2>
+            <ul class="eventList">
+                <li class="event">
+                    <div class="main">
+                        <div class="date">
+                            <div class="whiteRounded">
+                                <div class="material-icons">event</div>
+                                16
+                                <div class="dateDetails">
+                                    <div class="month">MAR</div>
+                                    <div class="time">12:00</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="interested">
+                            <div>
+                                <div>Zainteresowani:</div>
+                                <ul class="interestedList">
+                                    <a href="profile.html">
+                                        <li title="Michał Bosy" class="material-icons symbolCircle">person</li>
+                                    </a>
+                                    <a href="profile.html">
+                                        <li title="Marek Kupczyk" class="material-icons symbolCircle">person</li>
+                                    </a>
+                                    <a href="profile.html">
+                                        <li title="Janusz Fotograf" class="material-icons symbolCircle">person</li>
+                                    </a>
+                                    <span>+4</span>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="groupName">
+                            <a href="group.html">
+                                <div class="whiteRounded">Fotografowie z Olsztyna</div>
+                            </a>
+                        </div>
+                        <div class="location">
+                            <div class="whiteRounded">
+                                <div class="material-icons">place</div>Olsztyn</div>
+                        </div>
+                    </div>
+                    <a class="title" href="event.html">Zlot miłośników krajobrazów</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</body>
+
+</html>
