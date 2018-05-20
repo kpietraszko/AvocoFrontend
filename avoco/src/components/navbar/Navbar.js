@@ -48,6 +48,7 @@ class Navbar extends Component {
 					<NavbarButton title="Strona główna" icon="home" path="/" />
 					<NavbarButton title="Wiadomości" icon="message" path="/" />
 					<NavbarButton title="Stwórz grupę" icon="add_circle" path="/addGroup" />
+					<NavbarButton title="Lista grup" icon="view_list" path="/groupList" />
 				</div>
 				<div id={styles.rightAlignedItems}>
 					<Person userId={this.props.userId} firstName={this.props.firstName} lastName={this.props.lastName} photoUrl={this.props.photoUrl}/>
