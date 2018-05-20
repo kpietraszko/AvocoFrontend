@@ -9,7 +9,7 @@
 	align-items: center;
 	background-color: rgba(0,0,0,0.5);
 	z-index: 10000;
-	animation: fadeIn 0.5s;
+	animation: fadeIn 0.3s;
 }
 #modal{
 	position: relative;

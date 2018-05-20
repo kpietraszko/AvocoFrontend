@@ -11,11 +11,12 @@ import ProfileUserDetails from './profileUserDetails/ProfileUserDetails';
 import ProfileButtons from './profileButtons/ProfileButtons';
 import ProfileInterests from './profileInterests/ProfileInterests';
 import ProfileGroups from './profileGroups/ProfileGroups';
+import Modal from '../../componentsStateless/modal/Modal';
 
 class Profile extends React.Component {
-	constructor() {
-		super();
-		this.state = {}
+	state = {
+		confirmingRemoveFriend: false,
+		confirmingAddFriend: false
 	}
 	componentDidMount = () => {
 		this.getUserInfo();
@@ -98,26 +99,21 @@ class Profile extends React.Component {
 			.then((response) => {
 				console.log(response);
 				this.getFriends();
-				
 			})
 			.catch((error) => {
 				console.log(error);
 			});
 	}
 	handleUnfriendClick = () => {
-		if (this.state.confirmingRemoveFriend) {
-			unfriend(this.props.match.params.userId)
-				.then(() => {
-					this.setState({ confirmingRemoveFriend: false });
-					this.getFriends();
-					this.checkIfFriend();
-				})
-				.catch((error) => {
-					console.log(error);
-				});
-		} else {
-			this.setState({ confirmingRemoveFriend: true });
-		}
+		unfriend(this.props.match.params.userId)
+			.then(() => {
+				this.setState({ confirmingRemoveFriend: false });
+				this.getFriends();
+				this.checkIfFriend();
+			})
+			.catch((error) => {
+				console.log(error);
+			});
 	}
 	toggleEditName = () => this.setState({ editingName: !this.state.editingName });
 
@@ -152,21 +148,29 @@ class Profile extends React.Component {
 	render = () => {
 		return (
 			<React.Fragment>
+				{this.state.confirmingRemoveFriend &&
+					<Modal question="Czy na pewno chcesz usunąć znajomego?"
+						confirm={this.handleUnfriendClick}
+						cancel={() => this.setState({ confirmingRemoveFriend: false })} />}
+				{this.state.confirmingAddFriend &&
+					<Modal question="Czy na pewno chcesz dodać znajomego?"
+						confirm={this.handleAddFriendClick}
+						cancel={() => this.setState({ confirmingAddFriend: false })} />}
 				<div id={styles.userData}>
 					{this.props.profile && <ProfilePhoto photoUrl={this.props.profile.photoUrl}
 						isLoggedProfile={this.props.profile.isLoggedProfile} handleImageUpload={this.handleImageUpload} />}
 					<div id={styles.userDetails}>
 						{this.props.profile && <ProfileUserDetails {...this.props.profile} editingName={this.state.editingName}
-							handleNameChanged={this.handleNameChanged} handleRegionChanged={this.handleRegionChanged} regions={Regions} 
-							toggleEditName={this.toggleEditName}/>}
+							handleNameChanged={this.handleNameChanged} handleRegionChanged={this.handleRegionChanged} regions={Regions}
+							toggleEditName={this.toggleEditName} />}
 						{this.props.profile && <ProfileButtons isLoggedProfile={this.props.profile.isLoggedProfile} isFriend={this.props.profile.isFriend}
-							confirmingRemoveFriend={this.state.confirmingRemoveFriend} handleUnfriendClick={this.handleUnfriendClick}
-							handleAddFriendClick={this.handleAddFriendClick} />}
+							handleUnfriendClick={() => this.setState({ confirmingRemoveFriend: true })}
+							handleAddFriendClick={() => this.setState({ confirmingAddFriend: true })} />}
 					</div>
 				</div>
 				<div className={styles.interestsAndGroups}>
 					{this.props.profile && <ProfileInterests interests={this.props.profile.interests} isLoggedProfile={this.props.profile.isLoggedProfile}
-						getInterests={this.getInterests}/>}
+						getInterests={this.getInterests} />}
 					{this.props.profile && <ProfileGroups groups={this.props.profile.groups} />}
 				</div>
 			</React.Fragment>
