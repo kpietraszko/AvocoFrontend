@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
-import styles from './SearchGroupListBar.module.css';
+import styles from './GroupSearchBar.module.css';
 import { searchInterests, addInterest } from '../../api/user';
 
-class SearchGroupListBar extends Component {
+class GroupSearchBar extends Component {
 	constructor() { //TEMP
 		super();
 		this.state = {
@@ -69,4 +69,4 @@ class SearchGroupListBar extends Component {
 	}
 }
 
-export default SearchGroupListBar;
+export default GroupSearchBar;
