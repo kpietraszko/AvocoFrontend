@@ -21,3 +21,6 @@ export const groupInitial = {
 export const homeInitial = {
 	posts: []
 }
+export const groupListInitial = {
+	groups: []
+}

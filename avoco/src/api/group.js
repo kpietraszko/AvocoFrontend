@@ -48,3 +48,6 @@ export const leaveGroupApi = (groupId) => {
 export const getEventsApi = (groupId) => {
     return axios.get(`/group/${groupId}/Events`);
 }
+export const getAllGroupsApi = () => {
+    return axios.get("/group/AllGroups");
+}
