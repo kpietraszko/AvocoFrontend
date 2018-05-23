@@ -9,6 +9,7 @@ import Group from "../../components/group/Group";
 import Home from '../../components/home/Home';
 import GroupList from '../../components/groupList/GroupList';
 import styles from './Main.module.css';
+import AddEvent from "../../components/addEvent/AddEvent";
 
 const Main = () => {
 	return (
@@ -23,6 +24,7 @@ const Main = () => {
 						<Route exact path="/addGroup" component={AddGroup} />
 						<Route path="/group/:groupId" component={Group} />
 						<Route exact path="/groupList" component={GroupList} />
+						<Route path="/addEvent" component={AddEvent} /> {/*zmienic na groupId, narazie testy */}
 					</Switch>
 				</div>
 				<RightPanel />

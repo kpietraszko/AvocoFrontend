@@ -26,7 +26,7 @@ class AddEvent extends React.Component {
 						<textarea placeholder="Wprowadź opis wydarzenia" rows="3"></textarea>
 						<h2>Wybierz miejsce wydarzenia</h2>
 						<div id={styles.map}>
-							<iframe frameborder="0" style="border:0" src="https://www.google.com/maps/embed/v1/place?q=place_id:ChIJxxkUBy154kYRD8JUzyaBahA&key=AIzaSyAe_x-NCWFqmMdoudhr8pBb7QhJo8p0y9s"
+							<iframe id={styles.mapSize} frameborder="0" style={{ border: 0}} src="https://www.google.com/maps/embed/v1/place?q=place_id:ChIJxxkUBy154kYRD8JUzyaBahA&key=AIzaSyAe_x-NCWFqmMdoudhr8pBb7QhJo8p0y9s"
 							 allowfullscreen></iframe>
 						</div>
 					</div>
