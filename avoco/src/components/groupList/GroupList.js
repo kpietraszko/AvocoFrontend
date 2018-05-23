@@ -1,22 +1,21 @@
 import React from 'react';
 import styles from './GroupList.module.css';
 import { connect } from 'react-redux';
-import SearchGroupListBar from '../../components/searchGroupListBar/SearchGroupListBar';
 import Spinner from '../../componentsStateless/spinner/Spinner'; 
+import { Link } from 'react-router-dom';
 
 class GroupList extends React.Component {
 	constructor() {
 		super();
-		this.state = {
-			isLoading: false
-		};
+		this.state = {};
 	}
 
 	render = () => {
 		return (
             <div className={styles.searchGroupBar}>
-                    <SearchGroupListBar />
+                    {/* wyszukiwarka frontowa */}
                     <ul id={styles.groupList}>
+                    
                     <li className={styles.groupFromList}>
                         <a href="group.html">
                             <span>Militaria</span>
@@ -42,4 +41,15 @@ class GroupList extends React.Component {
 		);
 	}
 };
+
+{/* const matchesSearch = (event, searchString) => {
+	if (!searchString || (searchString.length < 3 && isNaN(searchString))) {
+		return true;
+	}
+	const searchStringLower = searchString.toLowerCase();
+	
+	return event.eventName.toLowerCase().includes(searchStringLower) ||
+}  */}
+
+
 export default GroupList;
