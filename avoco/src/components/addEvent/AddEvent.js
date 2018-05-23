@@ -17,21 +17,21 @@ class AddEvent extends React.Component {
 				<h1>Nowe wydarzenie w grupie Militaria</h1>
 				<input id={styles.eventNameInput} placeholder="Podaj nazwę wydarzenia" />
 				<div id={styles.eventDetailsFlex}>
-					<div id={styles.dateTime} className={styles.whiteRounded}>
+					<div id={styles.dateTime}>
 						<h3>Wprowadź datę i godzinę</h3>
 						<input type="date" />
 						<input type="time" />
 					</div>
-					<div id={styles.descMap} className={styles.whiteRounded}>
-						<textarea placeholder="Wprowadź opis wydarzenia" rows="3"></textarea>
-						<h2>Wybierz miejsce wydarzenia</h2>
-						<div id={styles.map}>
-							<iframe id={styles.mapSize} frameborder="0" style={{ border: 0}} src="https://www.google.com/maps/embed/v1/place?q=place_id:ChIJxxkUBy154kYRD8JUzyaBahA&key=AIzaSyAe_x-NCWFqmMdoudhr8pBb7QhJo8p0y9s"
-							 allowfullscreen></iframe>
-						</div>
+					<div id={styles.descMap}>
+						<textarea placeholder="Wprowadź opis wydarzenia" rows="3" ></textarea>
 					</div>
 				</div>
-				<input type="submit" value="Utwórz" />
+                <h2 id={styles.mapHeader}>Wybierz miejsce wydarzenia</h2>
+                <div id={styles.map} >
+							<iframe id={styles.mapSize} frameborder="0" style={{ border: 0}} src="https://www.google.com/maps/embed/v1/place?q=place_id:ChIJxxkUBy154kYRD8JUzyaBahA&key=AIzaSyAe_x-NCWFqmMdoudhr8pBb7QhJo8p0y9s"
+							 allowfullscreen></iframe>
+				</div>
+				<input id={styles.createEventButton} className="submitButtonGreen" type="submit" value="Utwórz" />
 			</form>
 		);
 	}
