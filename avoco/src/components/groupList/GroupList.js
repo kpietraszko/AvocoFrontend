@@ -1,6 +1,7 @@
 import React from 'react';
 import styles from './GroupList.module.css';
 import { connect } from 'react-redux';
+import SearchGroupListBar from '../../components/searchGroupListBar/SearchGroupListBar';
 import Spinner from '../../componentsStateless/spinner/Spinner'; 
 
 class GroupList extends React.Component {
@@ -15,7 +16,7 @@ class GroupList extends React.Component {
 		return (
             <div className={styles.searchGroupBar}>
                     <SearchGroupListBar />
-                    <ul id={style.groupList}>
+                    <ul id={styles.groupList}>
                     <li className={styles.groupFromList}>
                         <a href="group.html">
                             <span>Militaria</span>

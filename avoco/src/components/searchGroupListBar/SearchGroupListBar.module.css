@@ -3,6 +3,7 @@
     align-items: center;
     width: 200px;
     position: relative;
+    left: -100px;
 }
 .searchBar>input{
     padding-right: 25px;

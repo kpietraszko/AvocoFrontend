@@ -7,6 +7,7 @@ import LeftPanel from '../../components/leftPanel/LeftPanel';
 import RightPanel from '../../components/rightPanel/RightPanel';
 import Group from "../../components/group/Group";
 import Home from '../../components/home/Home';
+import GroupList from '../../components/groupList/GroupList';
 import styles from './Main.module.css';
 
 const Main = () => {
@@ -21,6 +22,7 @@ const Main = () => {
 						<Route path="/profile/:userId" component={Profile} />
 						<Route exact path="/addGroup" component={AddGroup} />
 						<Route path="/group/:groupId" component={Group} />
+						<Route exact path="/groupList" component={GroupList} />
 					</Switch>
 				</div>
 				<RightPanel />

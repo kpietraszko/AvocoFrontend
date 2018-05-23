@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import styles from './searchGroupListBar.module.css';
+import styles from './SearchGroupListBar.module.css';
 import { searchInterests, addInterest } from '../../api/user';
 
 class SearchGroupListBar extends Component {
@@ -34,12 +34,12 @@ class SearchGroupListBar extends Component {
 				this.props.getInterests();
 			});
 	}
-	handleCreateClick = () => {
+	/* handleCreateClick = () => {
 		addInterest(this.state.searchText)
 			.then(() => {
 				this.props.getInterests();
 			});
-	}
+	} */
 	handleBlur = () => {
 		setTimeout(() => {
 			this.setState({ resultsHidden: true });
@@ -48,7 +48,7 @@ class SearchGroupListBar extends Component {
 	render() {
 		return (
 			<div className={styles.searchBar} onBlur={this.handleBlur}>
-				<input placeholder="Szukaj..." value={this.state.searchText} onInput={this.handleInput}
+				<input placeholder="Szukaj grup..." value={this.state.searchText} onInput={this.handleInput}
 					onKeyUp={this.handleKeyUp} className={styles.searchInput}></input>
 				<div className={`material-icons primaryColor ${styles.searchIcon}`}>search</div>
 				{this.state.searchText.length >= 2 && !this.state.resultsHidden &&
@@ -58,11 +58,11 @@ class SearchGroupListBar extends Component {
 								{result.interestName}
 							</li>
 						)}
-						{this.state.searchText.length >= 2 && this.state.searchResults.length === 0 &&
+						{/* {this.state.searchText.length >= 2 && this.state.searchResults.length === 0 &&
 							<li onClick={() => this.handleCreateClick()}>
 								<strong>Stwórz</strong>
 								&nbsp;{this.state.searchText}
-							</li>}
+						</li>} */} 
 					</ul>}
 			</div>
 		);
