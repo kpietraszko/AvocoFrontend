@@ -267,13 +267,10 @@ li>.symbolCircle{
 		right: 25px;
 }
 
-.logOutButton{
-    margin-right: 0.5%;
-    font-size: inherit;
-    cursor: pointer;
-}
-.logOutButton>a{
-    display:flex;
+#groupList {
+    margin-top: 40px;
+    display: flex;
+    flex-flow: column;
     align-items: center;
 }
 

@@ -4,35 +4,41 @@ import { connect } from 'react-redux';
 import GroupSearchBar from '../../components/groupSearchBar/GroupSearchBar';
 import Spinner from '../../componentsStateless/spinner/Spinner';
 import { Link } from 'react-router-dom';
+import { getAllGroupsApi } from '../../api/group';
+import { actionCreators } from '../../actions/groupListActions';
 
 class GroupList extends React.Component {
     state = {
         isLoading: false
+    }
+    componentDidMount = () => {
+        getAllGroupsApi()
+            .then(response => {
+                this.props.setGroupList(response.data);
+            })
+            .catch(error => console.log(error));
     }
     render = () => {
         return (
             <div className={styles.searchGroupBar}>
                 <GroupSearchBar />
                 <ul id={styles.groupList}>
-                    <li className={styles.groupFromList}>
-                        <Link to="/group" className={styles.groupLink}>
-                            Militaria
-                        </Link>
-                    </li>
+                    {this.props.groups && this.props.groups.map((group) =>
+                        <li key={group.id} className={styles.groupFromList} title={group.groupDescription}>
+                            <Link to={`/group/${group.id}`} className={styles.groupLink}>
+                                {group.groupName}
+                            </Link>
+                        </li>
+                    )}
                 </ul>
             </div>
         );
     }
 };
-
-{/* const matchesSearch = (event, searchString) => {
-	if (!searchString || (searchString.length < 3 && isNaN(searchString))) {
-		return true;
-	}
-	const searchStringLower = searchString.toLowerCase();
-	
-	return event.eventName.toLowerCase().includes(searchStringLower) ||
-}  */}
-
-
-export default GroupList;
+const mapStateToProps = state => ({
+    groups: state.groupList.groups
+});
+const mapDispatchToProps = dispatch => ({
+    setGroupList: (groups) => dispatch(actionCreators.setGroupList(groups))
+});
+export default connect(mapStateToProps, mapDispatchToProps)(GroupList);

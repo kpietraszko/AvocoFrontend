@@ -4,9 +4,10 @@ import user from './userReducer';
 import profile from './profileReducer';
 import group from './groupReducer';
 import home from './homeReducer';
+import groupList from './groupListReducer';
 import { actionTypes } from '../../actions/authenticationActions'
 
-const rootReducer = combineReducers({ authentication, user, profile, group, home })
+const rootReducer = combineReducers({ authentication, user, profile, group, home, groupList })
 export default (state, action) => {
 	if (action.type === actionTypes.unauthorize) {
 		state = undefined
