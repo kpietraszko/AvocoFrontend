@@ -22,9 +22,9 @@ const Main = () => {
 						<Route exact path="/" component={Home}/>
 						<Route path="/profile/:userId" component={Profile} />
 						<Route exact path="/addGroup" component={AddGroup} />
-						<Route path="/group/:groupId" component={Group} />
+						<Route exact path="/group/:groupId" component={Group} />
 						<Route exact path="/groupList" component={GroupList} />
-						<Route path="/addEvent" component={AddEvent} /> {/*zmienic na groupId, narazie testy */}
+						<Route exact path="/group/:groupId/addEvent" component={AddEvent} />
 					</Switch>
 				</div>
 				<RightPanel />

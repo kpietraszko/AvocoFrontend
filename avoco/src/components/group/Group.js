@@ -204,7 +204,7 @@ class Group extends Component { //dodac przycisk dolaczenia do grupy i jego api
 							loggedUserId={this.props.userId}
 							showDeletePostModal={postId => this.setState({ modalDeletePost: true, postToRemove: postId })}
 							showDeleteCommentModal={commentId => this.setState({ modalDeleteComment: true, commentToRemove: commentId })} />
-					<GroupEvents events={this.props.group.events} handleSearchInput={this.handleSearchInput} searchString={this.state.searchString} />
+					<GroupEvents events={this.props.group.events} handleSearchInput={this.handleSearchInput} searchString={this.state.searchString} groupId={this.props.group.id} />
 				</div>
 			</React.Fragment>
 		);

@@ -13,7 +13,7 @@ const defaultPosition = {
 class AddEvent extends Component {
 	state = {
 		address: "Olsztyn",
-		position: ""
+		position: {}
 	}
 
 	handleLocationChange = ({ position, address }) => {
@@ -23,14 +23,19 @@ class AddEvent extends Component {
 	handleSubmit = (e) => {
 		e.preventDefault();
 		const form = e.target;
-		createApi(form, /* brakuje mi id grupy, zmienic routing */)
+		createApi(form, this.props.match.params.groupId, this.state.position)
+			.then(response => {
+				this.props.history.push(`/group/${this.props.match.params.groupId}`);
+				alert("Utworzono wydarzenie");
+			})
+			.catch(error => console.log(error));
 	}
 
 	render = () => {
 		return (
-			<form id={styles.newEventForm} onSubmit={this.handleSubmit}>
+			<form id={styles.newEventForm} onSubmit={(e) => this.handleSubmit(e)}>
 				<h1>Nowe wydarzenie w grupie Militaria</h1>
-				<input id={styles.eventNameInput} name="EventName" placeholder="Podaj nazwę wydarzenia" required />
+				<input id={styles.eventNameInput} name="eventName" placeholder="Podaj nazwę wydarzenia" required minLength={3}/>
 				<div id={styles.eventDetailsFlex}>
 					<div id={styles.dateTime}>
 						<h3>Wprowadź datę i godzinę</h3>
@@ -38,7 +43,7 @@ class AddEvent extends Component {
 						<input name="timeInput" type="time" />
 					</div>
 					<div id={styles.descMap}>
-						<textarea name="EventDescription" placeholder="Wprowadź opis wydarzenia" rows="3" ></textarea>
+						<textarea name="eventDescription" placeholder="Wprowadź opis wydarzenia" rows="3" ></textarea>
 					</div>
 				</div>
 				<h2 id={styles.mapHeader}>Wybierz miejsce wydarzenia</h2>
