@@ -42,7 +42,7 @@ class AddEvent extends React.Component {
 					</div>
 				</div>
                 <h2 id={styles.mapHeader}>Wybierz miejsce wydarzenia</h2>
-				<h1>{this.state.address}</h1>
+				<h3>{this.state.address}</h3>
 					<LocationPicker
 						containerElement={<div id={styles.map} />}
 						mapElement={<div id={styles.mapSize} />}
