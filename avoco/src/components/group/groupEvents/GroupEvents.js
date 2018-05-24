@@ -14,6 +14,10 @@ const GroupEvents = (props) => {
 				<div className={`material-icons ${styles.searchIcon} primaryColor`}>search</div>
 			</div>
 			<ul className={styles.eventList}>
+				<Link to={`/group/${props.groupId}/addEvent`} id={styles.newEventButton} className={styles.whiteRounded}>
+					<div className="material-icons">add_circle</div>
+					Dodaj wydarzenie
+			</Link>
 				{props.events && props.events.map((event) => {
 					return matchesSearch(event, props.searchString) && <li key={event.id} className={styles.event}>
 						<div className={styles.main}>
@@ -39,10 +43,6 @@ const GroupEvents = (props) => {
 				}
 
 				)}
-			<Link to="/addEvent" id={styles.newEventButton} className={styles.whiteRounded}>
-				<div className="material-icons">add_circle</div>
-				Dodaj wydarzenie
-			</Link>
 			</ul>
 		</div>
 	);
@@ -54,7 +54,7 @@ const matchesSearch = (event, searchString) => {
 	const searchStringLower = searchString.toLowerCase();
 	const month = moment(event.eventDateTime).format("MMM");
 	const dayOfMonth = moment(event.eventDateTime).format("DD");
-	
+
 	return event.eventName.toLowerCase().includes(searchStringLower) ||
 		month == searchStringLower ||
 		dayOfMonth == searchStringLower ||

@@ -1,13 +1,13 @@
 import axios from 'axios';
 
-export const createApi = (form, groupId, lat, lng) => {
+export const createApi = (form, groupId, location) => {
 	const formData = new FormData();
 	formData.append("EventName", form.eventName.value);
 	formData.append("EventDescription", form.eventDescription.value);
-	const dateTime = new Date(form.dateInput + "T" + form.timeInput);
+	const dateTime = new Date(form.dateInput.value + "T" + form.timeInput.value).toISOString();
 	formData.append("EventDateTime", dateTime);
-	formData.append("EventLocationLat", lat);
-	formData.append("EventLocationLng", lng);
+	formData.append("EventLocationLat", location.lat);
+	formData.append("EventLocationLng", location.lng);
 	
-	axios.post(`/event/Create/${groupId}`, formData)
+	return axios.post(`/event/Create/${groupId}`, formData);
 }
