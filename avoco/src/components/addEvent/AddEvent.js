@@ -3,6 +3,7 @@ import styles from './AddEvent.module.css';
 import { connect } from 'react-redux';
 import Spinner from '../../componentsStateless/spinner/Spinner';
 import LocationPicker from 'react-location-picker';
+import { createApi } from '../../api/event';
 
 const defaultPosition = {
 	lat: 27.9878,
@@ -17,21 +18,27 @@ class AddEvent extends Component {
 
 	handleLocationChange = ({ position, address }) => {
 		this.setState({ position, address });
+		console.log(this.state.position)
+	}
+	handleSubmit = (e) => {
+		e.preventDefault();
+		const form = e.target;
+		
 	}
 
 	render = () => {
 		return (
-			<form id={styles.newEventForm}>
+			<form id={styles.newEventForm} onSubmit={this.handleSubmit}>
 				<h1>Nowe wydarzenie w grupie Militaria</h1>
-				<input id={styles.eventNameInput} placeholder="Podaj nazwę wydarzenia" required />
+				<input id={styles.eventNameInput} name="EventName" placeholder="Podaj nazwę wydarzenia" required />
 				<div id={styles.eventDetailsFlex}>
 					<div id={styles.dateTime}>
 						<h3>Wprowadź datę i godzinę</h3>
-						<input type="date" />
-						<input type="time" />
+						<input name="dateInput" type="date" required />
+						<input name="timeInput" type="time" />
 					</div>
 					<div id={styles.descMap}>
-						<textarea placeholder="Wprowadź opis wydarzenia" rows="3" ></textarea>
+						<textarea name="EventDescription" placeholder="Wprowadź opis wydarzenia" rows="3" ></textarea>
 					</div>
 				</div>
 				<h2 id={styles.mapHeader}>Wybierz miejsce wydarzenia</h2>
