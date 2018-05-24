@@ -16,9 +16,11 @@
 .groupFromList {
     border: 1px solid #b7b7b7;
     border-radius: 5px;
-    text-overflow: clip;
-    padding: 8px 40px 8px 40px;
     margin-bottom: 15px;
     background: rgba(252, 252, 252, 1);
-    width: 300px;
+    min-width: 300px;
+}
+.groupLink{
+    display: block;
+    padding: 8px 40px 8px 40px;
 }
