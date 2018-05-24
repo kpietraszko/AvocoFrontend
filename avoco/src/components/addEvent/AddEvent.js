@@ -42,12 +42,6 @@ class AddEvent extends React.Component {
 					</div>
 				</div>
                 <h2 id={styles.mapHeader}>Wybierz miejsce wydarzenia</h2>
-<<<<<<< HEAD
-                <div id={styles.map} >
-							<iframe id={styles.mapSize} frameBorder="0" style={{ border: 0}} src="https://www.google.com/maps/embed/v1/place?q=place_id:ChIJxxkUBy154kYRD8JUzyaBahA&key=AIzaSyAe_x-NCWFqmMdoudhr8pBb7QhJo8p0y9s"
-							 allowFullScreen></iframe>
-				</div>
-=======
 				<h1>{this.state.address}</h1>
 					<LocationPicker
 						containerElement={<div id={styles.map} />}
@@ -56,7 +50,6 @@ class AddEvent extends React.Component {
 						onChange={this.handleLocationChange}
 						radius={-1}
 					/>
->>>>>>> 785371a8ba484f4a0a19bc4c62c413a3bd13546c
 				<input id={styles.createEventButton} className="submitButtonGreen" type="submit" value="Utwórz" />
 			</form>
 		);
