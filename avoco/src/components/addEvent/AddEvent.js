@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Component } from 'react';
 import styles from './AddEvent.module.css';
 import { connect } from 'react-redux';
 import Spinner from '../../componentsStateless/spinner/Spinner'; 
@@ -6,15 +6,16 @@ import LocationPicker from 'react-location-picker';
 
 
 const defaultPosition = {
-	lat: 53.4623,
-	lng: 20.2834
+	lat: 27.9878,
+	lng: 86.9250
   };
 
 class AddEvent extends React.Component {
 	constructor(props) {
 		super(props);
+
 		this.state = {
-			address: "",
+			address: "Kala Pattar Ascent Trail, Khumjung 56000, Nepal",
 			position: ""
 		  };
 
@@ -47,6 +48,7 @@ class AddEvent extends React.Component {
 						mapElement={<div id={styles.mapSize} />}
 						defaultPosition={defaultPosition}
 						onChange={this.handleLocationChange}
+						radius={-1}
 					/>
 				<input id={styles.createEventButton} className="submitButtonGreen" type="submit" value="Utwórz" />
 			</form>
