@@ -23,7 +23,7 @@ class AddEvent extends Component {
 	handleSubmit = (e) => {
 		e.preventDefault();
 		const form = e.target;
-		
+		createApi(form, /* brakuje mi id grupy, zmienic routing */)
 	}
 
 	render = () => {
