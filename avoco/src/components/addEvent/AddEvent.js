@@ -2,16 +2,30 @@ import React from 'react';
 import styles from './AddEvent.module.css';
 import { connect } from 'react-redux';
 import Spinner from '../../componentsStateless/spinner/Spinner'; 
+import LocationPicker from 'react-location-picker';
+
+
+const defaultPosition = {
+	lat: 53.4623,
+	lng: 20.2834
+  };
 
 class AddEvent extends React.Component {
-	constructor() {
-		super();
+	constructor(props) {
+		super(props);
 		this.state = {
-			isLoading: false
-		};
+			address: "",
+			position: ""
+		  };
+
+		this.handleLocationChange = this.handleLocationChange.bind(this);  // Bind
 	}
 
-	render = () => {
+	handleLocationChange ({ position, address }) {
+		this.setState({ position, address }); // Set new location
+	}
+
+	render = () => { 
 		return (
             <form id={styles.newEventForm}>
 				<h1>Nowe wydarzenie w grupie Militaria</h1>
@@ -27,13 +41,20 @@ class AddEvent extends React.Component {
 					</div>
 				</div>
                 <h2 id={styles.mapHeader}>Wybierz miejsce wydarzenia</h2>
-                <div id={styles.map} >
-							<iframe id={styles.mapSize} frameborder="0" style={{ border: 0}} src="https://www.google.com/maps/embed/v1/place?q=place_id:ChIJxxkUBy154kYRD8JUzyaBahA&key=AIzaSyAe_x-NCWFqmMdoudhr8pBb7QhJo8p0y9s"
-							 allowfullscreen></iframe>
-				</div>
+				<h1>{this.state.address}</h1>
+					<LocationPicker
+						containerElement={<div id={styles.map} />}
+						mapElement={<div id={styles.mapSize} />}
+						defaultPosition={defaultPosition}
+						onChange={this.handleLocationChange}
+					/>
 				<input id={styles.createEventButton} className="submitButtonGreen" type="submit" value="Utwórz" />
 			</form>
 		);
 	}
 };
 export default AddEvent;
+//<div id={styles.map} >
+//	<iframe id={styles.mapSize} frameborder="0" style={{ border: 0 }} src="https://www.google.com/maps/embed/v1/place?q=place_id:ChIJxxkUBy154kYRD8JUzyaBahA&key=AIzaSyAe_x-NCWFqmMdoudhr8pBb7QhJo8p0y9s"
+//		allowfullscreen></iframe>
+//</div>
