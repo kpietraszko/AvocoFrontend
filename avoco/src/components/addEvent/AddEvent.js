@@ -6,13 +6,13 @@ import LocationPicker from 'react-location-picker';
 import { createApi } from '../../api/event';
 
 const defaultPosition = {
-	lat: 27.9878,
-	lng: 86.9250
+	lat: 53.7791,
+	lng: 20.4803
 };
 
 class AddEvent extends Component {
 	state = {
-		address: "",
+		address: "Olsztyn",
 		position: ""
 	}
 
