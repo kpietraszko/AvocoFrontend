@@ -9,7 +9,8 @@ import Group from "../../components/group/Group";
 import Home from '../../components/home/Home';
 import GroupList from '../../components/groupList/GroupList';
 import styles from './Main.module.css';
-import AddEvent from "../../components/addEvent/AddEvent";
+import AddEvent from '../../components/addEvent/AddEvent';
+import Event from '../../components/event/Event';
 
 const Main = () => {
 	return (
@@ -25,6 +26,7 @@ const Main = () => {
 						<Route exact path="/group/:groupId" component={Group} />
 						<Route exact path="/groupList" component={GroupList} />
 						<Route exact path="/group/:groupId/addEvent" component={AddEvent} />
+						<Route exact path="/event/:eventId" component={Event} />
 					</Switch>
 				</div>
 				<RightPanel />
