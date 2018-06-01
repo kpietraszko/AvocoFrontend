@@ -1,37 +1,84 @@
 import React, { Component } from 'react';
 import styles from './Event.module.css';
 import { Link } from 'react-router-dom';
+import { connect } from 'react-redux';
 import Person from '../../componentsStateless/person/Person';
+import { getDetailsApi, getInterestedUsersApi, getGroupImageApi, setInterestedApi } from '../../api/event';
+import { actionCreators } from '../../actions/eventActions';
+import base64ToImageUrl from '../../services/base64ToImageUrl';
 
 class Event extends Component {
+	componentDidMount = () => {
+		const eventId = this.props.match.params.eventId;
+		getDetailsApi(eventId)
+			.then(response => {
+				console.log(response.data);
+				this.props.setEventDetails(response.data);
+				//get comments
+			})
+			.catch(error => alert(error));
+		getGroupImageApi(eventId)
+			.then(response => {
+				this.props.setEventGroupImage(base64ToImageUrl(response.data));
+			})
+			.catch(error => console.log(error))
+
+		getInterestedUsersApi();
+
+	}
+	getInterestedUsers = () => {
+		getInterestedUsersApi(this.props.match.params.eventId)
+			.then(response => {
+				const users = response.data;
+				for (let user of users) {
+					user.image = base64ToImageUrl(user.image);
+				}
+				this.props.setInterestedUsers(users);
+			}
+			)
+	}
+	handleInterestedClick = (interested) => {
+		setInterestedApi(this.props.match.params.eventId, interested)
+			.then(response => this.getInterestedUsers())
+			.catch(error => console.log(error));
+	}
 	render() {
 		return (
 			<React.Fragment>
 				<div id={styles.topPanel}>
 					<div className={styles.main}>
-						<div id={styles.groupCover}>
-							<h1>Militaria</h1>
+						<div id={styles.groupCover} className={this.props.event.groupImage ? styles.groupCoverImage : styles.groupCoverEmpty}
+							style={{ backgroundImage: `url(${this.props.event.groupImage})` }}>
+							<h1>{this.props.event.groupName}</h1>
 						</div>
 						<div id={styles.groupInterests}>
 							<h2>Zainteresowani</h2>
 							<ul>
 								<li className={styles.person}> {/* mozliwe ze usunac tu klase */}
-									<Person />
+									{this.props.event.interestedUsers && this.props.event.interestedUsers.map(user =>
+										<Person key={user.id} userId={user.Id} firstName={user.firstName} lastName={user.lastName} photoUrl={user.image} background />
+									)}
 								</li>
 							</ul>
 						</div>
 					</div>
 					<div className={`title ${styles.title}`}>
 						<div className={styles.eventName}>
-							<span>Wydarzenie:</span> ASG w terenie.
-					</div>
-						<div id={styles.interestedButton}>
-							<div className={`material-icons ${styles.symbolCircle}`}>star_border</div>
-							<div id={styles.interestedButtonText} className="whiteRounded">
-								Zainteresowany
+							<span>Wydarzenie:</span> {this.props.event.eventName}
 						</div>
+						{this.props.event.interestedUsers.map(user => user.id).includes(this.props.userId) ?
+							<div id={styles.interestedButton} onClick={() => this.handleInterestedClick(false)}>
+								<div className={`material-icons ${styles.symbolCircle}`}>star</div>
+								<div id={styles.interestedButtonText} className="whiteRounded">
+									Niezainteresowany
+							</div>
+							</div> :
+							<div id={styles.interestedButton} onClick={() => this.handleInterestedClick(true)}>
+								<div className={`material-icons ${styles.symbolCircle}`}>star_border</div>
+								<div id={styles.interestedButtonText} className="whiteRounded">
+									Zainteresowany
 						</div>
-
+							</div>}
 					</div>
 				</div>
 				<div id={styles.eventInfo}>
@@ -46,13 +93,15 @@ class Event extends Component {
 								</div>
 							</div>
 						</div>
-						<div className="whiteRounded" id={styles.description}>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer sollicitudin id mauris at iaculis. Phasellus sit amet
-							dui tempor, egestas lectus mollis, fringilla sem. Duis rhoncus cursus auctor. Etiam ultricies nec tortor placerat pulvinar.
-						Pellentesque vitae ligula condimentum, auctor lacus ut, efficitur augue.</div>
+						<div className="whiteRounded" id={styles.description}>
+							{this.props.event.eventDescription || <i>Brak opisu</i>}
+						</div>
 					</div>
 					<div id={styles.map}>
-						<iframe frameBorder="0" style={{border:0}} src="https://www.google.com/maps/embed/v1/place?q=place_id:ChIJxxkUBy154kYRD8JUzyaBahA&key=AIzaSyAe_x-NCWFqmMdoudhr8pBb7QhJo8p0y9s"
-							allowFullscreen></iframe>
+						{this.props.event.eventLocationLat &&
+							<iframe frameBorder="0" style={{ border: 0 }}
+								src={`https://www.google.com/maps/embed/v1/place?q=${this.props.event.eventLocationLat},${this.props.event.eventLocationLng}&key=AIzaSyAe_x-NCWFqmMdoudhr8pBb7QhJo8p0y9s`}
+								allowFullscreen></iframe>}
 					</div>
 					<div id={styles.comments}>
 						<h2>Komentarze
@@ -68,5 +117,13 @@ class Event extends Component {
 		);
 	}
 }
-
-export default Event;
+const mapStateToProps = state => ({
+	event: state.event,
+	userId: state.user.userId
+});
+const mapDispatchToProps = dispatch => ({
+	setEventDetails: eventDetails => dispatch(actionCreators.setEventDetails(eventDetails)),
+	setInterestedUsers: interestedUsers => dispatch(actionCreators.setInterestedUsers(interestedUsers)),
+	setEventGroupImage: groupImage => dispatch(actionCreators.setEventGroupImage(groupImage))
+});
+export default connect(mapStateToProps, mapDispatchToProps)(Event);

@@ -24,3 +24,6 @@ export const homeInitial = {
 export const groupListInitial = {
 	groups: []
 }
+export const eventInitial = {
+	interestedUsers: []
+}

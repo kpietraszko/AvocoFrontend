@@ -11,3 +11,15 @@ export const createApi = (form, groupId, location) => {
 	console.log(location);
 	return axios.post(`/event/Create/${groupId}`, formData);
 }
+export const getDetailsApi = (eventId) => {
+	return axios.get(`/event/${eventId}`);
+}
+export const getInterestedUsersApi = (eventId) => {
+	return axios.get(`/event/${eventId}/interestedUsers`);
+}
+export const getGroupImageApi = (eventId) => {
+	return axios.get(`/event/${eventId}/groupImage`);
+}
+export const setInterestedApi =(eventId, interested) => {
+	return axios.put(`/event/${eventId}/interested/${interested}`);
+}
