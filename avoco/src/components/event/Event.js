@@ -23,9 +23,12 @@ class Event extends Component {
 			})
 			.catch(error => console.log(error))
 
-		getInterestedUsersApi();
+		if (this.props.match.params.eventId) {
+			this.getInterestedUsers();
+		}
 
 	}
+	
 	getInterestedUsers = () => {
 		getInterestedUsersApi(this.props.match.params.eventId)
 			.then(response => {
