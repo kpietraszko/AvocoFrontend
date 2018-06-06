@@ -2,43 +2,36 @@ import React, { Component } from 'react';
 import styles from './RightPanel.module.css';
 import moment from 'moment';
 import { Link } from 'react-router-dom';
-// import { getGroupInfoApi, getGroupInterestsApi, getGroupImageApi } from '../../api/group';
-// import { actionCreators as groupActionCreators } from '../../actions/groupActions';
-// import { actionCreators as userActionCreators } from '../../actions/userActions';
-// import { connect } from 'react-redux';
-// import { newPostApi, getPostsApi, newCommentApi, userInGroupApi, joinGroupApi, leaveGroupApi, getEventsApi, deletePostApi, deleteCommentApi } from '../../api/group';
-// import replaceImagesWithUrls from '../../services/replaceImagesWithUrls';
-// import replaceDates from '../../services/replaceDates';
-// import replaceCoords from '../../services/replaceCoords';
-// import Modal from '../../componentsStateless/modal/Modal';
-// zmienic jak bedzie api i chuj
-// TODO
-
-// componentDidMount = () => {
-// 	this.getEvents();
-// }
-
-// getEvents = () => {
-// 	console.log("getting events");
-// 	const groupId = this.props.match.params.groupId;
-// 	getEventsApi(groupId)
-// 		.then((response) => {
-// 			if (this.props.match.params.groupId === groupId) {
-// 				let events = response.data;
-// 				replaceDates(events);
-// 				replaceCoords(events);
-// 				this.props.setGroupEvents(events);
-// 			}
-// 		})
-// }
-
+import { connect } from 'react-redux';
+import { getEventsApi } from '../../api/group';
+import replaceDates from '../../services/replaceDates';
+import replaceCoords from '../../services/replaceCoords';
+import initializeApi from '../../api/initialize';
 
 class RightPanel extends Component {
+
+	componentDidMount = () => {
+		this.getEvents();
+	}
+	
+	getEvents = () => {
+		console.log("getting events");
+		const groupId = this.props.groupId;
+		getEventsApi(groupId)
+			.then((response) => {
+				if (this.props.groupId === groupId) {
+					let events = response.data;
+					replaceDates(events);
+					replaceCoords(events);
+					this.props.setGroupEvents(events);
+				}
+			})
+	}
+
 	render() {
 		return (
 			<div id={styles.rightPanel}>
-				{/* <h2>Twoje wydarzenia</h2>
-
+				<h2>Twoje wydarzenia</h2>
 				<ul className={styles.eventList}>
 					{this.props.events && this.props.events.map((event) =>
 						<li key={event.id} className={styles.event}>
@@ -64,10 +57,10 @@ class RightPanel extends Component {
 						</li>
 					)}
 
-					{this.props.events.length === 0 &&
+					{/* {this.props.events.length === 0 &&
 						<p>Nie bierzesz udziału w żadnych wydarzeniach</p>
-					}
-				</ul> */}
+					} */}
+				</ul>
 			</div>
 		);
 	}
