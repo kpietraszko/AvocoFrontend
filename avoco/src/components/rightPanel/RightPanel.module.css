@@ -1,3 +1,4 @@
+
 #rightPanel{
     background-color: rgb(228,231,233);
     box-shadow: -0.25vw 0 0.4vw rgba(0, 0, 0, 0.08);
@@ -13,49 +14,114 @@
     width: 90%;
     margin-top: 6px;
 }
+
 .event{
-    margin: 4px 0;
-    height: 190px;
+	font-size: 0.85em;
+    margin: 9px 0;
     display: flex;
     flex-direction: column;
-    box-shadow: 6px 6px 5px rgba(0,0,0,0.06);
+    box-shadow: 4px 4px 5px rgba(0,0,0,0.06);
+    animation: eventAppear 0.5s cubic-bezier(0.86, 0, 0.07, 1);
+    opacity: 1;
+    transform: translate(0,0);
+}
+@keyframes eventAppear{
+	from{
+        opacity: 0;
+		transform: translate(0, -7%);
+	}
 }
 
-.title{
-    background-color: white;
-    flex-grow: 1;
-    display: flex;
-    align-items: center;
-    padding: 0 15px;
-    font-family: 'Roboto', sans-serif;
-    font-weight: bold;
-    border-bottom-right-radius: 4px;
-    border-bottom-left-radius: 4px;
+#groupEvents .event>.main{
+	flex-flow: row wrap;
+	justify-content: space-evenly;
 }
-.event>.title{
+
+#middleScreen>.main{
+    width: 100%;
+    display: flex;
+    padding-top: 15px;
+}
+
+#groupEvents .event>.main{
+	flex-flow: row wrap;
+	justify-content: space-evenly;
+}
+
+#groupEvents .date{
+	flex-basis: 150px;
+	font-size: 0.9em;
+}
+.date .whiteRounded{
+	margin: 7px 0 0 7px;
+}
+
+.date>.whiteRounded{
+    margin: auto;
+    margin-top: 10px;
+    box-sizing: border-box;
+    padding: 3px;
+    width: 85%;
+    /* align-self: flex-start; */
+}
+.date>.whiteRounded>.material-icons{
+    font-size: 24px;
+}
+
+.groupName .whiteRounded{
     cursor: pointer;
-    transform: translate(0,-1px);
 }
-.event>.title:active{
-    transform: translate(0,0px);
+.groupName .whiteRounded:active{
+    transform: translate(0,1px);
 }
-.event>.main{
-    height: 80%;
+
+#newEventButton>div{
+	margin-right: 5px;
+}
+
+.date>.whiteRounded>.material-icons{
+    font-size: 24px;
+}
+
+.location .material-icons{
+    position: absolute;
+	left: -25px;
+}
+
+.dateDetails{
     display: flex;
-    flex-flow: column wrap;
-    background-color: #f0f3f5;
+    flex-direction: column;
+    height: 100%;
+    font-size: 1.04rem;
+    margin-left: 5px;
 }
-.event>.main>*{
-    display: flex;
-    background-color: #f0f3f5;
-    width: 50%;
+
+.month{
+    text-transform: capitalize;
+    font-weight: bold;
 }
-.date{
-    border-top-left-radius: 4px;
+
+#groupEvents .location{
+	flex-basis: 100px;
 }
-.groupName{
-    border-top-right-radius: 4px;
+
+.groupName .whiteRounded, .location>.whiteRounded{
+    height: 25px;
 }
+.groupName,.location{
+    flex: 0 0 50%;
+    justify-content: flex-end;
+}
+.groupName .whiteRounded, .location>.whiteRounded{
+    margin: 10px 20px 10px 0;
+    font-size: 0.9em;
+    position: relative;
+}
+.location .material-icons{
+    position: absolute;
+    left: -25px;
+}
+
 .whiteRounded{
     background-color: #fafafa;
     border-radius: 15px;
@@ -75,58 +141,72 @@
 .date>.whiteRounded>.material-icons{
     font-size: 24px;
 }
-.dateDetails{
-    display: flex;
-    flex-direction: column;
-    height: 100%;
-    font-size: 1.04rem;
-    margin-left: 5px;
-}
-.month{
-    text-transform: capitalize;
-    font-weight: bold;
-}
+
 .groupName .whiteRounded, .location>.whiteRounded{
     height: 25px;
 }
-.groupName,.location{
-    flex: 0 0 50%;
-    justify-content: flex-end;
-}
+
 .groupName .whiteRounded, .location>.whiteRounded{
     margin: 10px 20px 10px 0;
     font-size: 0.9em;
     position: relative;
 }
-.location .material-icons{
-    position: absolute;
-    left: -25px;
-}
-.interested{
-    flex-grow: 1;
-    display: block;
-}
-.interested>div:first-child{
-    padding: 10px 0px 0px 20px;
-}
-.interestedList{
-    display: flex;
-    align-items: center;
-    margin: 5px 0;
-}
 
-.interested span:last-child{
-    margin-left: 8px;
-    font-size: 0.8em;
-    text-decoration: underline;
-    cursor: pointer;
-}
-.interested .symbolCircle{
-    cursor: pointer;
-}
 .groupName .whiteRounded{
     cursor: pointer;
 }
 .groupName .whiteRounded:active{
     transform: translate(0,1px);
 }
+
+#groupEvents .title{
+	padding-top: 6px;
+	padding-bottom: 6px;
+}
+
+#newEventButton{
+	margin-top: 7px;
+	vertical-align: middle;
+	box-shadow: 3.5px 3.5px 5px rgba(0,0,0,0.08);
+	cursor: pointer;
+}
+#newEventButton:active{
+	transform: translate(0, 1px);
+}
+#newEventButton>.material-icons{
+	margin-right: 5px;
+}
+
+.event>.main>*{
+    background-color: #f0f3f5;
+    width: 50%;
+}
+
+.event>.main {
+	padding-bottom: 5px;
+    height: 80%;
+    display: flex;
+    flex-flow: column wrap;
+    background-color: #f0f3f5;
+}
+
+.location{
+	padding-top: 3px;
+}
+
+.location::after{
+	padding-right: 4px;
+}
+
+.title {
+    background-color: white;
+    flex-grow: 1;
+    display: flex;
+    align-items: center;
+    padding: 0 15px;
+    font-family: 'Roboto', sans-serif;
+    font-weight: bold;
+    border-bottom-right-radius: 4px;
+    border-bottom-left-radius: 4px;
+}
+

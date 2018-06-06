@@ -13,13 +13,16 @@ const GroupEvents = (props) => {
 				<input placeholder="Szukaj wydarzeń" onInput={props.handleSearchInput} />
 				<div className={`material-icons ${styles.searchIcon} primaryColor`}>search</div>
 			</div>
+
 			<ul className={styles.eventList}>
 				<Link to={`/group/${props.groupId}/addEvent`} id={styles.newEventButton} className={styles.whiteRounded}>
 					<div className="material-icons">add_circle</div>
 					Dodaj wydarzenie
 			</Link>
+
 				{props.events && props.events.map((event) => {
-					return matchesSearch(event, props.searchString) && <li key={event.id} className={styles.event}>
+					return matchesSearch(event, props.searchString) && 
+					<li key={event.id} className={styles.event}>
 						<div className={styles.main}>
 							<div className={styles.date}>
 								<div className={styles.whiteRounded}>
