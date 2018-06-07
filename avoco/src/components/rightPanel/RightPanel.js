@@ -40,7 +40,6 @@ class RightPanel extends Component {
 				<h2>Twoje wydarzenia</h2>
 				<ul className={styles.eventList}>
 					{this.props.events && this.props.events.map((event) =>
-					console.log(event) &&
 					<li key={event.id} className={styles.event}>
 							<div className={styles.main}>
 								<div className={styles.date}>
