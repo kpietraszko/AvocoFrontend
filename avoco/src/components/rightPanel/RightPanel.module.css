@@ -43,11 +43,6 @@
     padding-top: 15px;
 }
 
-#groupEvents .event>.main{
-	flex-flow: row wrap;
-	justify-content: space-evenly;
-}
-
 #groupEvents .date{
 	flex-basis: 150px;
 	font-size: 0.9em;
@@ -56,36 +51,8 @@
 	margin: 7px 0 0 7px;
 }
 
-.date>.whiteRounded{
-    margin: auto;
-    margin-top: 10px;
-    box-sizing: border-box;
-    padding: 3px;
-    width: 85%;
-    /* align-self: flex-start; */
-}
-.date>.whiteRounded>.material-icons{
-    font-size: 24px;
-}
-
-.groupName .whiteRounded{
-    cursor: pointer;
-}
-.groupName .whiteRounded:active{
-    transform: translate(0,1px);
-}
-
 #newEventButton>div{
 	margin-right: 5px;
-}
-
-.date>.whiteRounded>.material-icons{
-    font-size: 24px;
-}
-
-.location .material-icons{
-    position: absolute;
-	left: -25px;
 }
 
 .dateDetails{
@@ -105,18 +72,11 @@
 	flex-basis: 100px;
 }
 
-.groupName .whiteRounded, .location>.whiteRounded{
-    height: 25px;
-}
 .groupName,.location{
     flex: 0 0 50%;
     justify-content: flex-end;
 }
-.groupName .whiteRounded, .location>.whiteRounded{
-    margin: 10px 20px 10px 0;
-    font-size: 0.9em;
-    position: relative;
-}
+
 .location .material-icons{
     position: absolute;
     left: -25px;
@@ -186,12 +146,13 @@
 	padding-bottom: 5px;
     height: 80%;
     display: flex;
-    flex-flow: column wrap;
     background-color: #f0f3f5;
 }
 
 .location{
-	padding-top: 3px;
+    margin-top: 5px;
+    padding-top: 3px;
+    
 }
 
 .location::after{

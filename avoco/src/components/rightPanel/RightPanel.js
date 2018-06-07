@@ -52,6 +52,7 @@ class RightPanel extends Component {
 									</div>
 								</div>
 							</div>
+							<div className={styles.title}>{event.groupName}</div>
 							<Link className={styles.title} to={`/event/${event.id}`}>{event.eventName}</Link>
 						</li>
 					)}
