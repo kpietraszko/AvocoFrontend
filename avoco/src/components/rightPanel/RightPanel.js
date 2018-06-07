@@ -9,6 +9,7 @@ import replaceCoords from '../../services/replaceCoords';
 import { getUsersEvents } from '../../api/event';
 import { actionCreators } from '../../actions/homeActions';
 
+
 class RightPanel extends Component {
 
 	componentDidMount = () => {
@@ -24,9 +25,10 @@ class RightPanel extends Component {
 			.then(response => {
 					let events = response.data;
 					replaceDates(events);
-					replaceCoords(events);
-					this.props.setEvents(events);
+					return replaceCoords(events);			
 			})
+			.then(events => this.props.setEvents(events))
+			.catch(error => alert(error));
 	}
 	componentDidUpdate = (prevProps, prevState) => {
 		if (prevProps.userId != this.props.userId){
