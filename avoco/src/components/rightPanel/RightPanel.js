@@ -6,25 +6,24 @@ import { connect } from 'react-redux';
 import { getEventsApi } from '../../api/group';
 import replaceDates from '../../services/replaceDates';
 import replaceCoords from '../../services/replaceCoords';
-import initializeApi from '../../api/initialize';
+import { getUsersEvents } from '../../api/event';
+import { actionCreators } from '../../actions/homeActions';
 
 class RightPanel extends Component {
 
 	componentDidMount = () => {
-		this.getEvents();
+		if (this.props.userId)
+		{
+			this.getEvents();
+		}
 	}
 	
 	getEvents = () => {
 		console.log("getting events");
-		const groupId = this.props.groupId;
-		getEventsApi(groupId)
-			.then((response) => {
-				if (this.props.groupId === groupId) {
+		getUsersEvents(this.props.userId)
+			.then(response => {
 					let events = response.data;
-					replaceDates(events);
-					replaceCoords(events);
-					//this.props.setGroupEvents(events);
-				}
+					this.props.setEvents(events);
 			})
 	}
 
@@ -65,5 +64,11 @@ class RightPanel extends Component {
 		);
 	}
 }
-
-export default RightPanel;
+const mapStateToProps = state => ({
+	userId: state.user.userId,
+	events: state.home.events
+})
+const mapDispatchToProps = dispatch => ({
+	setEvents: events => dispatch(actionCreators.getAllEvents(events))
+})
+export default connect(mapStateToProps, mapDispatchToProps)(RightPanel);

@@ -19,7 +19,8 @@ export const groupInitial = {
 	groupInterests: []
 }
 export const homeInitial = {
-	posts: []
+	posts: [],
+	events: []
 }
 export const groupListInitial = {
 	groups: []

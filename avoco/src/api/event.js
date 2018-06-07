@@ -31,3 +31,6 @@ export const addCommentApi = (eventId, comment) => {
 	form.append("comment", comment);
 	return axios.post(`/event/${eventId}/addComment`, form);
 }
+export const getUsersEvents = (userId) => {
+	return axios.get(`/event/user/${userId}`);
+}
