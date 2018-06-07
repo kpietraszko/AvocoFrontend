@@ -4,7 +4,9 @@ import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import Person from '../../componentsStateless/person/Person';
 import { getDetailsApi, getInterestedUsersApi, getGroupImageApi, setInterestedApi, getEventCommentsApi, addCommentApi } from '../../api/event';
-import { actionCreators } from '../../actions/eventActions';
+import { getUsersEvents } from '../../api/event';
+import { actionCreators as eventActionCreators } from '../../actions/eventActions';
+import { actionCreators as homeActionCreators } from '../../actions/homeActions';
 import base64ToImageUrl from '../../services/base64ToImageUrl';
 import Modal from '../../componentsStateless/modal/Modal';
 
@@ -53,7 +55,10 @@ class Event extends Component {
 	}
 	handleInterestedClick = (interested) => {
 		setInterestedApi(this.props.match.params.eventId, interested)
-			.then(() => this.getInterestedUsers())
+			.then(() => {
+				this.getInterestedUsers();
+				this.getEvents();
+			})
 			.catch(error => console.log(error));
 	}
 	handleNewComment = (e) => {
@@ -68,6 +73,14 @@ class Event extends Component {
 			comment.image = base64ToImageUrl(comment.image);
 		}
 		this.props.setEventComments(comments);
+	}
+	getEvents = () => { //do prawego panelu
+		console.log("getting events");
+		getUsersEvents(this.props.userId)
+			.then(response => {
+				let events = response.data;
+				this.props.setEvents(events);
+			})
 	}
 	render() {
 		return (
@@ -161,9 +174,10 @@ const mapStateToProps = state => ({
 	userId: state.user.userId
 });
 const mapDispatchToProps = dispatch => ({
-	setEventDetails: eventDetails => dispatch(actionCreators.setEventDetails(eventDetails)),
-	setInterestedUsers: interestedUsers => dispatch(actionCreators.setInterestedUsers(interestedUsers)),
-	setEventGroupImage: groupImage => dispatch(actionCreators.setEventGroupImage(groupImage)),
-	setEventComments: comments => dispatch(actionCreators.setEventComments(comments))
+	setEventDetails: eventDetails => dispatch(eventActionCreators.setEventDetails(eventDetails)),
+	setInterestedUsers: interestedUsers => dispatch(eventActionCreators.setInterestedUsers(interestedUsers)),
+	setEventGroupImage: groupImage => dispatch(eventActionCreators.setEventGroupImage(groupImage)),
+	setEventComments: comments => dispatch(eventActionCreators.setEventComments(comments)),
+	setEvents: events => dispatch(homeActionCreators.getAllEvents(events)) //prawy panel
 });
 export default connect(mapStateToProps, mapDispatchToProps)(Event);
