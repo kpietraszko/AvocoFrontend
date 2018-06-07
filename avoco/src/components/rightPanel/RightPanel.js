@@ -23,7 +23,7 @@ class RightPanel extends Component {
 					let events = response.data;
 					replaceDates(events);
 					replaceCoords(events);
-					this.props.setGroupEvents(events);
+					//this.props.setGroupEvents(events);
 				}
 			})
 	}
