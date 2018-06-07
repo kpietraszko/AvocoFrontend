@@ -3,11 +3,16 @@ import styles from './Event.module.css';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import Person from '../../componentsStateless/person/Person';
-import { getDetailsApi, getInterestedUsersApi, getGroupImageApi, setInterestedApi } from '../../api/event';
+import { getDetailsApi, getInterestedUsersApi, getGroupImageApi, setInterestedApi, getEventCommentsApi, addCommentApi } from '../../api/event';
 import { actionCreators } from '../../actions/eventActions';
 import base64ToImageUrl from '../../services/base64ToImageUrl';
+import Modal from '../../componentsStateless/modal/Modal';
 
 class Event extends Component {
+	state = {
+		showInterestedModal: false
+	}
+
 	componentDidMount = () => {
 		const eventId = this.props.match.params.eventId;
 		getDetailsApi(eventId)
@@ -25,10 +30,11 @@ class Event extends Component {
 
 		if (this.props.match.params.eventId) {
 			this.getInterestedUsers();
+			this.getComments();
 		}
 
 	}
-	
+
 	getInterestedUsers = () => {
 		getInterestedUsersApi(this.props.match.params.eventId)
 			.then(response => {
@@ -40,14 +46,40 @@ class Event extends Component {
 			}
 			)
 	}
+	getComments = () => {
+		getEventCommentsApi(this.props.match.params.eventId)
+			.then(response => this.transformAndSetComments(response.data))
+			.catch(error => alert(error));
+	}
 	handleInterestedClick = (interested) => {
 		setInterestedApi(this.props.match.params.eventId, interested)
-			.then(response => this.getInterestedUsers())
+			.then(() => this.getInterestedUsers())
 			.catch(error => console.log(error));
+	}
+	handleNewComment = (e) => {
+		e.preventDefault();
+		const newComment = e.target.newCommentInput.value;
+		addCommentApi(this.props.match.params.eventId, newComment)
+			.then(response => this.transformAndSetComments(response.data))
+			.catch(error => alert(error));
+	}
+	transformAndSetComments = (comments) => {
+		for (let comment of comments) {
+			comment.image = base64ToImageUrl(comment.image);
+		}
+		this.props.setEventComments(comments);
 	}
 	render() {
 		return (
 			<React.Fragment>
+				{this.props.event.interestedUsers.map(user => user.id).includes(this.props.userId) ?
+					this.state.showInterestedModal && <Modal question="Czy na pewno nie jesteś zainteresowany tym wydarzeniem?"
+						confirm={() => this.handleInterestedClick(false)}
+						cancel={() => this.setState({ showInterestedModal: false })} /> :
+					this.state.showInterestedModal && <Modal question="Czy na pewno jesteś zainteresowany tym wydarzeniem?"
+						confirm={() => this.handleInterestedClick(true)}
+						cancel={() => this.setState({ showInterestedModal: false })} />
+				}
 				<div id={styles.topPanel}>
 					<div className={styles.main}>
 						<div id={styles.groupCover} className={this.props.event.groupImage ? styles.groupCoverImage : styles.groupCoverEmpty}
@@ -70,13 +102,13 @@ class Event extends Component {
 							<span>Wydarzenie:</span> {this.props.event.eventName}
 						</div>
 						{this.props.event.interestedUsers.map(user => user.id).includes(this.props.userId) ?
-							<div id={styles.interestedButton} onClick={() => this.handleInterestedClick(false)}>
+							<div id={styles.interestedButton} onClick={() => this.setState({ showInterestedModal: true })}> {/* () => this.handleInterestedClick(false)}> */}
 								<div className={`material-icons ${styles.symbolCircle}`}>star</div>
 								<div id={styles.interestedButtonText} className="whiteRounded">
 									Niezainteresowany
 							</div>
 							</div> :
-							<div id={styles.interestedButton} onClick={() => this.handleInterestedClick(true)}>
+							<div id={styles.interestedButton} onClick={() => this.setState({ showInterestedModal: true })}>
 								<div className={`material-icons ${styles.symbolCircle}`}>star_border</div>
 								<div id={styles.interestedButtonText} className="whiteRounded">
 									Zainteresowany
@@ -107,13 +139,17 @@ class Event extends Component {
 								allowFullscreen></iframe>}
 					</div>
 					<div id={styles.comments}>
-						<h2>Komentarze
-						<div className={`${styles.addCommentIcon} material-icons`}>insert_comment</div>
-						</h2>
-						<div className={`${styles.comment} whiteRounded`}>
-							<Person />
-							<span>Duis in quam a augue viverra.</span>
-						</div>
+						<h2>Komentarze</h2>
+						{this.props.event && this.props.event.comments && this.props.event.comments.map(comment =>
+							<div key={comment.id} className={`${styles.comment} whiteRounded`}>
+								<Person userId={comment.userId} firstName={comment.firstName} lastName={comment.lastName} photoUrl={comment.image} />
+								<span>{comment.content}</span>
+							</div>
+						)}
+						<form onSubmit={this.handleNewComment}>
+							<textarea className={styles.newComment} name="newCommentInput" rows={1} placeholder="Napisz komentarz..." />
+							<input className={styles.commentSubmit} type="submit" value="Wyślij" />
+						</form>
 					</div>
 				</div>
 			</React.Fragment>
@@ -127,6 +163,7 @@ const mapStateToProps = state => ({
 const mapDispatchToProps = dispatch => ({
 	setEventDetails: eventDetails => dispatch(actionCreators.setEventDetails(eventDetails)),
 	setInterestedUsers: interestedUsers => dispatch(actionCreators.setInterestedUsers(interestedUsers)),
-	setEventGroupImage: groupImage => dispatch(actionCreators.setEventGroupImage(groupImage))
+	setEventGroupImage: groupImage => dispatch(actionCreators.setEventGroupImage(groupImage)),
+	setEventComments: comments => dispatch(actionCreators.setEventComments(comments))
 });
 export default connect(mapStateToProps, mapDispatchToProps)(Event);

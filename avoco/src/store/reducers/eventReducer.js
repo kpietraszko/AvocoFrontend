@@ -14,5 +14,9 @@ export default handleActions({
 	[actionTypes.setEventGroupImage]: (state, action) => ({
 		...state,
 		groupImage: action.groupImage
+	}),
+	[actionTypes.setEventComments]: (state, action) => ({
+		...state,
+		comments: action.comments
 	})
 }, eventInitial);

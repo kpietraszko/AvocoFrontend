@@ -23,3 +23,11 @@ export const getGroupImageApi = (eventId) => {
 export const setInterestedApi =(eventId, interested) => {
 	return axios.put(`/event/${eventId}/interested/${interested}`);
 }
+export const getEventCommentsApi = (eventId) => {
+	return axios.get(`/event/${eventId}/comments`);
+}
+export const addCommentApi = (eventId, comment) => {
+	const form = new FormData();
+	form.append("comment", comment);
+	return axios.post(`/event/${eventId}/addComment`, form);
+}

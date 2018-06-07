@@ -35,6 +35,7 @@ class GroupList extends React.Component {
                     <Spinner size={40} />
                 </div> :
                 <div className={styles.searchGroupBar}>
+                    <h1 id={styles.title}>Lista grup</h1>
                     <GroupSearchBar handleSearchInput={this.handleSearchInput} />
                     <ul id={styles.groupList}>
                         {this.props.groups && this.props.groups.map((group) => {
