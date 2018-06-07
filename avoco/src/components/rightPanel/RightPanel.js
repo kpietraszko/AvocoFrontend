@@ -23,8 +23,15 @@ class RightPanel extends Component {
 		getUsersEvents(this.props.userId)
 			.then(response => {
 					let events = response.data;
+					replaceDates(events);
+					replaceCoords(events);
 					this.props.setEvents(events);
 			})
+	}
+	componentDidUpdate = (prevProps, prevState) => {
+		if (prevProps.userId != this.props.userId){
+			this.getEvents();
+		}
 	}
 
 	render() {
@@ -33,7 +40,8 @@ class RightPanel extends Component {
 				<h2>Twoje wydarzenia</h2>
 				<ul className={styles.eventList}>
 					{this.props.events && this.props.events.map((event) =>
-						<li key={event.id} className={styles.event}>
+					console.log(event) &&
+					<li key={event.id} className={styles.event}>
 							<div className={styles.main}>
 								<div className={styles.date}>
 									<div className={styles.whiteRounded}>
