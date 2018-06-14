@@ -41,7 +41,7 @@ export const setRegion = (region) => {
 	});
 }
 export const setPhoto = (formData) => {
-	return axios.put("/user/Photo", formData);
+	return axios.put("/user/Photo", formData, { responseType: "blob" });
 }
 export const searchInterests = (searchText) => {
 	return axios.get(`/user/SearchInterests/${searchText}`);

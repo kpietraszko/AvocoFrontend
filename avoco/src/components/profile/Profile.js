@@ -50,7 +50,8 @@ class Profile extends React.Component {
 	getUserPhoto = () => {
 		getPhoto(this.props.match.params.userId)
 			.then((response) => {
-				this.props.setProfilePhoto(URL.createObjectURL(response.data));
+				const url = response.data ? URL.createObjectURL(response.data) : null;
+				this.props.setProfilePhoto(url);
 			})
 			.catch((error) => {
 				console.log(error);
@@ -132,7 +133,7 @@ class Profile extends React.Component {
 		const newRegion = e.target.value;
 		setRegion(newRegion)
 			.then((response) => {
-				this.props.updateRegion(response.data)
+				this.props.updateRegion(response.data.region)
 			});
 	}
 	handleImageUpload = (e) => {
@@ -188,7 +189,7 @@ const mapStateToProps = (state) => ({
 const mapDispatchToProps = (dispatch) => ({
 	updateName: (firstName, lastName) => dispatch(userActions.updateName(firstName, lastName)),
 	updateRegion: (region) => dispatch(userActions.updateRegion(region)),
-	updatePhoto: (photoUrl) => dispatch(userActions.updatePhoto(photoUrl)), //zdjecie zalogowanego użytkownika, przy wrzucaniu nowego
+	updatePhoto: (photoUrl) => dispatch(userActions.setPhoto(photoUrl)), //zdjecie zalogowanego użytkownika, przy wrzucaniu nowego
 	updateFriends: (friends) => dispatch(userActions.updateFriends(friends)),
 	setUserDetails: (firstName, lastName, region) => dispatch(profileActions.setUserDetails(firstName, lastName, region)),
 	setProfilePhoto: (photoUrl) => dispatch(profileActions.setProfilePhoto(photoUrl)), //zdjecie pobierane z serwera przy wczytywaniu profilu

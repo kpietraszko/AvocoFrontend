@@ -26,7 +26,8 @@ class Navbar extends Component {
 			})
 			.then(() => getPhoto(this.props.userId, "small"))
 			.then((response) => {
-				this.props.setPhoto(URL.createObjectURL(response.data));
+				const url = response.data ? URL.createObjectURL(response.data) : null;
+				this.props.setPhoto(url);
 			})
 			.catch((error) => {
 				console.log(error);
@@ -46,7 +47,7 @@ class Navbar extends Component {
 				<div id={styles.leftAlignedItems}>
 					<div id={styles.logo}>AVOCO</div>
 					<NavbarButton title="Strona główna" icon="home" path="/" />
-					<NavbarButton title="Wiadomości" icon="message" path="/" />
+					{/* <NavbarButton title="Wiadomości" icon="message" path="/" /> */}
 					<NavbarButton title="Stwórz grupę" icon="add_circle" path="/addGroup" />
 					<NavbarButton title="Lista grup" icon="view_list" path="/groupList" />
 				</div>
