@@ -52,7 +52,7 @@ class Navbar extends Component {
 				</div>
 				<div id={styles.rightAlignedItems}>
 					<Person userId={this.props.userId} firstName={this.props.firstName} lastName={this.props.lastName} photoUrl={this.props.photoUrl}/>
-					<SearchBar />
+					{/* <SearchBar /> */}
 					<NavbarButton icon="exit_to_app" path="/" onClick={this.handleLogOutClick}>Wyloguj</NavbarButton>
 				</div>
 			</div>
